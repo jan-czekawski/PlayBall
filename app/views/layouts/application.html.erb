@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <% if (request.fullpath != "/") %>
+      <%= render "layouts/navigation" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
