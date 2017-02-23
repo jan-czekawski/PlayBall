@@ -10,9 +10,17 @@
   </head>
 
   <body>
+  
     <% if (request.fullpath != "/") %>
       <%= render "layouts/navigation" %>
+      <style type="text/css">
+        body {
+          padding-top: 50px;
+        }
+      </style>
     <% end %>
+
     <%= yield %>
+
   </body>
 </html>
