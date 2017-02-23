@@ -16,6 +16,7 @@ gem 'haml'
 gem 'bootstrap-sass'
 gem 'twitter-bootstrap-rails'
 gem "font-awesome-rails"
+gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
