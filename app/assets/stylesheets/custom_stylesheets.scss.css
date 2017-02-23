@@ -37,14 +37,9 @@ hr {
   background: hsl(0, 0%, 60%);
 }
 
-
-.navbar {
+#loginButton, #signupButton {
+  cursor: pointer;
 }
-
-/*body {
-  padding-top:50px;
-}*/
-
 
 #courtsMainJumbo {
   background: url("shot.jpg") no-repeat;

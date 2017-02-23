@@ -10,7 +10,7 @@
       - @courts.each do |court|
         %a{:href => "/courts/#{court.id}"}
           .col-md-4.col-sm-6
-            .thumbnail.hvr-curl-bottom-right.hvr-grow
+            .thumbnail.hvr-grow
               %img{:src => "/assets/#{court.picture}", :alt => "default", :height => "100px"}
               .caption       
                 %h3= court.name
