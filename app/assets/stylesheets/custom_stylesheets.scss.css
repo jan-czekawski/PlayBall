@@ -9,27 +9,20 @@
   margin-bottom: 0;
 }
 
-#courtsJumbo {
-  background: url("shot.jpg") no-repeat;
-  background-size: cover;
-  height: 80vh;
-}
-
-#courtsJumbo h1, #courtsJumbo p {
-  color: #d6cf55;
-  text-shadow: 1px 2px 3px black;
-  padding-top: 2em;
-}
-
-#courtsJumbo p {
-  padding-top: 3em;
-}
-
 #landingContainer {
   color: #d4d858;
   text-align: center;
   margin-top: 20vh;
   text-shadow: 1px 2px 3px black;
+}
+
+#landingContainer button {
+  background-color: hsla(62, 62%, 60%, 0.8);
+  border: none;
+}
+
+#landingContainer button:hover {
+  background-color: hsla(62, 62%, 40%, 0.8);
 }
 
 #landingContainer h1 {
@@ -44,8 +37,35 @@
   margin-bottom: 0;
 }
 
+#courtsJumbo {
+  background: url("shot.jpg") no-repeat;
+  background-size: cover;
+  height: 80vh;
+}
+
+#courtsContainer>h1, #courtsContainer>p {
+  color: #d6cf55;
+  text-shadow: 1px 2px 3px black;
+}
+
+#courtsContainer>h1 {
+  padding-top: 2em;
+}
+
+#courtsContainer>p {
+  padding-top: 3em;
+}
+
+/*#courtsRow {
+  padding-top: 5em;
+}*/
+
 .container {
   text-align: center;
+}
+
+.thumbnail>img {
+  max-height: 200px;
 }
 
 

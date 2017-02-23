@@ -1,4 +1,17 @@
 .jumbotron#courtsJumbo
-  .container
+  .container#courtsContainer
     %h1 Discover the best basketball courts near you
     %p.lead Share them with your friends and with your enemies
+.container
+  .row#courtsRow
+    - @courts.each do |court|
+      .col-md-4.col-sm-6
+        .thumbnail
+          %img{:src => "/assets/#{court.picture}", :alt => "default", :height => "100px"}
+          .caption       
+            %h3= court.name
+            %p= court.description
+            %small Created at:
+            %small= court.created_at
+            %small= "Created by:"
+            %small= court.user_id
