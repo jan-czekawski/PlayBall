@@ -107,3 +107,10 @@ hr {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
+#flash-messages {
+  position: absolute;
+  width: 90%;
+  top: 70px;
+  left: 70px;
+}

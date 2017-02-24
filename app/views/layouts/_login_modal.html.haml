@@ -1,0 +1,17 @@
+.modal.fade#loginModal{:tabindex => -1, :role => "dialog"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{:type => "button", :data => {:dismiss => "modal"}}
+          %span &times;
+        %h4.modal-title#myModalLabel Login
+      .modal-body 
+        =form_for(:session, :html => {:class => "form-horizontal", :role => "form"}, :url => login_path) do |f|
+          .form-group
+            .control-label.col-sm-2= f.label :email
+            .col-sm-8= f.email_field :email, class: "form-control", placeholder: "Enter email", autofocus: true
+          .form-group
+            .control-label.col-sm-2= f.label :password
+            .col-sm-8= f.password_field :password, class: "form-control", autocomplete: "off", placeholder: "Enter password"
+          .form-group
+            .col-sm-offset-2.col-sm-10= f.submit "Log in", class: "btn btn-success btn-lg"

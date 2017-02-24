@@ -30,49 +30,27 @@
             %li.divider{:role => "separator"}
             %li
               %a{:href => "#"} One more separated link
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a#loginButton{:data => {:toggle => "modal", :target=> "#loginModal"}}
-            %i.fa.fa-user
-            Login
-        %li
-          %a#signupButton{:data => {:toggle => "modal", :target=> "#signupModal"}}
-            %i.fa.fa-user-plus 
-            Sign Up
-.modal.fade#loginModal{:tabindex => -1, :role => "dialog"}
-  .modal-dialog{:role => "document"}
-    .modal-content
-      .modal-header
-        %button.close{:type => "button", :data => {:dismiss => "modal"}}
-          %span &times;
-        %h4.modal-title#myModalLabel Login
-      .modal-body 
-        =form_for(:session, :html => {:class => "form-horizontal", :role => "form"}, :url => login_path) do |f|
-          .form-group
-            .control-label.col-sm-2= f.label :email
-            .col-sm-8= f.email_field :email, class: "form-control", placeholder: "Enter email", autofocus: true
-          .form-group
-            .control-label.col-sm-2= f.label :password
-            .col-sm-8= f.password_field :password, class: "form-control", autocomplete: "off", placeholder: "Enter password"
-          .form-group
-            .col-sm-offset-2.col-sm-10= f.submit "Log in", class: "btn btn-success btn-lg"
-.modal.fade#signupModal{:tabindex => -1, :role => "dialog"}
-  .modal-dialog{:role => "document"}
-    .modal-content
-      .modal-header
-        %button.close{:type => "button", :data => {:dismiss => "modal"}}
-          %span &times;
-        %h4.modal-title#myModalLabel Signup
-      .modal-body 
-        =form_for(:user, :html => {:class => "form-horizontal", :role => "form"}, :url => signup_path) do |f|
-          .form-group
-            .control-label.col-sm-2= f.label :email
-            .col-sm-8= f.email_field :email, class: "form-control", placeholder: "Enter email", autofocus: true
-          .form-group
-            .control-label.col-sm-2= f.label :username
-            .col-sm-8= f.text_field :username, class: "form-control", placeholder: "Enter user name"
-          .form-group
-            .control-label.col-sm-2= f.label :password
-            .col-sm-8= f.password_field :password, class: "form-control", autocomplete: "off", placeholder: "Enter password"
-          .form-group
-            .col-sm-offset-2.col-sm-10= f.submit "Sign up", class: "btn btn-success btn-lg"
+      %ul.nav.navbar-nav.navbar-right 
+        -if logged_in?
+          %li
+            = link_to "Logout", logout_path, method: :delete
+          %li.dropdown
+            %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}, 
+                               :role => "button"}
+              Your Profile
+              = "Admin" if current_user.admin?
+              %span.caret
+            %ul.dropdown-menu
+              %li= link_to "Edit your profile", edit_user_path(current_user)
+              %li= link_to "View your profile", user_path(current_user)
+        -else
+          %li
+            %a#loginButton{:data => {:toggle => "modal", :target=> "#loginModal"}}
+              %i.fa.fa-user
+              Login
+          %li
+            %a#signupButton{:data => {:toggle => "modal", :target=> "#signupModal"}}
+              %i.fa.fa-user-plus 
+              Sign Up
+= render "/layouts/signup_modal"
+= render "/layouts/login_modal"
