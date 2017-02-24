@@ -1,0 +1,25 @@
+.jumbotron
+  .container
+    %h1= @user.username
+    %strong Email address:
+    %p= @user.email
+    = link_to "Edit", edit_user_path(@user), class: "btn btn-warning"
+    = link_to "Back", users_path, class: "btn btn-primary"
+    %br
+    - if !@courts.blank?
+      %h2= "Courts added by " + @user.username
+      %br
+      .row
+        - @courts.each do |court|
+          .col-md-4.col-sm-6
+            .thumbnail
+              %img{:src => "/assets/#{court.picture}", :alt => "default", :height => "100px"}
+              .caption
+                %h3= court.name
+                %p= truncate(court.description, length: 60)
+                %small Created at:
+                %small= court.created_at
+                %small= "Created by:"
+                %small= court.user_id
+    - else
+      %h2= @user.username + " hasn't added any courts yet"
