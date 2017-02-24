@@ -118,3 +118,7 @@ hr {
 .modal-content {
   text-align: center;
 }
+
+#emptyDiv {
+  height: 22px;
+}
