@@ -114,3 +114,7 @@ hr {
   top: 70px;
   left: 70px;
 }
+
+.modal-content {
+  text-align: center;
+}
