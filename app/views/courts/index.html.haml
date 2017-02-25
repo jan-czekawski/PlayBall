@@ -8,8 +8,8 @@
   .container#courtsContentContainer
     .row#courtsRow
       - @courts.each do |court|
-        %a{:href => "/courts/#{court.id}"}
-          .col-md-4.col-sm-6
+        .col-md-4.col-sm-6
+          %a{:href => "/courts/#{court.id}"}
             .thumbnail.hvr-grow
               %img{:src => "/assets/#{court.picture}", :onerror =>"this.src='/assets/ball.jpg'", :height => "100px"}
               .caption       
