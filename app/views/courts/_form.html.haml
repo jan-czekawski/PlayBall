@@ -1,0 +1,17 @@
+=form_for court, :html => {:class => "form-horizontal"} do |f|
+  -if court.errors.any?
+    #error_explanation.alert.alert-danger
+      %h2= pluralize(court.errors.count, "error") + " prohibited this court from being saved:"
+      %ul
+      - court.errors.full_messages.each do |message|
+        %li= message
+  .form-group
+    = f.label :name, class: "control-label col-sm-2 col-sm-offset-1"
+    .col-sm-6= f.text_field :name, class: "form-control", autofocus: "true"
+  .form-group
+    = f.label :description, class: "control-label col-sm-2 col-sm-offset-1"
+    .col-sm-6= f.text_field :description, class: "form-control"
+  .form-group
+    = f.label :picture, class: "control-label col-sm-2 col-sm-offset-1"
+    .col-sm-6= f.file_field :picture, accept: "image/jpeg, image/jpg, image/gif, image/png", class: "form-control"
+  = f.submit "Submit", class: "btn btn-success"

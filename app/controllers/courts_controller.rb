@@ -23,10 +23,12 @@ class CourtsController < ApplicationController
   #POST /courts
   def create
     @court = Court.new(court_params)
+    @court.user = current_user
 
     respond_to do |format|
       if @court.save
-        format.html { redirect_to @court, notice: "Court was successfully added"}
+        format.html { redirect_to courts_path }
+        flash[:success] = "Court was successfully added"
       else
         format.html { render :new }
       end
@@ -41,6 +43,13 @@ class CourtsController < ApplicationController
       else
         format.html { render :edit }
       end
+    end
+  end
+
+  def upload
+    uploaded_io = params[:court][:picture]
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
     end
   end
 
