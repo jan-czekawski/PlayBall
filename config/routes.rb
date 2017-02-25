@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :courts
 
   post "signup", to: "users#create"
+  get "signup", to: "users#index"
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"

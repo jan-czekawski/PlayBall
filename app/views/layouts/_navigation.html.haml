@@ -10,9 +10,9 @@
     .collapse.navbar-collapse#bs-example-navbar-collapse-1
       %ul.nav.navbar-nav
         %li
-          %a{:href => "/courts"} All Courts
+          %a{:href => "/courts"} Courts
         %li
-          %a{:href => "/users"} All Users
+          %a{:href => "/users"} Users
         %li.dropdown
           %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}, :role => "button", :aria => {:haspopup => "true", :expanded => "false"}} 
             Dropdown
@@ -32,17 +32,16 @@
               %a{:href => "#"} One more separated link
       %ul.nav.navbar-nav.navbar-right 
         -if logged_in?
-          %li
-            = link_to "Logout", logout_path, method: :delete
           %li.dropdown
             %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}, 
                                :role => "button"}
-              Your Profile
+              = "Signed In As " + current_user.username
               = "(Admin)" if current_user.admin?
               %span.caret
             %ul.dropdown-menu
               %li= link_to "Edit your profile", edit_user_path(current_user)
               %li= link_to "View your profile", user_path(current_user)
+              %li= link_to "Logout", logout_path, method: :delete
         -else
           %li
             %a#loginButton{:data => {:toggle => "modal", :target=> "#loginModal"}}

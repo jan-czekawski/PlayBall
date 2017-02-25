@@ -3,7 +3,8 @@
     %h1= @user.username
     %strong Email address:
     %p= @user.email
-    = link_to "Edit", edit_user_path(@user), class: "btn btn-warning"
+    - if logged_in? && (current_user == @user || current_user.admin?)
+      = link_to "Edit", edit_user_path(@user), class: "btn btn-warning"
     = link_to "Back", users_path, class: "btn btn-primary"
     %br
     - if !@courts.blank?
