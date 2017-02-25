@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         flash[:success] = 'User was successfully created.'
-        format.html { redirect_to courts_path }
+        format.html { redirect_back fallback_location: users_path }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         flash[:info] = 'User was successfully updated.'
-        format.html { redirect_to courts_path }
+        format.html { redirect_to users_path }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -62,9 +62,10 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
+    session[:user_id] = nil
     flash[:danger] = 'User was successfully destroyed.'
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to users_path }
       format.json { head :no_content }
     end
   end
@@ -83,7 +84,7 @@ class UsersController < ApplicationController
     def require_user
       if !logged_in?
         flash[:danger] = "You must be logged in to perform that action"
-        redirect_to users_path
+        redirect_back fallback_location: users_path
       end
     end
 

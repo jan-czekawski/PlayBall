@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       flash[:success] = "You have successfully logged in"
       redirect_to courts_path
     else
-      flash[:danger] = "There was something wrong with your login information"
+      flash[:danger] = "Incorrect login and/or password"
       redirect_to courts_path
     end
   end
