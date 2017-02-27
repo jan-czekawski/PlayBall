@@ -3,12 +3,16 @@
     %h1= @court.name
     .row
       .col-sm-8.col-sm-offset-2 
-        .thumbnail
-          %img{:src => "/assets/#{@court.picture}", :onerror =>"this.src='/assets/ball.jpg'"} 
-          .caption
-            %br       
-            %p.courtParagraph= @court.description
-            %small Created at:
-            %small= @court.created_at
-            %small= "Created by:"
-            %small= @created.username
+        %img{:src => "#{@court.picture.url}", :onerror =>"this.src='/assets/ball.jpg'", :height => "300px"}
+        .caption
+          %br       
+          %p.courtParagraph= @court.description
+          %small Created at:
+          %small= @court.created_at
+          %small= "Created by:"
+          %small= @created.username
+        %br
+        = link_to "Back", courts_path, class: "btn btn-primary"
+        - if logged_in? && (current_user.id == @court.user_id || current_user.admin?)
+          =link_to "Edit", edit_court_path(@court), class: "btn btn-warning"
+          =link_to "Delete", @court, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }

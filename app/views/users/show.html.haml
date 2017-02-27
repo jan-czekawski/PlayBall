@@ -4,11 +4,10 @@
     - if logged_in? && (current_user == @user || current_user.admin?)
       %strong Email address:
       %p= @user.email
+      = link_to "Back", users_path, class: "btn btn-primary"
       = link_to "Edit", edit_user_path(@user), class: "btn btn-warning"
     - else
-      %br
-    = link_to "Back", users_path, class: "btn btn-primary"
-    %br
+      = link_to "Back", users_path, class: "btn btn-primary"
     - if !@courts.blank?
       %h2= "Courts added by " + @user.username
       %br
@@ -16,7 +15,7 @@
         - @courts.each do |court|
           .col-md-4.col-sm-6
             .thumbnail
-              %img{:src => "/assets/#{court.picture}", :onerror =>"this.src='/assets/ball.jpg'", :height => "100px"}
+              %img{:src => "#{court.picture.url}", :onerror =>"this.src='/assets/ball.jpg'", :height => "100px"}
               .caption
                 %h3= court.name
                 %p= truncate(court.description, length: 60)
@@ -24,5 +23,8 @@
                 %small= court.created_at
                 %small= "Created by:"
                 %small= court.user_id
+                %br
+                %br
+                =link_to "Show", court_path(court), class: "btn btn-info"
     - else
       %h2= @user.username + " hasn't added any courts yet"

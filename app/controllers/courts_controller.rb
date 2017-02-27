@@ -40,25 +40,20 @@ class CourtsController < ApplicationController
   def update
     respond_to do |format|
       if @court.update(court_params)
-        format.html { redirect_to @court, notice: "Court was successfully updated"}
+        flash[:info] = "Court was successfully updated"
+        format.html { redirect_to @court }
       else
         format.html { render :edit }
       end
     end
   end
 
-  def upload
-    uploaded_io = params[:court][:picture]
-    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
-      file.write(uploaded_io.read)
-    end
-  end
-
   #DELETE /courts/1
   def destroy
     @court.destroy
+    flash[:danger] = "Court was successfully deleted"
     respond_to do |format|
-      format.html { redirect_to courts_url, notice: "Court was successfully deleted"}
+      format.html { redirect_to courts_url }
     end
   end
 

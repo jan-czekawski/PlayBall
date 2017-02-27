@@ -2,7 +2,8 @@ class Court < ActiveRecord::Base
   belongs_to :user
   validates :name, presence: true, 
                    length: { maximum: 100 }
-  validates :picture, presence: true
+  # validates :picture, presence: true
+  mount_uploader :picture, PictureUploader
   # validate :picture_size
   validates :description, presence: true,
                           length: { maximum: 300 }
