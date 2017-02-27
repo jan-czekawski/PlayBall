@@ -1,5 +1,6 @@
 class CourtsController < ApplicationController
   before_action :set_court, only: [:show, :edit, :update, :destroy]
+  before_action :created_by, only: [:show]
 
   #GET /courts
   def index
@@ -69,5 +70,9 @@ class CourtsController < ApplicationController
 
     def court_params
       params.require(:court).permit(:name, :picture, :description, :user_id)
+    end
+
+    def created_by
+      @created = User.find(@court.user_id)
     end
 end

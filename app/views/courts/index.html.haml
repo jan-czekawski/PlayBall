@@ -18,5 +18,5 @@
                 %small Created at:
                 %small= court.created_at
                 %small= "Created by:"
-                %small= court.user_id
+                %small= User.find(court.user_id).username
 
