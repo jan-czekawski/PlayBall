@@ -1,9 +1,9 @@
-$("#loginButton").on("click", function(){
+// $("#loginButton").on("click", function(){
   
-});
+// });
 
-$("#signupButton").on("click", function(){
-});
+// $("#signupButton").on("click", function(){
+// });
 
 $('.modal').on('shown.bs.modal', function() {
   $(this).find('[autofocus]').focus();
@@ -36,40 +36,40 @@ $('.modal').on('shown.bs.modal', function() {
 //     $(".thumbnail").width(maxWidth);
 // });
 
-$( window ).resize(function() {
-    // var heights = $(".thumbnail").map(function() {
-    //     return $(this).height();
-    // }).get()
+// $( window ).resize(function() {
+//     // var heights = $(".thumbnail").map(function() {
+//     //     return $(this).height();
+//     // }).get()
 
-    var widths = $(".thumbnail").map(function() {
-      return $(this).width();
-    }).get()
+//     var widths = $(".thumbnail").map(function() {
+//       return $(this).width();
+//     }).get()
 
-    // maxHeight = Math.max.apply(null, heights);
-    maxWidth = Math.max.apply(null, widths);
-    minWidth = Math.min.apply(null, widths);
+//     // maxHeight = Math.max.apply(null, heights);
+//     maxWidth = Math.max.apply(null, widths);
+//     minWidth = Math.min.apply(null, widths);
 
-    $(".thumbnail[width=" + minWidth + "]").width(maxWidth);
+//     $(".thumbnail[width=" + minWidth + "]").width(maxWidth);
 
-    // $(".thumbnail").height(maxHeight);
-    // $(".thumbnail").width(maxWidth);
-});
+//     // $(".thumbnail").height(maxHeight);
+//     // $(".thumbnail").width(maxWidth);
+// });
 
-$( document ).ready(function(){
-    // var heights = $(".thumbnail").map(function() {
-    //     return $(this).height();
-    // }).get()
+// $( document ).ready(function(){
+//     // var heights = $(".thumbnail").map(function() {
+//     //     return $(this).height();
+//     // }).get()
 
-    var widths = $(".thumbnail").map(function() {
-      return $(this).width();
-    }).get()
+//     var widths = $(".thumbnail").map(function() {
+//       return $(this).width();
+//     }).get()
 
-    // maxHeight = Math.max.apply(null, heights);
-    maxWidth = Math.max.apply(null, widths);
-    minWidth = Math.min.apply(null, widths);
+//     // maxHeight = Math.max.apply(null, heights);
+//     maxWidth = Math.max.apply(null, widths);
+//     minWidth = Math.min.apply(null, widths);
 
-    $('div[width="' + minWidth + 'px"]').width(maxWidth);
+//     $('div[width="' + minWidth + 'px"]').width(maxWidth);
 
-    // $(".thumbnail").height(maxHeight);
-    // $(".thumbnail").width(maxWidth);
-  });
+//     // $(".thumbnail").height(maxHeight);
+//     // $(".thumbnail").width(maxWidth);
+//   });
