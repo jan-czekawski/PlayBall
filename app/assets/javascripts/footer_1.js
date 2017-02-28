@@ -9,70 +9,14 @@ $('.modal').on('shown.bs.modal', function() {
   $(this).find('[autofocus]').focus();
 });
 
-// var customWidth = $('.thumbnail').width(); 
-
-// // $(window).resize(function(){
-// //   $('.thumbnail').width(customWidth+50);
-// // })
-
-// $(document).ready(function(){
-//   $('.thumbnail').width(customWidth); 
-// })
-
-
-// $( document ).ready(function() {
-//     var heights = $(".thumbnail").map(function() {
-//         return $(this).height();
-//     }).get()
-
-//     var widths = $(".thumbnail").map(function() {
-//       return $(this).width();
-//     }).get()
-
-//     maxHeight = Math.max.apply(null, heights);
-//     maxWidth = Math.max.apply(null, widths);
-
-//     $(".thumbnail").height(maxHeight);
-//     $(".thumbnail").width(maxWidth);
-// });
-
 // $( window ).resize(function() {
-//     // var heights = $(".thumbnail").map(function() {
-//     //     return $(this).height();
-//     // }).get()
+//   changeSize();
 
-//     var widths = $(".thumbnail").map(function() {
-//       return $(this).width();
-//     }).get()
-
-//     // maxHeight = Math.max.apply(null, heights);
-//     maxWidth = Math.max.apply(null, widths);
-//     minWidth = Math.min.apply(null, widths);
-
-//     $(".thumbnail[width=" + minWidth + "]").width(maxWidth);
-
-//     // $(".thumbnail").height(maxHeight);
-//     // $(".thumbnail").width(maxWidth);
 // });
 
 // $( document ).ready(function(){
-//     // var heights = $(".thumbnail").map(function() {
-//     //     return $(this).height();
-//     // }).get()
-
-//     var widths = $(".thumbnail").map(function() {
-//       return $(this).width();
-//     }).get()
-
-//     // maxHeight = Math.max.apply(null, heights);
-//     maxWidth = Math.max.apply(null, widths);
-//     minWidth = Math.min.apply(null, widths);
-
-//     $('div[width="' + minWidth + 'px"]').width(maxWidth);
-
-//     // $(".thumbnail").height(maxHeight);
-//     // $(".thumbnail").width(maxWidth);
-//   });
+//   changeSize();  
+// });
 
 $('#court_picture').on('change', function(){
   var size_in_megabytes = this.files[0].size/1024/1024;
@@ -80,3 +24,38 @@ $('#court_picture').on('change', function(){
     alert('Maximum file size is 5MB. Please resize that file or choose another.');
   }
 });
+
+// function changeSize(){
+// //     var heights = $(".courtParagraph").map(function() {
+// //         return $(this).height();
+// //     }).get()
+
+//     var widths = $(".courtParagraph").map(function() {
+//       return $(this).width();
+//     }).get()
+//     console.log(widths);
+
+
+// //     maxHeight = Math.max.apply(null, heights);
+// //     maxWidth = Math.max.apply(null, widths);
+// //     minWidth = Math.min.apply(null, widths);
+// //     minHeight = Math.min.apply(null, heights);
+
+// //     var selectSmaller = $(".courtParagraph").map(function(){
+// //       if ($(this).height() < maxHeight){
+// //         $(this).height(maxHeight);
+// //       }
+
+// //       if ($(this).width() < maxWidth){
+// //         $(this).width(maxWidth);
+// //       } 
+// //     });
+
+// }
+
+// $('.grid').masonry({
+//   // options...
+//   itemSelector: '.grid-item',
+//   columnWidth: 200
+// });
+
