@@ -73,3 +73,10 @@ $('.modal').on('shown.bs.modal', function() {
 //     // $(".thumbnail").height(maxHeight);
 //     // $(".thumbnail").width(maxWidth);
 //   });
+
+$('#court_picture').on('change', function(){
+  var size_in_megabytes = this.files[0].size/1024/1024;
+  if (size_in_megabytes > 5){
+    alert('Maximum file size is 5MB. Please resize that file or choose another.');
+  }
+});

@@ -14,17 +14,15 @@
       .row
         - @courts.each do |court|
           .col-md-4.col-sm-6
-            .thumbnail
-              %img{:src => "#{court.picture.url}", :onerror =>"this.src='/assets/ball.jpg'", :height => "100px"}
-              .caption
-                %h3= court.name
-                %p= truncate(court.description, length: 60)
-                %small Created at:
-                %small= court.created_at
-                %small= "Created by:"
-                %small= court.user_id
-                %br
-                %br
-                =link_to "Show", court_path(court), class: "btn btn-info"
+            %a{:href => "/courts/#{court.id}"}
+              .thumbnail.hvr-grow
+                %img{:src => "#{court.picture.url}", :onerror =>"this.src='/assets/ball.jpg'", :height => "100px"}
+                .caption
+                  %h3= court.name
+                  %p= truncate(court.description, length: 60)
+                  %small Created at:
+                  %small= court.created_at
+                  %small= "Created by:"
+                  %small= court.user_id
     - else
       %h2= @user.username + " hasn't added any courts yet"

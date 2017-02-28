@@ -1,6 +1,8 @@
 class CourtsController < ApplicationController
   before_action :set_court, only: [:show, :edit, :update, :destroy]
   before_action :created_by, only: [:show]
+  before_action :require_user, only: [:edit, :update, :destroy]
+  before_action :require_same_user_for_courts, only: [:edit, :update, :destroy]
 
   #GET /courts
   def index

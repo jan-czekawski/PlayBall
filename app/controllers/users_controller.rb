@@ -83,25 +83,8 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username, :email, :password, :admin)
     end
 
-    def require_user
-      if !logged_in?
-        flash[:danger] = "You must be logged in to perform that action"
-        redirect_back fallback_location: users_path
-      end
-    end
 
-    def require_same_user
-      if current_user != @user && !current_user.admin?
-        flash[:danger] = "You can only perform that action for your own account"
-        redirect_to users_path
-      end
-    end
 
-    def require_admin
-      if !current_user.admin?
-        flash[:danger] = "Only Admins can perform that action"
-        redirect_to users_path
-      end
-    end
+
 
 end

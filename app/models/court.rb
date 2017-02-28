@@ -4,16 +4,16 @@ class Court < ActiveRecord::Base
                    length: { maximum: 100 }
   # validates :picture, presence: true
   mount_uploader :picture, PictureUploader
-  # validate :picture_size
+  validate :picture_size
   validates :description, presence: true,
                           length: { maximum: 300 }
   validates :user_id, presence: true
 
   private
 
-  # def picture_size
-  #   if self.picture.size > 5.megabytes
-  #     errors.add(:picture, "should be less than 5MB")
-  #   end
-  # end
+  def picture_size
+    if picture.size > 5.megabytes
+      errors.add(:picture, "should be less than 5MB")
+    end
+  end
 end
