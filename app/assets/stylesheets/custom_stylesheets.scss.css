@@ -123,3 +123,18 @@ hr {
   height: 22px;
 }
 
+.thumbnail {
+  width: 100%;
+}
+
+@media (min-width: 500px) {
+    .thumbnail {
+        width: 90%;
+    }
+}
+
+@media (min-width: 768px) {
+    .thumbnail {
+        width: 100%;
+    }
+}

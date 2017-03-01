@@ -59,3 +59,6 @@ $('#court_picture').on('change', function(){
 //   columnWidth: 200
 // });
 
+$(function() {
+    $('.thumbnail').matchHeight();
+});
