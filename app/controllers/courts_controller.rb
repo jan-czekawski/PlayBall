@@ -72,4 +72,5 @@ class CourtsController < ApplicationController
     def created_by
       @created = User.find(@court.user_id)
     end
+
 end

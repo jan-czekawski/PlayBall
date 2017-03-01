@@ -53,12 +53,12 @@
                   Logout
         -else
           %li
-            %a#loginButton{:data => {:toggle => "modal", :target=> "#loginModal"}}
+            %a#loginButton{:data => {:toggle => "modal", :which => "login", :target=> "#loginModal"}}
               %i.fa.fa-user
               Login
           %li
-            %a#signupButton{:data => {:toggle => "modal", :target=> "#signupModal"}}
+            %a#signupButton{:data => {:toggle => "modal", :which => "signup", :target=> "#signupModal"}}
               %i.fa.fa-user-plus 
               Sign Up
-= render "/layouts/signup_modal"
-= render "/layouts/login_modal"
+= render "/layouts/signupModal" 
+= render "/layouts/loginModal"
