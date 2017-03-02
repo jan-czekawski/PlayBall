@@ -19,12 +19,17 @@
         }
       </style>
     <% end %>
-
     <%= yield %>
 
+
+
+    <% if (request.fullpath.include?("/courts/") && !request.fullpath.include?("edit") && !request.fullpath.include?("new")) %>
+        <%= javascript_include_tag 'manifestMap' %>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHvA_HeK-Kj5bULpf9VkGl5SFGgyp3Fu8">
+      </script>
+    <% end %>
+
     <%= javascript_include_tag 'footer' %>
-<!--     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHvA_HeK-Kj5bULpf9VkGl5SFGgyp3Fu8&callback=initMap">
-    </script> -->
 
   </body>
 </html>

@@ -34,6 +34,9 @@ function changeHeight() {
 
 $(document).ready(function(){
   changeHeight();
+  setTimeout(function(){
+    initMap()
+  }, 50)
 })
 
 $(window).resize(function(){
