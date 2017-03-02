@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
 	root "pages#index"
   resources :courts
+  resources :comments
 
   post "signup", to: "users#create"
   get "signup", to: "users#index"

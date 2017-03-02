@@ -80,10 +80,6 @@ hr {
   margin-bottom:0;
 }
 
-.caption>p {
-  font-size: 100%;
-}
-
 /* Grow */
 .hvr-grow {
   display: inline-block;
@@ -118,6 +114,21 @@ hr {
 
 .thumbnail {
   width: 100%;
+}
+
+.well {
+  p {
+    font-size: 100%;
+  }
+}
+
+.commentActions {
+  float: right;
+  margin: 0.1em;
+}
+
+.commentDate {
+  float: right;
 }
 
 @media (min-width: 500px) {

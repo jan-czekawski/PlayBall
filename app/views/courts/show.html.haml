@@ -7,12 +7,18 @@
         .caption
           %br       
           %p.courtParagraph= @court.description
-          %small Created at:
-          %small= @court.created_at
-          %small= "Created by:"
-          %small= @created.username
+          %small= "Created by:" + User.find(@court.user_id).username + ", " + time_ago_in_words(@court.created_at) + " ago "
         %br
         = link_to "Back", :back, class: "btn btn-primary"
         - if logged_in? && (current_user.id == @court.user_id || current_user.admin?)
           =link_to "Edit", edit_court_path(@court), class: "btn btn-warning"
           =link_to "Delete", @court, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }
+        %br
+        %br
+        - @court.comments.each do |comment|
+          .well
+            %p.comment= comment.content
+            %small.commentDate= "Added by:" + User.find(comment.user_id).username + ", " + time_ago_in_words(comment.created_at) + " ago "
+            %br
+            = link_to "Delete", comment_path(comment), class: "commentActions btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure?" }
+            = link_to "Edit", edit_comment_path(comment), class: "commentActions btn btn-warning btn-xs"

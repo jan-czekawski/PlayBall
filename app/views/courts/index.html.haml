@@ -15,9 +15,6 @@
               .caption       
                 %h3= court.name
                 %p.courtParagraph= truncate(court.description, length: 60)
-                %small Created at:
-                %small= court.created_at
-                %small= "Created by:"
-                %small= User.find(court.user_id).username
+                %small= "Created by:" + User.find(court.user_id).username + ", " + time_ago_in_words(court.created_at) + " ago "
     
 
