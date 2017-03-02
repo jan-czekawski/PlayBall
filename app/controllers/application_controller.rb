@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :store_court_id
 
 
   def current_user
@@ -38,4 +38,12 @@ class ApplicationController < ActionController::Base
       redirect_to users_path
     end
   end
+
+  def store_court_id
+    stored_court_id = params[:id]
+  end
+
+  # def set_court_for_comment
+  #   @court = Court.find(stored_court_id)
+  # end
 end

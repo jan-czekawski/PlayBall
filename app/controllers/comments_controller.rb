@@ -1,17 +1,17 @@
 class CommentsController < ApplicationController
   before_action :logged_in?, only: [:create, :update, :destroy]
-  before_action :set_court, only: [:create, :update, :destroy]
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   def create
-    @comment = @court.comments.build(comment_params)
-    @comment.user_id = current_user
+    # byebug
+    @comment = Court.find(params[:court_id]).comments.build(comment_params)
+    @comment.user_id = current_user.id
     if @comment.save
       flash[:success] = "Comment created!"
-      redirect_to courts_path
+      redirect_to court_path(params[:court_id])
     else
       flash[:danger] = "Nope"
-      redirect_to courts_path
+      redirect_to court_path(params[:court_id])
     end
   end
 
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     flash[:danger] = "Comment was successfully deleted"
     respond_to do |format|
-      format.html { redirect_to courts_url }
+      format.html { redirect_to court_path(@comment.court_id) }
     end
   end
 
@@ -44,7 +44,5 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:content, :court_id, :user_id)
     end
 
-    def set_court
-      @court = Court.find(1)
-    end
+
 end

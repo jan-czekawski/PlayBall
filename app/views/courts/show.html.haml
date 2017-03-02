@@ -27,6 +27,7 @@
                 %ul
                 - @comment.errors.full_messages.each do |message|
                   %li= message
+            = f.hidden_field_tag "court_id", @court.id
             .form-group
               .col-xs-8.col-xs-offset-2.col-md-6.col-md-offset-3= f.text_area :content, class: "form-control", autofocus: "true"
             = f.submit "Submit", class: "btn btn-success"
@@ -38,4 +39,4 @@
               %br
               - if current_user == comment.user_id || current_user.admin?
                 = link_to "Delete", comment_path(comment), class: "commentActions btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure?" }
-                = link_to "Edit", "#", class: "commentActions btn btn-warning btn-xs"
+                = link_to "Edit", "",id: "editCommentButton", class: "commentActions btn btn-warning btn-xs"
