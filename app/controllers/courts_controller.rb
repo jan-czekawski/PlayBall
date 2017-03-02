@@ -11,7 +11,7 @@ class CourtsController < ApplicationController
 
   #GET /courts/1
   def show
-
+    @comment = @court.comments.build if logged_in?
   end
 
   #GET /courts/new

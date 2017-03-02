@@ -15,6 +15,15 @@ $(function() {
     $('.thumbnail').matchHeight();
 });
 
+$("#addCommentButton").on('click', function(event){
+  event.preventDefault();
+  $(".addComment").show();
+})
+
+$(".close").on('click', function(){
+  $(".addComment").hide();
+})
+
 // function chooseModal(object, object_url){
 //   $.ajax({
 //     method: "GET",
