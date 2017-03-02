@@ -12,3 +12,11 @@
       title: 'Hello World!'
     });
   }
+
+$(document).ready(function(){
+  var long = parseFloat($("#longitudeValue").text());
+  var lat = parseFloat($("#latitudeValue").text());
+  setTimeout(function(){
+    initMap(lat, long)
+  }, 50)
+})

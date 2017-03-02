@@ -20,6 +20,32 @@ $("#addCommentButton").on('click', function(event){
   $(".addComment").show();
 })
 
+$("#submitFormButton").on('click', function(event){
+  event.preventDefault();
+  var prefixHttp = "https://maps.googleapis.com/maps/api/geocode/json?address="
+  var key = "&key=AIzaSyCHvA_HeK-Kj5bULpf9VkGl5SFGgyp3Fu8"
+  var location = $("#court_location").val()
+  var together = prefixHttp + location + key
+  $.ajax({
+    method: "GET",
+    url: together,
+    dataType: "json",
+    success: function(data){
+      if(data["status"] == "OK"){
+        $("#court_latitude").val(data["results"][0]["geometry"]["location"]["lat"]);
+        $("#court_longitude").val(data["results"][0]["geometry"]["location"]["lng"]);
+        $("#submitForm").submit();
+      } else {
+        $("#flash-messages").text("Address not found. Please provide correct location.").addClass("alert alert-danger");alert("success but bad")
+      }
+    },
+    error: function (request, status, error){
+      $("#flash-messages").text("Location can't be blank. Please provide correct address.").addClass("alert alert-danger");
+    }
+  })
+})
+
+
 $(".close").on('click', function(){
   $(".addComment").hide();
 })
@@ -34,9 +60,6 @@ function changeHeight() {
 
 $(document).ready(function(){
   changeHeight();
-  setTimeout(function(){
-    initMap()
-  }, 50)
 })
 
 $(window).resize(function(){

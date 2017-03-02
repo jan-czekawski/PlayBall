@@ -66,7 +66,7 @@ class CourtsController < ApplicationController
     end
 
     def court_params
-      params.require(:court).permit(:name, :picture, :description, :user_id)
+      params.require(:court).permit(:name, :picture, :description, :user_id, :latitude, :longitude)
     end
 
     def created_by

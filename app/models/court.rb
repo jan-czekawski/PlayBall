@@ -9,6 +9,8 @@ class Court < ActiveRecord::Base
   validates :description, presence: true,
                           length: { maximum: 300 }
   validates :user_id, presence: true
+  validates :longitude, presence: true
+  validates :latitude, presence: true
 
   private
 
