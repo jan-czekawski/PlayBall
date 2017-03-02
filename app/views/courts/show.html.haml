@@ -1,8 +1,8 @@
 .jumbotron
   .container
     %h1= @court.name
-    %h2#longitudeValue= @court.longitude unless @court.longitude.blank?
-    %h2#latitudeValue= @court.latitude unless @court.latitude.blank?
+    %input#inputLongitude{:type => "hidden", :value => @court.longitude}
+    %input#inputLatitude{:type => "hidden", :value => @court.latitude}
     .row
       .col-sm-12
         %img#showImg.col-sm-8.col-xs-12{:src => "#{@court.picture.url}", :onerror =>"this.src='/assets/ball.jpg'"}
@@ -43,7 +43,7 @@
             .well
               %p.comment= comment.content
               %small.commentDate= "Added by: " + User.find(comment.user_id).username + ", " + time_ago_in_words(comment.created_at) + " ago "
-              %br
               - if logged_in? && (current_user.id == comment.user_id || current_user.admin?)
+                %br
                 = link_to "Delete", comment_path(comment), class: "commentActions btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure?" }
                 = link_to "Edit", edit_comment_path(comment), class: "commentActions btn btn-warning btn-xs"

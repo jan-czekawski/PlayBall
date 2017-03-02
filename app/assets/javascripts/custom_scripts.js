@@ -36,7 +36,7 @@ $("#submitFormButton").on('click', function(event){
         $("#court_longitude").val(data["results"][0]["geometry"]["location"]["lng"]);
         $("#submitForm").submit();
       } else {
-        $("#flash-messages").text("Address not found. Please provide correct location.").addClass("alert alert-danger");alert("success but bad")
+        $("#flash-messages").text("Address not found. Please provide correct location.").addClass("alert alert-danger");
       }
     },
     error: function (request, status, error){

@@ -14,9 +14,9 @@
   }
 
 $(document).ready(function(){
-  var long = parseFloat($("#longitudeValue").text());
-  var lat = parseFloat($("#latitudeValue").text());
+  var long = parseFloat($("#inputLongitude").val());
+  var lat = parseFloat($("#inputLatitude").val());
   setTimeout(function(){
-    initMap(lat, long)
+    initMap(lat, long);
   }, 50)
 })
