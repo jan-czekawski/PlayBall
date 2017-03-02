@@ -12,9 +12,9 @@
           %a{:href => "/courts/#{court.id}"}
             .thumbnail.hvr-grow
               %img{:src => "#{court.picture.url}", :onerror =>"this.src='/assets/ball.jpg'", :height => "100px"}
-              .caption       
+              .caption    
                 %h3= court.name
-                %p.courtParagraph= truncate(court.description, length: 60)
-                %small= "Created by:" + User.find(court.user_id).username + ", " + time_ago_in_words(court.created_at) + " ago "
+                %p= truncate(court.description, length: 60)
+                %small= "Created by: " + User.find(court.user_id).username + ", " + time_ago_in_words(court.created_at) + " ago "
     
 
