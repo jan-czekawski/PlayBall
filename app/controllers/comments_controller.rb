@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   def create
-    # byebug
     @comment = Court.find(params[:court_id]).comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
@@ -19,11 +18,15 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update(comment_params)
         flash[:info] = "Comment was successfully updated"
-        format.html { redirect_to courts_path }
+        format.html { redirect_to court_path(@comment.court_id) }
       else
+        flash[:danger] = "There was a problem. Please try again."
         format.html { render :edit }
       end
     end
+  end
+
+  def edit
   end
 
   def destroy

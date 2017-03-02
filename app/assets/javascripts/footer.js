@@ -1,2 +1,3 @@
-//= require footer_1
-//= require jquery.matchHeight
+//= require custom_scripts.js
+//= require jquery.matchHeight.js
+//= require jquery.flexibleArea.js

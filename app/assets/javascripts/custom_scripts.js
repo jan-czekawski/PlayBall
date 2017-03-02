@@ -24,6 +24,22 @@ $(".close").on('click', function(){
   $(".addComment").hide();
 })
 
+$(function() {
+    $("textarea").flexible();
+});
+
+function changeHeight() {
+  $('#mapDiv').height($('#showImg').height());
+}
+
+$(document).ready(function(){
+  changeHeight();
+})
+
+$(window).resize(function(){
+  changeHeight();
+})
+
 // function chooseModal(object, object_url){
 //   $.ajax({
 //     method: "GET",

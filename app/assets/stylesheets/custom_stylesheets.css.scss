@@ -128,6 +128,7 @@ hr {
 
 .well {
   padding-bottom: 2em;
+  overflow-wrap: break-word ;
   p {
     font-size: 100%;
   }
@@ -142,6 +143,12 @@ hr {
   float: right;
 }
 
+#showImg {
+  padding: 0;
+  margin-bottom: 15px;
+  // float: left;
+}
+
 @media (min-width: 500px) {
     .thumbnail {
         width: 90%;
@@ -151,6 +158,10 @@ hr {
 @media (min-width: 768px) {
     .thumbnail {
         width: 100%;
+    }
+    #showImg {
+      padding: 0 15px;
+      margin-bottom: 0;
     }
 }
 
@@ -165,4 +176,17 @@ textarea {
 h3 {
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+#map {
+  height: 100%;
+}
+
+#mapDiv {
+  padding: 0;
+}
+
+
+.clear {
+  clear: both;
 }

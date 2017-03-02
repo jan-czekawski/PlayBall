@@ -2,14 +2,18 @@
   .container
     %h1= @court.name
     .row
-      .col-sm-8.col-sm-offset-2 
-        %img{:src => "#{@court.picture.url}", :onerror =>"this.src='/assets/ball.jpg'", :height => "300px"}
+      .col-sm-12
+        %img#showImg.col-sm-8.col-xs-12{:src => "#{@court.picture.url}", :onerror =>"this.src='/assets/ball.jpg'"}
+        #mapDiv.col-sm-4.col-xs-12
+          #map
+        .clear
+      .col-sm-8.col-sm-offset-2
         .caption
           %br       
           %p.courtParagraph= @court.description
           %small= "Created by: " + User.find(@court.user_id).username + ", " + time_ago_in_words(@court.created_at) + " ago "
         %br
-        = link_to "Back", :back, class: "btn btn-primary"
+        = link_to "Back", courts_path, class: "btn btn-primary"
         - if logged_in? && (current_user.id == @court.user_id || current_user.admin?)
           =link_to "Edit", edit_court_path(@court), class: "btn btn-warning"
           =link_to "Delete", @court, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }
@@ -17,26 +21,27 @@
           =link_to "Add Comment", "", class: "btn btn-info", id: "addCommentButton"
         %br
         %br
-        .addComment.well
-          %a.close &times;
-          %h3 Add New Comment
-          =form_for @comment, :html => {:class => "form-horizontal"} do |f|
-            -if @comment.errors.any?
-              #error_explanation.alert.alert-danger
-                %h2= pluralize(@comment.errors.count, "error") + " prohibited this court from being saved:"
-                %ul
-                - @comment.errors.full_messages.each do |message|
-                  %li= message
-            = f.hidden_field_tag "court_id", @court.id
-            .form-group
-              .col-xs-8.col-xs-offset-2.col-md-6.col-md-offset-3= f.text_area :content, class: "form-control", autofocus: "true"
-            = f.submit "Submit", class: "btn btn-success"
+        - if logged_in?
+          .addComment.well
+            %a.close &times;
+            %h3 Add New Comment
+            =form_for @comment, :html => {:class => "form-horizontal"} do |f|
+              -if @comment.errors.any?
+                #error_explanation.alert.alert-danger
+                  %h2= pluralize(@comment.errors.count, "error") + " prohibited this court from being saved:"
+                  %ul
+                  - @comment.errors.full_messages.each do |message|
+                    %li= message
+              = f.hidden_field_tag "court_id", @court.id
+              .form-group
+                .col-xs-8.col-xs-offset-2.col-md-8.col-md-offset-2= f.text_area :content, class: "form-control", autofocus: "true"
+              = f.submit "Submit", class: "btn btn-success"
         - @court.comments.each do |comment|
           -if !comment.user_id.blank?
             .well
               %p.comment= comment.content
               %small.commentDate= "Added by: " + User.find(comment.user_id).username + ", " + time_ago_in_words(comment.created_at) + " ago "
               %br
-              - if current_user == comment.user_id || current_user.admin?
+              - if logged_in? && (current_user.id == comment.user_id || current_user.admin?)
                 = link_to "Delete", comment_path(comment), class: "commentActions btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure?" }
-                = link_to "Edit", "",id: "editCommentButton", class: "commentActions btn btn-warning btn-xs"
+                = link_to "Edit", edit_comment_path(comment), class: "commentActions btn btn-warning btn-xs"
