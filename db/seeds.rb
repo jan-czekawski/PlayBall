@@ -11,3 +11,18 @@
 #   email = Faker::Internet.free_email(user)
 #   User.create!(:password => "password", :username => user, :email => email)
 # end
+
+# User.all.each do |user|
+#   user.username = user.username.capitalize
+#   user.save
+# end
+
+# Court.all.each do |court|
+#   10.times do
+#     courtID = court.id
+#     arr = (1..48).to_a
+#     userID = arr.sample
+#     content = Faker::Hipster.paragraph
+#     Comment.create!(:user_id => userID, :court_id => courtID, :content => content)
+#   end
+# end
