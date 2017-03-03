@@ -1,4 +1,4 @@
-  function initMap(latSelected = 52.402585, lngSelected = 16.929517 ) {
+  function initMap(latSelected, lngSelected) {
     var myLatLng = {lat: latSelected, lng: lngSelected};
 
     var map = new google.maps.Map(document.getElementById('map'), {

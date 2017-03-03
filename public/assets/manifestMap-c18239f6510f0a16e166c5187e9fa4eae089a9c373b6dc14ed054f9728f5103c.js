@@ -1,0 +1,1 @@
+function initMap(t,e){var a={lat:t,lng:e},n=new google.maps.Map(document.getElementById("map"),{zoom:12,center:a});new google.maps.Marker({position:a,map:n,title:"Hello World!"})}$(document).ready(function(){var t=parseFloat($("#inputLongitude").val()),e=parseFloat($("#inputLatitude").val());setTimeout(function(){initMap(e,t)},50)});
