@@ -1,5 +1,5 @@
 #landingJumbotron {
-  background: url("ball.jpg") fixed no-repeat; 
+  background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/ball.jpg"), url("ball.jpg") fixed no-repeat;
   background-position-y: 30%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -41,7 +41,7 @@ hr {
 }
 
 #courtsMainJumbo {
-  background: url("shot.jpg") no-repeat;
+  background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/shot.jpg"), url("shot.jpg") no-repeat;
   background-size: cover;
   height: 80vh;
   margin-bottom: 0;
@@ -191,6 +191,9 @@ h3 {
   clear: both;
 }
 
-// #longitudeValue, #latitudeValue {
-//   display: none;
+// #court_location {
+//   position: absolute;
+//   top: 0px;
+//   left: 0px;
+//   width: 99%;
 // }

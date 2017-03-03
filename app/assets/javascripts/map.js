@@ -1,4 +1,4 @@
-  function initMap(latSelected, lngSelected) {
+  function initMapOn(latSelected, lngSelected) {
     var myLatLng = {lat: latSelected, lng: lngSelected};
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -13,10 +13,10 @@
     });
   }
 
-$(document).ready(function(){
+window.onload = function(){
   var long = parseFloat($("#inputLongitude").val());
   var lat = parseFloat($("#inputLatitude").val());
   setTimeout(function(){
-    initMap(lat, long);
+    initMapOn(lat, long);
   }, 50)
-})
+}

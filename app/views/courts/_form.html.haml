@@ -16,7 +16,7 @@
     = f.hidden_field :longitude, :value => 20
     = f.label "location", class: "control-label col-sm-2 col-sm-offset-1"
     .col-sm-6
-      %input.form-control{:name => "court[location]", :id => "court_location", :type => "text", :placeholder => "errors.g. Warszawa, Aleje Jerozolimskie"}
+      %input.form-control{:name => "court[location]", :id => "court_location", :type => "text", :placeholder => "e.g. Warszawa, Aleje Jerozolimskie"}
   .form-group
     = f.label :picture, class: "control-label col-sm-2 col-sm-offset-1"
     .col-sm-6= f.file_field :picture, accept: "image/jpeg, image/jpg, image/gif, image/png", class: "form-control"
