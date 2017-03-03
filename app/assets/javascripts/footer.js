@@ -1,3 +1,3 @@
-//= require custom_scripts.js
-//= require jquery.matchHeight.js
-//= require jquery.flexibleArea.js
+//= require custom_scripts
+//= require jquery.matchHeight
+//= require jquery.flexibleArea
