@@ -5,6 +5,4 @@
         google.maps.event.addListener(autocomplete, 'place_changed',function(){
         });
     };
-
-google.maps.event.addDomListener(window, 'load', initializeMap);
-google.maps.event.addDomListener(window, 'error', initializeMap);
+google.maps.event.addDomListener(window, 'pageshow', initializeMap);
