@@ -116,11 +116,14 @@ hr {
 
 #flash-messages {
   position: absolute;
-  width: 90%;
+  width: 100%;
   top: 70px;
-  left: 70px;
 }
 
+.alert{
+  margin-bottom: 0;
+  margin-top: 20px;
+}
 .modal-content {
   text-align: center;
 }

@@ -59,6 +59,14 @@ function changeHeight() {
 }
 
 $(document).ready(function(){
+  var styles = {
+    background: "#EEE",
+    position: "static",
+    width: "100%",
+    marginLeft: "0",
+    marginRight: "0"
+  };
+  $( ".showJumbo" ).prev().prev().css(styles);
   changeHeight();
 })
 
