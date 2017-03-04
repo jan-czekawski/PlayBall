@@ -2,11 +2,11 @@
 <html>
   <head>
 
-    <title>PlayBall</title>
-    <%= csrf_meta_tags %>
+  <title>PlayBall</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
 
   <body>
@@ -20,6 +20,7 @@
         }
       </style>
     <% end %>
+    
     <%= yield %>
 
 
@@ -31,6 +32,6 @@
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHvA_HeK-Kj5bULpf9VkGl5SFGgyp3Fu8&libraries=places">
       </script>
               <%= javascript_include_tag 'manifestMap' %>
-    <% end %>
+      <% end %>
   </body>
 </html>

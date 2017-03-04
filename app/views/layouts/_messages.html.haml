@@ -1,6 +1,6 @@
 .row#flash-messages
   .col-xs-10.col-xs-offset-1
-  - flash.each do |name, msg|
-    .alert{:class => "alert-#{name}"}
-      %a.close{:href => "#", :data => {:dismiss => "alert"}} &times;
-      = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+    - flash.each do |name, msg|
+      .alert{:class => "alert-#{name}"}
+        %a.close{:href => "#", :data => {:dismiss => "alert"}} &times;
+        = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)

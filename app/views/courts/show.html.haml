@@ -1,6 +1,6 @@
-.jumbotron
+.jumbotron.showJumbo
   .container
-    %h1= @court.name
+    %h1.showHead= @court.name
     %input#inputLongitude{:type => "hidden", :value => @court.longitude}
     %input#inputLatitude{:type => "hidden", :value => @court.latitude}
     .row

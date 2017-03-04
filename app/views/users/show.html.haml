@@ -1,6 +1,6 @@
-.jumbotron
+.jumbotron.showJumbo
   .container
-    %h1= @user.username
+    %h1.showHead= @user.username
     - if logged_in? && (current_user == @user || current_user.admin?)
       %strong Email address:
       %p= @user.email

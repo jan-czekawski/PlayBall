@@ -1,30 +1,47 @@
-#landingJumbotron {
-  background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/ball.jpg") fixed no-repeat;
-  background-position-y: 30%;
+$black-shadow: 1px 2px 3px black;
+
+$default-color: white;
+
+
+@mixin bg-cover{
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+#landingJumbotron {
+  background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/ball.jpg") fixed no-repeat;
+  background-position-y: 30%;
+  @include bg-cover;
   height: 100vh;
   margin-bottom: 0;
 }
 
 
 #landingContainer {
-  color: hsl(0, 0%, 100%);
+  color: $default-color;
   text-align: center;
   margin-top: 20vh;
-  text-shadow: 1px 2px 3px black;
+  text-shadow: $black-shadow;
   button {
-    background-color: hsl(0, 0%, 90%);
+    background-color: darken($default-color, 10%);
     border: none;
     &:hover {
-      background-color: hsl(0, 0%, 80%); 
+      background-color: darken($default-color, 20%); 
     }
   }
   h1 {
     font-size: 10em;
   }
+}
+
+.showJumbo {
+  padding-top: 10px;
+}
+
+.showHead {
+  margin-bottom: 20px;
 }
 
 
@@ -33,7 +50,7 @@ hr {
   border: 0; 
   height: 1px;
   width: 45%;
-  background: hsl(0, 0%, 60%);
+  background: darken($default-color, 40%);
 }
 
 #loginButton, #signupButton {
@@ -42,7 +59,7 @@ hr {
 
 #courtsMainJumbo {
   background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/shot.jpg") no-repeat;
-  background-size: cover;
+  @include bg-cover;
   height: 80vh;
   margin-bottom: 0;
 }
@@ -50,7 +67,7 @@ hr {
 #courtsMainContainer {
   >h1, >p {
     color: white;
-    text-shadow: 1px 2px 3px black;
+    text-shadow: $black-shadow;
   }
   >h1 {
     padding-top: 2em;
@@ -59,10 +76,10 @@ hr {
     padding-top: 3em;
   }
   button {
-    background-color: hsl(0, 0%, 60%);
+    background-color: darken($default-color, 40%);
     border: none;
     &:hover {
-      background-color: hsl(0, 0%, 40%);      
+      background-color: darken($default-color, 60%);     
     }    
   }
 }
@@ -112,9 +129,7 @@ hr {
   height: 22px;
 }
 
-.thumbnail {
-  width: 100%;
-}
+
 
 .caption {
   p {
@@ -147,6 +162,10 @@ hr {
   padding: 0;
   margin-bottom: 15px;
   // float: left;
+}
+
+.thumbnail {
+  width: 100%;
 }
 
 @media (min-width: 500px) {
