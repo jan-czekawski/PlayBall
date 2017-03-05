@@ -2,3 +2,7 @@
   .container
     %h1.showHead Sign Up
     = render "form", :user => @user
+    %br
+    %span.no-center
+      Already have an account?
+      = link_to "Login", login_path

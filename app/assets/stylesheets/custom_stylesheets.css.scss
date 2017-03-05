@@ -40,6 +40,20 @@ body {
   }
 }
 
+// input {
+//   &:valid {
+//     border: 2px solid green;
+//   }
+// }
+
+
+// input:-webkit-autofill {
+//     -webkit-box-shadow:0 0 0 50px white inset; Change the color to your own background color
+// }
+// input:-webkit-autofill:focus {
+//     -webkit-box-shadow: 0 0 0 50px white inset;
+// }
+
 .showJumbo {
   padding-top: 10px;
 }
@@ -59,6 +73,28 @@ hr {
 
 #loginButton, #signupButton {
   cursor: pointer;
+}
+
+// .form-horizontal {
+//   .form-group {
+//     .control-label {
+//       label {
+//         text-align: right;
+//         }      
+//     }
+//   }
+// }
+
+// .control-label.col-sm-2 + .col-sm-8 {
+//   padding-left: 0;
+// }
+
+.fa-check-circle-o {
+  color: #449D44;
+}
+
+.fa-times-circle-o {
+  color: #C9302C;
 }
 
 #courtsMainJumbo {
@@ -90,6 +126,10 @@ hr {
 
 .container {
   text-align: center;
+}
+
+.no-center {
+  text-align: left;
 }
 
 .thumbnail>img {
@@ -215,6 +255,10 @@ h3 {
 
 .clear {
   clear: both;
+}
+
+.btn-wide {
+  width: 100%;
 }
 
 // #court_location {
