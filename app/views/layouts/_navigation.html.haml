@@ -8,13 +8,12 @@
         %span.icon-bar
       %a.navbar-brand{:href => "/"} PlayBall
     .collapse.navbar-collapse#bs-example-navbar-collapse-1
-      %ul.nav.navbar-nav
-        %li
-          %a{:href => "/courts"} Courts
-        %li
-          %a{:href => "/users"} Users
       %ul.nav.navbar-nav.navbar-right 
+        %li
+          %a{:href => "/courts"} Courts          
         -if logged_in?
+          %li
+            %a{:href => "/users"} Users
           %li.dropdown
             %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}, 
                                :role => "button"}
@@ -25,11 +24,12 @@
               %li
                 = link_to edit_user_path(current_user) do
                   %i.fa.fa-pencil-square-o 
-                  Edit your profile
+                  Settings
               %li
                 = link_to user_path(current_user) do
                   %i.fa.fa-binoculars
-                  View your profile  
+                  Profile
+              %li.divider{:role => "separator"}  
               %li
                 = link_to logout_path, method: :delete do
                   %i.fa.fa-sign-out
