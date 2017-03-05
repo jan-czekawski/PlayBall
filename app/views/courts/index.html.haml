@@ -2,8 +2,10 @@
   .container#courtsMainContainer
     %h1 Discover the best basketball courts near you
     %p.lead Share them with your friends and with your enemies
-    %a{:href => "/courts/new"}
-      %button.btn-success.btn.btn-lg Add Your Court
+    - if logged_in? 
+      %a.btn-success.btn.btn-lg{:href => "/courts/new"} Add Your Court
+    - else
+      %a#signupButton.btn-success.btn.btn-lg{:data => {:toggle => "modal", :which => "signup", :target=> "#signupModal"}} Signup to Add Your Courts!        
 .jumbotron#courtsContentJumbo
   .container#courtsContentContainer
     .row#courtsRow

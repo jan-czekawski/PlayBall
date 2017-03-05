@@ -21,3 +21,5 @@
             .col-sm-8= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", placeholder: "Confirm password"
           .form-group
             = f.submit "Sign up", class: "btn btn-success btn-lg"
+        You already have an account?
+        %a.closeFirst{:data => {:toggle => "modal", :which => "login", :target=> "#loginModal"}} Login

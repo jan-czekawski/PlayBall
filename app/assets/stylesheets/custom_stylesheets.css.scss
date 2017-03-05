@@ -10,6 +10,10 @@ $default-color: white;
   background-size: cover;
 }
 
+body {
+  padding-top: 50px;
+}
+
 #landingJumbotron {
   background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/ball.jpg") fixed no-repeat;
   background-position-y: 30%;
@@ -75,13 +79,13 @@ hr {
   >p {
     padding-top: 3em;
   }
-  button {
-    background-color: darken($default-color, 40%);
-    border: none;
-    &:hover {
-      background-color: darken($default-color, 60%);     
-    }    
-  }
+  // .courtButton {
+  //   // background-color: darken($default-color, 40%);
+  //   // border: none;
+  //   &:hover {
+  //     // background-color: darken($default-color, 60%);     
+  //   }    
+  // }
 }
 
 .container {
