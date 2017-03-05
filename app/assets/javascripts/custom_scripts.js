@@ -136,4 +136,9 @@ if ($.contains(document, $('#court_location')[0])){
 }
 
 
-
+$("#secondModal").click(function(){
+    $("#firstModal").modal('hide');
+    setTimeout(function(){
+        $("#secondModal").modal("show");
+    },500)
+});
