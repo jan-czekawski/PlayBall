@@ -43,17 +43,37 @@ if ($.contains(document, $('#mapDiv')[0])){
   displayMap();
 }
 
-// ENABLE AUTOCOMPLETE ON ADD/EDIT COURT PAGE
+// ENABLE AUTOCOMPLETE WITH GEOLOCATION ON ADD/EDIT COURT PAGE
 function displayAutoComplete(){
+  var autocomplete;
   function initializeMap(){
       var input = document.getElementById('court_location');
-      var autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete = new google.maps.places.Autocomplete(input);
 
       google.maps.event.addListener(autocomplete, 'place_changed',function(){
       });
   };
   google.maps.event.addDomListener(window, 'pageshow', initializeMap);
+
+  function geolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var geolocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var circle = new google.maps.Circle({
+          center: geolocation,
+          radius: position.coords.accuracy
+        });
+        autocomplete.setBounds(circle.getBounds());
+      });
+    }
+  }
+  google.maps.event.addDomListener(window, 'pageshow', geolocate);
 }
+
+
 
 // RUN MAP AUTOCOMPLETE FUNCTION ON THE ADD/EDIT COURT PAGE
 if ($.contains(document, $('#court_location')[0])){
