@@ -4,7 +4,7 @@
       .modal-header
         %button.close{:type => "button", :data => {:dismiss => "modal"}}
           %span &times;
-        %h4.modal-title#myModalLabel Login
+        %h4.modal-title#myModalLabel Log in
       .modal-body 
         =form_for(:session, :html => {:role => "form"}, :url => login_path) do |f|
           .row.no-center
@@ -25,7 +25,7 @@
                 .row
                   .col-xs-11= f.submit "Log in", class: "btn btn-success btn-wide"
               First time on the page?
-              %a.closeFirst{:data => {:toggle => "modal", :which => "signup", :target=> "#signupModal"}} Signup
+              %a#closeLoginModal Sign up
 
 
 

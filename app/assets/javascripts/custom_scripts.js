@@ -136,9 +136,30 @@ if ($.contains(document, $('#court_location')[0])){
 }
 
 
-$("#secondModal").click(function(){
-    $("#firstModal").modal('hide');
+$("#closeLoginModal").click(function(e){
+    $("#loginModal").modal('hide');
     setTimeout(function(){
-        $("#secondModal").modal("show");
-    },500)
+        $("#signupModal").modal("show");
+    },400)
 });
+
+$("#closeSignupModal").click(function(e){
+    $("#signupModal").modal('hide');
+    setTimeout(function(){
+        $("#loginModal").modal("show");
+    },400)
+});
+
+$('.modal').on('shown.bs.modal', function(){
+  $('body').css('padding-right', "0px")  
+  $('body').removeClass("modal-open")
+})
+
+$('.modal').on('hidden.bs.modal', function(){
+  $('body').css('padding-right', "0px")
+  $('body').removeClass("modal-open")
+})
+
+// setInterval(function(){
+//   console.log($('body').css("padding-right"))
+// },100)

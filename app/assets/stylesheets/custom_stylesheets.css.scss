@@ -71,23 +71,9 @@ hr {
   background: darken($default-color, 40%);
 }
 
-#loginButton, #signupButton {
+#loginButton, #signupButton, #closeSignupModal, #closeLoginModal {
   cursor: pointer;
 }
-
-// .form-horizontal {
-//   .form-group {
-//     .control-label {
-//       label {
-//         text-align: right;
-//         }      
-//     }
-//   }
-// }
-
-// .control-label.col-sm-2 + .col-sm-8 {
-//   padding-left: 0;
-// }
 
 .fa-check-circle-o {
   color: #449D44;

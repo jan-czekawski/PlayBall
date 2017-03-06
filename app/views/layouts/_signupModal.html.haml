@@ -4,7 +4,7 @@
       .modal-header
         %button.close{:type => "button", :data => {:dismiss => "modal"}}
           %span &times;
-        %h4.modal-title#myModalLabel Signup
+        %h4.modal-title#myModalLabel Sign up
       .modal-body 
         =form_for(:user, :html => { :role => "form" }, :url => signup_path) do |f|
           .row.no-center
@@ -37,4 +37,4 @@
                 .row
                   .col-xs-11= f.submit "Sign up", class: "btn btn-success btn-wide"
               You already have an account?
-              %a.closeFirst{:data => {:toggle => "modal", :which => "login", :target=> "#loginModal"}} Login
+              %a#closeSignupModal Log in
