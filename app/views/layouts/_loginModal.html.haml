@@ -9,10 +9,10 @@
         =form_for(:session, :html => {:role => "form", :class => "val-frm2 form-horizontal"}, :url => login_path) do |f|
           .form-group
             .control-label.col-xs-3= f.label :email
-            .col-xs-7#loginEmail= f.email_field :email, class: "form-control", autofocus: true, required: true
+            .col-xs-7#loginEmail.val-col= f.email_field :email, class: "form-control", autofocus: true, required: true
           .form-group
             .control-label.col-xs-3= f.label :password
-            .col-xs-7= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
+            .col-xs-7.val-col= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
           .form-group
             .col-xs-7.col-xs-offset-3= f.submit "Log in", class: "btn btn-success btn-wide"
           First time on the page?

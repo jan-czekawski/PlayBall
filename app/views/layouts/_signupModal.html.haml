@@ -9,16 +9,16 @@
         =form_for(:user, :html => { :role => "form", :class => "val-frm form-horizontal" }, :url => signup_path) do |f|
           .form-group
             .control-label.col-xs-3= f.label :email
-            #signupEmail.col-xs-7= f.email_field :email, class: "form-control", autofocus: true, required: true
+            #signupEmail.col-xs-7.val-col= f.email_field :email, class: "form-control", autofocus: true, required: true
           .form-group
             .control-label.col-xs-3= f.label :username, "Name"
-            .col-xs-7= f.text_field :username, class: "form-control", required: true
+            .col-xs-7.val-col= f.text_field :username, class: "form-control", required: true
           .form-group
             .control-label.col-xs-3= f.label :password
-            .col-xs-7= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
+            .col-xs-7.val-col= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
           .form-group
             .control-label.col-xs-3= f.label :password_confirmation, "Confirmation"
-            .col-xs-7= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
+            .col-xs-7.val-col= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
           .form-group
             .col-xs-7.col-xs-offset-3= f.submit "Sign up", class: "btn btn-success btn-wide"
           You already have an account?

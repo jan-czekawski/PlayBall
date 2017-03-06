@@ -1,3 +1,13 @@
+// FLASH MESSAGE STYLES FOR PAGES OTHER THAN INDEX COURT
+var styles = {
+  background: "#EEE",
+  position: "static",
+  width: "100%",
+  marginLeft: "0",
+  marginRight: "0"
+};
+
+// SHOW MAP ON COURT SHOW PAGE
 function displayMap(){
   function initMapOn(latSelected, lngSelected) {
     var myLatLng = {lat: latSelected, lng: lngSelected};
@@ -23,6 +33,17 @@ function displayMap(){
   }
 }
 
+// ADJUST HEIGHT OF THE MAP
+function changeHeight() {
+  $('#mapDiv').height($('#showImg').height());
+}
+
+// RUN MAP FUNCTION ON THE COURT SHOW PAGE
+if ($.contains(document, $('#mapDiv')[0])){
+  displayMap();
+}
+
+// ENABLE AUTOCOMPLETE ON ADD/EDIT COURT PAGE
 function displayAutoComplete(){
   function initializeMap(){
       var input = document.getElementById('court_location');
@@ -34,23 +55,29 @@ function displayAutoComplete(){
   google.maps.event.addDomListener(window, 'pageshow', initializeMap);
 }
 
-function changeHeight() {
-  $('#mapDiv').height($('#showImg').height());
+// RUN MAP AUTOCOMPLETE FUNCTION ON THE ADD/EDIT COURT PAGE
+if ($.contains(document, $('#court_location')[0])){
+  displayAutoComplete();
 }
 
+
+// FLEX TEXTAREA
 $(function() {
     $("textarea").flexible();
 });
 
+
+// ADJUST HEIGHT OF DIVS IN COURT INDEX PAGE
 $(function() {
     $('.thumbnail').matchHeight();
 });
 
+// ADD AUTOFOCUS TO MODALS
 $('.modal').on('shown.bs.modal', function() {
   $(this).find('[autofocus]').focus();
 });
 
-
+// VALIDATE PICTURE SIZE
 $('#court_picture').on('change', function(){
   var size_in_megabytes = this.files[0].size/1024/1024;
   if (size_in_megabytes > 5){
@@ -58,12 +85,18 @@ $('#court_picture').on('change', function(){
   }
 });
 
-
+// SHOW ADD COMMENT DIV
 $("#addCommentButton").on('click', function(event){
   event.preventDefault();
   $(".addComment").show();
 })
 
+// CLOSE ADD COMMENT DIV
+$(".close").on('click', function(){
+  $(".addComment").hide();
+})
+
+// HANDLE COURTS LOCATION SUBMITION
 $("#submitFormButton").on('click', function(event){
   event.preventDefault();
   var prefixHttp = "https://maps.googleapis.com/maps/api/geocode/json?address="
@@ -82,57 +115,94 @@ $("#submitFormButton").on('click', function(event){
       } else {
         $("#flash-messages > .col-xs-10").html("<div class='alert alert-danger'><a class=\'close\' data-dismiss=\'alert\' href=\'#\'>&times;</a>Address not found. Please provide correct location.</div>")
       }
+    },
+    error: function(error, status){
+      $("#flash-messages > .col-xs-10").html("<div class='alert alert-danger'><a class=\'close\' data-dismiss=\'alert\' href=\'#\'>&times;</a>Location can't be blank.</div>")      
     }
   })
 })
 
+// FORMS VALIDATION
+function validateForms(){
+  $.validator.setDefaults({
+      rules: {
+        'user[password_confirmation]': {
+          equalTo: "#user_password",
+          minlength: 6
+        },
+        'user[password]': {
+          required: true,
+          minlength: 6
+        },
+        'user[username]': {
+          required: true
+        },
+        'user[email]': {
+          required: true,
+          email: true
+        },
+        'session[email]': {
+          required: true,
+          email: true
+        },
+        'session[password]': {
+          required: true,
+          minlength: 6
+        },
+        'court[name]': "required",
+        'court[description]': "required",
+        'court[location]': "required",
+        'court[picture]': "required"
+      },
+      messages: {
+        'user[password_confirmation]': "Please enter the same password as above"
+      },
+      errorElement: "em",
+      errorPlacement: function (error, element) {
+        error.addClass("help-block");
+        element.parents('.val-col').addClass("has-feedback");
+        error.insertAfter(element);
+        if (!($(element)).next("span")[0]){
+          $("<span class= 'fa fa-times-circle-o fa-2x form-control-feedback'></span>").insertAfter(element);
+        }
+      },
+      success: function (label, element){
+        if (!($(element)).next("span")[0]){
+          $("<span class= 'fa fa-check-circle-o fa-2x form-control-feedback'></span>").insertAfter($(element));
+        }
+      },
+      highlight: function(element, errorClass, validClass) {
+        $(element).parents('.val-col').addClass("has-error").removeClass("has-success")
+        $(element).next("span").addClass("fa-times-circle-o").removeClass("fa-check-circle-o")
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).parents('.val-col').addClass("has-success").removeClass("has-error")
+        $(element).next("span").addClass("fa-check-circle-o").removeClass("fa-times-circle-o")
+      }
+  })
 
-$(".close").on('click', function(){
-  $(".addComment").hide();
-})
+  $('.val-frm').validate();
+  $('.val-frm2').validate();
+  $('#submitForm').validate();
+  $('#userForm').validate({
+    rules: {
+      'user[password_confirmation]': {
+        equalTo: "#userForm #user_password",
+        minlength: 6,
+        required: true
+      }
+    }
+  });
+}
 
 
-
-
-$(document).ready(function(){
-  var styles = {
-    background: "#EEE",
-    position: "static",
-    width: "100%",
-    marginLeft: "0",
-    marginRight: "0"
-  };
-  $( ".showJumbo" ).prev().css(styles);
-  changeHeight();
-})
-
-$(window).resize(function(){
-  changeHeight();
-})
-
-// function chooseModal(object, object_url){
-//   $.ajax({
-//     method: "GET",
-//     url: "/courts",
-//     data: {object: object, object_url: object_url}})
-//     .done(function(msg){
-//     })
-//   }
-
+// CHANGE LANDING PAGE STYLING
 if ($.contains(document, $('#landingJumbotron')[0])) {
   $('#mainNav').hide();
   $('body').css("padding-top", 0);
 }
 
-if ($.contains(document, $('#mapDiv')[0])){
-  displayMap();
-}
-
-if ($.contains(document, $('#court_location')[0])){
-  displayAutoComplete();
-}
-
-
+// HANDLE SWITCHING BETWEEN LOGIN/SIGNUP MODALS
 $("#closeLoginModal").click(function(e){
     $("#loginModal").modal('hide');
     setTimeout(function(){
@@ -157,106 +227,13 @@ $('.modal').on('hidden.bs.modal', function(){
   $('body').removeClass("modal-open")
 })
 
-// setInterval(function(){
-//   console.log($('body').css("padding-right"))
-// },100)
 
-// var email = $("#signupEmail");
-
-
-$( document ).ready(function(){
-
-  $.validator.setDefaults({
-      rules: {
-        'user[password_confirmation]': {
-          // equalTo: "#user_password",
-          minlength: 6
-        },
-        'user[password]': {
-          required: true,
-          minlength: 6
-        },
-        'session[email]': {
-          required: true,
-          email: true
-        },
-        'session[password]': {
-          required: true,
-          minlength: 6
-        }
-      },
-      messages: {
-        'user[password_confirmation]': "Please enter the same password as above"
-      },
-      errorElement: "em",
-      errorPlacement: function (error, element) {
-        error.addClass("help-block");
-        element.parents('.col-xs-7').addClass("has-feedback");
-        error.insertAfter(element);
-        if (!($(element)).next("span")[0]){
-          $("<span class= 'fa fa-times-circle-o fa-2x form-control-feedback'></span>").insertAfter(element);
-        }
-      },
-      success: function (label, element){
-        if (!($(element)).next("span")[0]){
-          $("<span class= 'fa fa-check-circle-o fa-2x form-control-feedback'></span>").insertAfter($(element));
-        }
-      },
-      highlight: function(element, errorClass, validClass) {
-        $(element).parents('.col-xs-7').addClass("has-error").removeClass("has-success")
-        $(element).next("span").addClass("fa-times-circle-o").removeClass("fa-check-circle-o")
-      },
-      unhighlight: function(element, errorClass, validClass) {
-        $(element).parents('.col-xs-7').addClass("has-success").removeClass("has-error")
-        $(element).next("span").addClass("fa-check-circle-o").removeClass("fa-times-circle-o")
-      }
-  })
-
-//   $('.val-frm').validate({
-//     rules: {
-//       'user[password_confirmation]': {
-//         equalTo: "#user_password",
-//         minlength: 6
-//       },
-//       'user[password]': {
-//         required: true,
-//         minlength: 6
-//       }
-//     },
-//     messages: {
-//       'user[password_confirmation]': "Please enter the same password as above"
-//     }
-//   });
-
-// $('.val-frm2').validate({
-//   rules: {
-//     'session[email]': {
-//       required: true,
-//       email: true
-//     },
-//     'session[password]': {
-//       required: true,
-//       minlength: 6
-//     }
-//   }
-
-//   })
-
-  $('val-frm').validate();
-  $('val-frm2').validate();
-
-
-  // $( "form" ).each( function() {
-  //   $( this ).validate({
-
-  //   });
-  // } );
+$(document).ready(function(){
+  $( ".showJumbo" ).prev().css(styles);
+  changeHeight();
+  validateForms();
 })
 
-
-
-
-// $( "input[type='text']" ).change(function() {
-//   // Check input( $( this ).val() ) for validity here
-// });
-
+$(window).resize(function(){
+  changeHeight();
+})

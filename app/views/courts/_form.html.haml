@@ -7,18 +7,18 @@
         %li= message
   .form-group
     = f.label :name, class: "control-label col-sm-2 col-sm-offset-1"
-    .col-sm-6= f.text_field :name, class: "form-control", autofocus: "true", placeholder: "Name of this court"
+    .col-sm-6.val-col= f.text_field :name, class: "form-control", autofocus: "true", placeholder: "Name of this court"
   .form-group
     = f.label :description, class: "control-label col-sm-2 col-sm-offset-1"
-    .col-sm-6= f.text_area :description, class: "form-control", placeholder: "Short description of this court."
+    .col-sm-6.val-col= f.text_area :description, class: "form-control", placeholder: "Short description of this court."
   .form-group
     = f.hidden_field :latitude, :value => 10
     = f.hidden_field :longitude, :value => 20
     = f.label "location", class: "control-label col-sm-2 col-sm-offset-1"
-    .col-sm-6
+    .col-sm-6.val-col
       %input.form-control{:name => "court[location]", :id => "court_location", :type => "text", :placeholder => "e.g. Warszawa, Aleje Jerozolimskie"}
   .form-group
     = f.label :picture, class: "control-label col-sm-2 col-sm-offset-1"
-    .col-sm-6= f.file_field :picture, accept: "image/jpeg, image/jpg, image/gif, image/png", class: "form-control"
+    .col-sm-6.val-col= f.file_field :picture, accept: "image/jpeg, image/jpg, image/gif, image/png", class: "form-control"
   = link_to "Back", :back, class: "btn btn-primary"
   = f.submit "Submit", class: "btn btn-success", id: "submitFormButton"
