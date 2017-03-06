@@ -80,11 +80,8 @@ $("#submitFormButton").on('click', function(event){
         $("#court_longitude").val(data["results"][0]["geometry"]["location"]["lng"]);
         $("#submitForm").submit();
       } else {
-        $("#flash-messages").text("Address not found. Please provide correct location.").addClass("alert alert-danger");
+        $("#flash-messages > .col-xs-10").html("<div class='alert alert-danger'><a class=\'close\' data-dismiss=\'alert\' href=\'#\'>&times;</a>Address not found. Please provide correct location.</div>")
       }
-    },
-    error: function (request, status, error){
-      $("#flash-messages").text("Location can't be blank. Please provide correct address.").addClass("alert alert-danger");
     }
   })
 })
@@ -168,79 +165,94 @@ $('.modal').on('hidden.bs.modal', function(){
 
 
 $( document ).ready(function(){
-  $('.val-frm').validate({
-    rules: {
-      'user[password_confirmation]': {
-        equalTo: "#user_password"
+
+  $.validator.setDefaults({
+      rules: {
+        'user[password_confirmation]': {
+          // equalTo: "#user_password",
+          minlength: 6
+        },
+        'user[password]': {
+          required: true,
+          minlength: 6
+        },
+        'session[email]': {
+          required: true,
+          email: true
+        },
+        'session[password]': {
+          required: true,
+          minlength: 6
+        }
       },
-      'user[password]': {
-        required: true,
-        minlength: 6
+      messages: {
+        'user[password_confirmation]': "Please enter the same password as above"
+      },
+      errorElement: "em",
+      errorPlacement: function (error, element) {
+        error.addClass("help-block");
+        element.parents('.col-xs-7').addClass("has-feedback");
+        error.insertAfter(element);
+        if (!($(element)).next("span")[0]){
+          $("<span class= 'fa fa-times-circle-o fa-2x form-control-feedback'></span>").insertAfter(element);
+        }
+      },
+      success: function (label, element){
+        if (!($(element)).next("span")[0]){
+          $("<span class= 'fa fa-check-circle-o fa-2x form-control-feedback'></span>").insertAfter($(element));
+        }
+      },
+      highlight: function(element, errorClass, validClass) {
+        $(element).parents('.col-xs-7').addClass("has-error").removeClass("has-success")
+        $(element).next("span").addClass("fa-times-circle-o").removeClass("fa-check-circle-o")
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).parents('.col-xs-7').addClass("has-success").removeClass("has-error")
+        $(element).next("span").addClass("fa-check-circle-o").removeClass("fa-times-circle-o")
       }
-    },
-    messages: {
-      'user[password_confirmation]': "Please enter the same password as above"
-    },
-    errorElement: "em",
-    errorPlacement: function (error, element) {
-      error.addClass("help-block");
-      element.parents('.col-xs-7').addClass("has-feedback");
-      error.insertAfter(element);
-      if (!($(element)).next("span")[0]){
-        $("<span class= 'fa fa-times-circle-o fa-2x form-control-feedback'></span>").insertAfter(element);
-      }
-    },
-    success: function (label, element){
-      if (!($(element)).next("span")[0]){
-        $("<span class= 'fa fa-check-circle-o fa-2x form-control-feedback'></span>").insertAfter($(element));
-      }
-    },
-    highlight: function(element, errorClass, validClass) {
-      $(element).parents('.col-xs-7').addClass("has-error").removeClass("has-success")
-      $(element).next("span").addClass("fa-times-circle-o").removeClass("fa-check-circle-o")
-    },
-    unhighlight: function(element, errorClass, validClass) {
-      $(element).parents('.col-xs-7').addClass("has-success").removeClass("has-error")
-      $(element).next("span").addClass("fa-check-circle-o").removeClass("fa-times-circle-o")
-    }
-
-  });
-
-$('.val-frm2').validate({
-  rules: {
-    'session[email]': {
-      required: true,
-      email: true
-    },
-    'session[password]': {
-      required: true,
-      minlength: 6
-    }
-  },
-  errorElement: "em",
-    errorPlacement: function (error, element) {
-      error.addClass("help-block");
-      element.parents('.col-xs-7').addClass("has-feedback");
-      error.insertAfter(element);
-      if (!($(element)).next("span")[0]){
-        $("<span class= 'fa fa-times-circle-o fa-2x form-control-feedback'></span>").insertAfter(element);
-      }
-    },
-    success: function (label, element){
-      if (!($(element)).next("span")[0]){
-        $("<span class= 'fa fa-check-circle-o fa-2x form-control-feedback'></span>").insertAfter($(element));
-      }
-    },
-    highlight: function(element, errorClass, validClass) {
-      $(element).parents('.col-xs-7').addClass("has-error").removeClass("has-success")
-      $(element).next("span").addClass("fa-times-circle-o").removeClass("fa-check-circle-o")
-    },
-    unhighlight: function(element, errorClass, validClass) {
-      $(element).parents('.col-xs-7').addClass("has-success").removeClass("has-error")
-      $(element).next("span").addClass("fa-check-circle-o").removeClass("fa-times-circle-o")
-    }
   })
+
+//   $('.val-frm').validate({
+//     rules: {
+//       'user[password_confirmation]': {
+//         equalTo: "#user_password",
+//         minlength: 6
+//       },
+//       'user[password]': {
+//         required: true,
+//         minlength: 6
+//       }
+//     },
+//     messages: {
+//       'user[password_confirmation]': "Please enter the same password as above"
+//     }
+//   });
+
+// $('.val-frm2').validate({
+//   rules: {
+//     'session[email]': {
+//       required: true,
+//       email: true
+//     },
+//     'session[password]': {
+//       required: true,
+//       minlength: 6
+//     }
+//   }
+
+//   })
+
+  $('val-frm').validate();
+  $('val-frm2').validate();
+
+
+  // $( "form" ).each( function() {
+  //   $( this ).validate({
+
+  //   });
+  // } );
 })
+
 
 
 

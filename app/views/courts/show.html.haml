@@ -47,3 +47,6 @@
                 %br
                 = link_to "Delete", comment_path(comment), class: "commentActions btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure?" }
                 = link_to "Edit", edit_comment_path(comment), class: "commentActions btn btn-warning btn-xs"
+
+%script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyCHvA_HeK-Kj5bULpf9VkGl5SFGgyp3Fu8&libraries=places"}
+  :cdata
