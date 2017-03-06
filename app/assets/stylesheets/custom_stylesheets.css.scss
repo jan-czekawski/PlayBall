@@ -83,6 +83,14 @@ hr {
   color: #C9302C;
 }
 
+.fa {
+  top: 3px;
+}
+
+em {
+  text-align: left;
+}
+
 #courtsMainJumbo {
   background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/shot.jpg") no-repeat;
   @include bg-cover;

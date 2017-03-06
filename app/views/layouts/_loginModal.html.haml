@@ -6,26 +6,17 @@
           %span &times;
         %h4.modal-title#myModalLabel Log in
       .modal-body 
-        =form_for(:session, :html => {:role => "form"}, :url => login_path) do |f|
-          .row.no-center
-            .col-xs-10.col-xs-offset-1
-              .form-group
-                .control-label= f.label :email
-                .row
-                  .col-xs-11#loginEmail= f.email_field :email, class: "form-control", autofocus: true, required: true
-                  .col-xs-1.validationDiv
-                    %i.fa.fa-check-circle-o.fa-2x
-              .form-group
-                .control-label= f.label :password
-                .row
-                  .col-xs-11= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
-                  .col-xs-1.validationDiv
-                    %i.fa.fa-check-circle-o.fa-2x
-              .form-group
-                .row
-                  .col-xs-11= f.submit "Log in", class: "btn btn-success btn-wide"
-              First time on the page?
-              %a#closeLoginModal Sign up
+        =form_for(:session, :html => {:role => "form", :class => "val-frm2 form-horizontal"}, :url => login_path) do |f|
+          .form-group
+            .control-label.col-xs-3= f.label :email
+            .col-xs-7#loginEmail= f.email_field :email, class: "form-control", autofocus: true, required: true
+          .form-group
+            .control-label.col-xs-3= f.label :password
+            .col-xs-7= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
+          .form-group
+            .col-xs-7.col-xs-offset-3= f.submit "Log in", class: "btn btn-success btn-wide"
+          First time on the page?
+          %a#closeLoginModal Sign up
 
 
 

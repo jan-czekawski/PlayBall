@@ -163,3 +163,88 @@ $('.modal').on('hidden.bs.modal', function(){
 // setInterval(function(){
 //   console.log($('body').css("padding-right"))
 // },100)
+
+// var email = $("#signupEmail");
+
+
+$( document ).ready(function(){
+  $('.val-frm').validate({
+    rules: {
+      'user[password_confirmation]': {
+        equalTo: "#user_password"
+      },
+      'user[password]': {
+        required: true,
+        minlength: 6
+      }
+    },
+    messages: {
+      'user[password_confirmation]': "Please enter the same password as above"
+    },
+    errorElement: "em",
+    errorPlacement: function (error, element) {
+      error.addClass("help-block");
+      element.parents('.col-xs-7').addClass("has-feedback");
+      error.insertAfter(element);
+      if (!($(element)).next("span")[0]){
+        $("<span class= 'fa fa-times-circle-o fa-2x form-control-feedback'></span>").insertAfter(element);
+      }
+    },
+    success: function (label, element){
+      if (!($(element)).next("span")[0]){
+        $("<span class= 'fa fa-check-circle-o fa-2x form-control-feedback'></span>").insertAfter($(element));
+      }
+    },
+    highlight: function(element, errorClass, validClass) {
+      $(element).parents('.col-xs-7').addClass("has-error").removeClass("has-success")
+      $(element).next("span").addClass("fa-times-circle-o").removeClass("fa-check-circle-o")
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      $(element).parents('.col-xs-7').addClass("has-success").removeClass("has-error")
+      $(element).next("span").addClass("fa-check-circle-o").removeClass("fa-times-circle-o")
+    }
+
+  });
+
+$('.val-frm2').validate({
+  rules: {
+    'session[email]': {
+      required: true,
+      email: true
+    },
+    'session[password]': {
+      required: true,
+      minlength: 6
+    }
+  },
+  errorElement: "em",
+    errorPlacement: function (error, element) {
+      error.addClass("help-block");
+      element.parents('.col-xs-7').addClass("has-feedback");
+      error.insertAfter(element);
+      if (!($(element)).next("span")[0]){
+        $("<span class= 'fa fa-times-circle-o fa-2x form-control-feedback'></span>").insertAfter(element);
+      }
+    },
+    success: function (label, element){
+      if (!($(element)).next("span")[0]){
+        $("<span class= 'fa fa-check-circle-o fa-2x form-control-feedback'></span>").insertAfter($(element));
+      }
+    },
+    highlight: function(element, errorClass, validClass) {
+      $(element).parents('.col-xs-7').addClass("has-error").removeClass("has-success")
+      $(element).next("span").addClass("fa-times-circle-o").removeClass("fa-check-circle-o")
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      $(element).parents('.col-xs-7').addClass("has-success").removeClass("has-error")
+      $(element).next("span").addClass("fa-check-circle-o").removeClass("fa-times-circle-o")
+    }
+  })
+})
+
+
+
+// $( "input[type='text']" ).change(function() {
+//   // Check input( $( this ).val() ) for validity here
+// });
+

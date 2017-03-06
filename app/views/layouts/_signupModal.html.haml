@@ -6,35 +6,20 @@
           %span &times;
         %h4.modal-title#myModalLabel Sign up
       .modal-body 
-        =form_for(:user, :html => { :role => "form" }, :url => signup_path) do |f|
-          .row.no-center
-            .col-xs-10.col-xs-offset-1
-              .form-group
-                .control-label= f.label :email
-                .row
-                  #signupEmail.col-xs-11= f.email_field :email, class: "form-control", autofocus: true, required: true
-                  .col-xs-1.validationDiv
-                    %i.fa.fa-times-circle-o.fa-2x
-              .form-group
-                .control-label= f.label :username, "Name"
-                .row
-                  .col-xs-11= f.text_field :username, class: "form-control", required: true
-                  .col-xs-1.validationDiv
-                    %i.fa.fa-times-circle-o.fa-2x
-              .form-group
-                .control-label= f.label :password
-                .row
-                  .col-xs-11= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
-                  .col-xs-1.validationDiv
-                    %i.fa.fa-times-circle-o.fa-2x
-              .form-group
-                .control-label= f.label :password_confirmation, "Confirmation"
-                .row
-                  .col-xs-11= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
-                  .col-xs-1.validationDiv
-                    %i.fa.fa-times-circle-o.fa-2x
-              .form-group
-                .row
-                  .col-xs-11= f.submit "Sign up", class: "btn btn-success btn-wide"
-              You already have an account?
-              %a#closeSignupModal Log in
+        =form_for(:user, :html => { :role => "form", :class => "val-frm form-horizontal" }, :url => signup_path) do |f|
+          .form-group
+            .control-label.col-xs-3= f.label :email
+            #signupEmail.col-xs-7= f.email_field :email, class: "form-control", autofocus: true, required: true
+          .form-group
+            .control-label.col-xs-3= f.label :username, "Name"
+            .col-xs-7= f.text_field :username, class: "form-control", required: true
+          .form-group
+            .control-label.col-xs-3= f.label :password
+            .col-xs-7= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
+          .form-group
+            .control-label.col-xs-3= f.label :password_confirmation, "Confirmation"
+            .col-xs-7= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
+          .form-group
+            .col-xs-7.col-xs-offset-3= f.submit "Sign up", class: "btn btn-success btn-wide"
+          You already have an account?
+          %a#closeSignupModal Log in
