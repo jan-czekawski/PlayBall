@@ -111,6 +111,20 @@ $('#court_picture').on('change', function(){
   }
 });
 
+// SET LOCATION OF THE 'X' CLOSING BUTTON FOR ADD COMMENT DIV
+function chngClsBtnPos(){
+  var topPos = $('.addComment').position().top
+  var leftPos = $('.addComment').position().left
+  var widCom = $('.addComment').width()
+  var higCom = $('.addComment').height()
+  $('.closeComment').css({
+    top: topPos - higCom/2.8,
+    left: leftPos + widCom
+  })  
+}
+
+
+
 // SHOW ADD COMMENT DIV
 $("#addCommentButton").on('click', function(event){
   
@@ -118,7 +132,8 @@ $("#addCommentButton").on('click', function(event){
 
   $('.addComment').show({
     done: setTimeout(function(){
-      $('.close').show()
+      $('.closeComment').show()
+      chngClsBtnPos()
     },1200)
   })
 
@@ -145,7 +160,7 @@ $(".close").on('click', function(){
     }
   })
 
-  $('.close').hide()
+  $('.closeComment').hide()
   $('.addComment').addClass('fadeOutLeft');
 
   setTimeout(function(){
@@ -158,6 +173,8 @@ $(".close").on('click', function(){
   },1)
 
 })
+
+
 
 // HANDLE COURTS LOCATION SUBMITION
 $("#submitFormButton").on('click', function(event){
@@ -297,9 +314,10 @@ $('.modal').on('hidden.bs.modal', function(){
 $(document).ready(function(){
   $( "#courtsMainJumbo" ).prev().css(styles);
   changeHeight();
-  // validateForms();
+  validateForms();
 })
 
 $(window).resize(function(){
   changeHeight();
+  chngClsBtnPos()
 })

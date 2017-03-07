@@ -24,7 +24,7 @@
         %br
         - if logged_in?
           .addComment.well.animated.fadeInLeft
-            %a.close &times;
+            %a.close.closeComment &times;
             =form_for @comment do |f|
               = f.hidden_field_tag "court_id", @court.id
               .form-group

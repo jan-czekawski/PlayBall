@@ -261,11 +261,11 @@ em {
   .form-control:focus {
     @include box-shdw;                                                                                        
   }
-  .close {
+  .closeComment {
     display: none;
     position: absolute;
-    left: 18.2em;
-    top: 3em;
+    // left: 18.2em;
+    // top: 3em;
     font-size: 3em;
     color: rgb(49, 176, 213);
   }
