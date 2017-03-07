@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       flash[:success] = "Comment was successfully created!"
       redirect_to court_path(params[:court_id])
     else
-      flash[:danger] = "There was a problem. Please try again"
+      flash[:danger] = "Comment was not added. Please try again"
       redirect_to court_path(params[:court_id])
     end
   end
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
         flash[:info] = "Comment was successfully updated"
         format.html { redirect_to court_path(@comment.court_id) }
       else
-        flash[:danger] = "There was a problem. Please try again."
+        flash[:danger] = "Comment was not updated. Please try again."
         format.html { render :edit }
       end
     end

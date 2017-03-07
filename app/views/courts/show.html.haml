@@ -23,12 +23,18 @@
         %br
         %br
         - if logged_in?
+          -if @court.errors.any?
+            #error_explanation.alert.alert-danger
+              / %h3= "Your form has " + pluralize(user.errors.count, "error") + ":"
+              %ul
+                - @court.errors.full_messages.each do |message|
+                  %li= message
           .addComment.well.animated.fadeInLeft
             %a.close.closeComment &times;
-            =form_for @comment do |f|
+            =form_for @comment, :html => {:id => "commentForm"} do |f|
               = f.hidden_field_tag "court_id", @court.id
-              .form-group
-                = f.text_area :content, class: "form-control", autofocus: "true", id: "textAreaComment"
+              .form-group.val-col
+                = f.text_area :content, class: "form-control", required: "true", autofocus: "true", id: "textAreaComment"
                 = f.submit "Add Comment", class: "btn btn-info"
         - @court.comments.each do |comment|
           -if !comment.user_id.blank?

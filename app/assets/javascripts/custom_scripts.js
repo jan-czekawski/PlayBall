@@ -113,14 +113,17 @@ $('#court_picture').on('change', function(){
 
 // SET LOCATION OF THE 'X' CLOSING BUTTON FOR ADD COMMENT DIV
 function chngClsBtnPos(){
-  var topPos = $('.addComment').position().top
-  var leftPos = $('.addComment').position().left
-  var widCom = $('.addComment').width()
-  var higCom = $('.addComment').height()
+  if (!($('.addComment'))) {
+    return false
+  };
+  var topPos = $('.addComment').position().top;
+  var leftPos = $('.addComment').position().left;
+  var widCom = $('.addComment').width();
+  var higCom = $('.addComment').height();
   $('.closeComment').css({
     top: topPos - higCom/2.8,
     left: leftPos + widCom
-  })  
+  });
 }
 
 
@@ -272,6 +275,10 @@ function validateForms(){
           }
         }        
       });
+    } else if (this.id == 'commentForm') {
+      $(this).validate({
+        
+      })
     } else {
       $(this).validate();
     }
