@@ -1,11 +1,10 @@
 // FLASH MESSAGE STYLES FOR PAGES OTHER THAN INDEX COURT
 var styles = {
-  background: "#EEE",
-  position: "static",
+  position: "absolute",
   width: "100%",
-  marginLeft: "0",
-  marginRight: "0"
-};
+  top: "70px",
+  background: "transparent"
+}
 
 // SHOW MAP ON COURT SHOW PAGE
 function displayMap(){
@@ -73,7 +72,13 @@ function displayAutoComplete(){
   google.maps.event.addDomListener(window, 'pageshow', geolocate);
 }
 
-
+// IGNORE PRESSED 'ENTER' DURING AUTOCOMPLETION
+function ignoreEnterKey(e) {
+    if (e.keyCode == 13 || e.which == 13) {
+        var tb = document.getElementById("court_location");
+        return false;
+    }
+}
 
 // RUN MAP AUTOCOMPLETE FUNCTION ON THE ADD/EDIT COURT PAGE
 if ($.contains(document, $('#court_location')[0])){
@@ -84,6 +89,7 @@ if ($.contains(document, $('#court_location')[0])){
 // FLEX TEXTAREA
 $(function() {
     $("textarea").flexible();
+    // $(".addComment.well").flexible();
 });
 
 
@@ -107,13 +113,50 @@ $('#court_picture').on('change', function(){
 
 // SHOW ADD COMMENT DIV
 $("#addCommentButton").on('click', function(event){
+  
   event.preventDefault();
-  $(".addComment").show();
+
+  $('.addComment').show({
+    done: setTimeout(function(){
+      $('.close').show()
+    },1200)
+  })
+
+  $('#addCommentButton').addClass('fadeOutLeft')
+  setTimeout(function(){
+    $('#addCommentButton').hide({
+      done: function(){
+        $(this).removeClass('fadeOutLeft');
+        $(this).addClass('fadeInLeft');
+      }
+    })
+  },1)
+
 })
 
 // CLOSE ADD COMMENT DIV
 $(".close").on('click', function(){
-  $(".addComment").hide();
+
+  $('#addCommentButton').show({
+    done: function(){
+      setTimeout(function(){
+        $('#addCommentButton').removeClass('fadeInLeft')
+      },750)
+    }
+  })
+
+  $('.close').hide()
+  $('.addComment').addClass('fadeOutLeft');
+
+  setTimeout(function(){
+    $('.addComment').hide({
+      done: function(){
+        $(this).removeClass('fadeOutLeft')
+        $(this).addClass('fadeInLeft')
+      }
+    });
+  },1)
+
 })
 
 // HANDLE COURTS LOCATION SUBMITION
@@ -188,7 +231,7 @@ function validateForms(){
       },
       success: function (label, element){
         if (!($(element)).next("span")[0]){
-          $("<span class= 'fa fa-check-circle-o fa-2x form-control-feedback'></span>").insertAfter($(element));
+          $("<span class= 'fa fa-check-circle-o fa-2x form-control-feedback'></span>").insertAfter(element);
         }
       },
       highlight: function(element, errorClass, validClass) {
@@ -201,18 +244,21 @@ function validateForms(){
       }
   })
 
-  $('.val-frm').validate();
-  $('.val-frm2').validate();
-  $('#submitForm').validate();
-  $('#userForm').validate({
-    rules: {
-      'user[password_confirmation]': {
-        equalTo: "#userForm #user_password",
-        minlength: 6,
-        required: true
-      }
+  $('form').each(function(index){
+    if (this.id == 'userForm'){
+      $(this).validate({
+        rules: {
+          'user[password_confirmation]': {
+            equalTo: "#userForm #user_password",
+            minlength: 6,
+            required: true
+          }
+        }        
+      });
+    } else {
+      $(this).validate();
     }
-  });
+  })
 }
 
 
@@ -249,9 +295,9 @@ $('.modal').on('hidden.bs.modal', function(){
 
 
 $(document).ready(function(){
-  $( ".showJumbo" ).prev().css(styles);
+  $( "#courtsMainJumbo" ).prev().css(styles);
   changeHeight();
-  validateForms();
+  // validateForms();
 })
 
 $(window).resize(function(){

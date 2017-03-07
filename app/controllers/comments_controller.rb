@@ -6,10 +6,10 @@ class CommentsController < ApplicationController
     @comment = Court.find(params[:court_id]).comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      flash[:success] = "Comment created!"
+      flash[:success] = "Comment was successfully created!"
       redirect_to court_path(params[:court_id])
     else
-      flash[:danger] = "Nope"
+      flash[:danger] = "There was a problem. Please try again"
       redirect_to court_path(params[:court_id])
     end
   end

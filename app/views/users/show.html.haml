@@ -4,10 +4,7 @@
     - if logged_in? && (current_user == @user || current_user.admin?)
       %strong Email address:
       %p= @user.email
-      = link_to "Back", users_path, class: "btn btn-primary"
       = link_to "Edit", edit_user_path(@user), class: "btn btn-warning"
-    - else
-      = link_to "Back", users_path, class: "btn btn-primary"
     - if !@courts.blank?
       %h2= "Courts added by " + @user.username
       %br

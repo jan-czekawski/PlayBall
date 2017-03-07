@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
       flash[:success] = "You have successfully logged in"
       redirect_to courts_path
     else
-      flash[:danger] = "Incorrect login and/or password"
-      redirect_to courts_path
+      flash.now[:danger] = "Incorrect login and/or password"
+      render 'new'
     end
   end
 

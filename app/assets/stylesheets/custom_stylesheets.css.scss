@@ -10,6 +10,11 @@ $default-color: white;
   background-size: cover;
 }
 
+@mixin box-shdw{
+  box-shadow: unset;
+  -webkit-box-shadow: unset;
+}
+
 body {
   padding-top: 50px;
 }
@@ -38,6 +43,10 @@ body {
   h1 {
     font-size: 10em;
   }
+}
+
+#error_explanation {
+  margin: 0 0 30px 0;
 }
 
 // input {
@@ -152,10 +161,18 @@ em {
   }
 }
 
+// #flash-messages {
+//   position: absolute;
+//   width: 100%;
+//   top: 70px;
+// }
+
 #flash-messages {
-  position: absolute;
+  background: #EEE;
+  position: static;
   width: 100%;
-  top: 70px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .alert{
@@ -226,8 +243,71 @@ em {
 }
 
 .addComment {
-  display:none;
+  // visibility: hidden;
+  // opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  background: #fff;
+  border: 2px solid rgb(49, 176, 213);
+  display: none;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  padding:0;
+  textarea{
+    padding-bottom: 0;
+    width: 100%;
+    border: none;
+  } &:focus {
+    outline: 0;
+  }
+  .form-control:focus {
+    @include box-shdw;                                                                                        
+  }
+  .close {
+    display: none;
+    position: absolute;
+    left: 18.2em;
+    top: 3em;
+    font-size: 3em;
+    color: rgb(49, 176, 213);
+  }
+  .btn {
+    margin-bottom: 0.5em;
+    // // transition: 5s easy-in-out;
+    // &:hover {
+    //   transform: scale(1.05, 1.05);
+    // }
+  }
+  .new_comment {
+    // box-shadow: inset 0 10px 10px rgba(100,100,0,0.075);
+  }
+  .form-group{
+    margin-bottom: 0;
+    // box-shadow: inset 0 10px 10px rgba(0,0,0,0.075);
+  }
 }
+
+
+// #dim {
+//     position:absolute;
+//     top:0;
+//     left:0;
+//     width:100%;
+//     height:100%;
+
+//     background: url('semitransparent1x1.png');
+//     background: rgba(0, 0, 0, 0.8);
+
+//     z-index:100;
+// }
+
+// #addCommentButton {
+//   transition: width 2s easy-in-out;
+//   -webkit-transition: width 2s easy-in-out;
+// }
+
+// #addCommentButton:hover {
+//   width: 200%;
+//   // transform: scale(4,2);
+// }
 
 textarea {
   resize: none;

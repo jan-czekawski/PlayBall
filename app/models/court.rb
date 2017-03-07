@@ -2,12 +2,11 @@ class Court < ActiveRecord::Base
   belongs_to :user
   has_many :comments, dependent: :destroy
   validates :name, presence: true, 
-                   length: { maximum: 100 }
+                   length: { maximum: 255 }
   validates :picture, presence: true
   mount_uploader :picture, PictureUploader
   validate :picture_size
-  validates :description, presence: true,
-                          length: { maximum: 300 }
+  validates :description, presence: true
   validates :user_id, presence: true
   validates :longitude, presence: true
   validates :latitude, presence: true

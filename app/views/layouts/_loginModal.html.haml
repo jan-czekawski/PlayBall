@@ -6,7 +6,7 @@
           %span &times;
         %h4.modal-title#myModalLabel Log in
       .modal-body 
-        =form_for(:session, :html => {:role => "form", :class => "val-frm2 form-horizontal"}, :url => login_path) do |f|
+        =form_for(:session, :html => {:role => "form", :id => "loginModalForm", :class  => "form-horizontal"}, :url => login_path) do |f|
           .form-group
             .control-label.col-xs-3= f.label :email
             .col-xs-7#loginEmail.val-col= f.email_field :email, class: "form-control", autofocus: true, required: true
