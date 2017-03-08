@@ -111,18 +111,28 @@ $('#court_picture').on('change', function(){
   }
 });
 
+// SET HEIGHT OF THE ADD COMMENT DIV
+var higCom = 0;
+
 // SET LOCATION OF THE 'X' CLOSING BUTTON FOR ADD COMMENT DIV
 function chngClsBtnPos(){
   if (!($('.addComment'))) {
     return false
   };
+
+  // CHECK THE HEIGHT OF THE ADD COMMENT DIV ONLY ONCE
+  if (!higCom){
+    higCom = $('.addComment').height();
+  }
+
   var topPos = $('.addComment').position().top;
   var leftPos = $('.addComment').position().left;
   var widCom = $('.addComment').width();
-  var higCom = $('.addComment').height();
+
+
   $('.closeComment').css({
-    top: topPos - higCom/2.8,
-    left: leftPos + widCom
+    top: topPos - higCom/0.410,
+    left: leftPos + widCom/0.998
   });
 }
 
@@ -135,8 +145,8 @@ $("#addCommentButton").on('click', function(event){
 
   $('.addComment').show({
     done: setTimeout(function(){
-      $('.closeComment').show()
       chngClsBtnPos()
+      $('.closeComment').show()
     },1200)
   })
 
@@ -154,7 +164,6 @@ $("#addCommentButton").on('click', function(event){
 
 // CLOSE ADD COMMENT DIV
 $(".close").on('click', function(){
-
   $('#addCommentButton').show({
     done: function(){
       setTimeout(function(){
@@ -282,8 +291,9 @@ function validateForms(){
         },
         errorElement: "em",
         errorPlacement: function(error,element){
+          var parent = element.parents('.row')
           // error.addClass("help-block");
-          error.insertAfter((element).parent());
+          error.insertAfter(element)
         },
         success: false,
         highlight: false,
