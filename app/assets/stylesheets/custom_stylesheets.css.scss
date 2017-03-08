@@ -1,7 +1,5 @@
 $black-shadow: 1px 2px 3px black;
-
-$default-color: white;
-
+$def-col: #fff;
 
 @mixin bg-cover{
   -webkit-background-size: cover;
@@ -15,10 +13,34 @@ $default-color: white;
   -webkit-box-shadow: unset;
 }
 
+
+// DEFAULT STYLING
 body {
   padding-top: 50px;
 }
 
+.container {
+  text-align: center;
+}
+
+.no-center {
+  text-align: left;
+}
+
+textarea {
+  resize: none;
+}
+
+h3 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.clear {
+  clear: both;
+}
+
+// LANDING PAGE
 #landingJumbotron {
   background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/ball.jpg") fixed no-repeat;
   background-position-y: 30%;
@@ -27,17 +49,16 @@ body {
   margin-bottom: 0;
 }
 
-
 #landingContainer {
-  color: $default-color;
+  color: $def-col;
   text-align: center;
   margin-top: 20vh;
   text-shadow: $black-shadow;
   button {
-    background-color: darken($default-color, 10%);
+    background-color: darken($def-col, 10%);
     border: none;
     &:hover {
-      background-color: darken($default-color, 20%); 
+      background-color: darken($def-col, 20%); 
     }
   }
   h1 {
@@ -45,23 +66,30 @@ body {
   }
 }
 
+hr {
+  border: 0; 
+  height: 1px;
+  width: 45%;
+  background: darken($def-col, 40%);
+}
+
+// FLASH MESSAGES AND ERRORS
+#flash-messages {
+  background: #EEE;
+  position: static;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.alert{
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
 #error_explanation {
   margin: 0 0 30px 0;
 }
-
-// input {
-//   &:valid {
-//     border: 2px solid green;
-//   }
-// }
-
-
-// input:-webkit-autofill {
-//     -webkit-box-shadow:0 0 0 50px white inset; Change the color to your own background color
-// }
-// input:-webkit-autofill:focus {
-//     -webkit-box-shadow: 0 0 0 50px white inset;
-// }
 
 .showJumbo {
   padding-top: 10px;
@@ -71,40 +99,51 @@ body {
   margin-bottom: 20px;
 }
 
-
-hr {
-  /*background-color: hsla(62, 62%, 60%, 0.8);*/
-  border: 0; 
-  height: 1px;
-  width: 45%;
-  background: darken($default-color, 40%);
-}
-
+// NAV-BAR
 #loginButton, #signupButton, #closeSignupModal, #closeLoginModal {
   cursor: pointer;
 }
 
-.fa-check-circle-o {
-  color: #449D44;
+.modal-content {
+  text-align: center;
 }
 
-.fa-times-circle-o {
-  color: #C9302C;
+.emailReq {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.85em;
 }
 
+.btn-wide {
+  width: 100%;
+}
+
+// FORM VALIDATION
 .fa {
   top: 3px;
+  .fa-check-circle-o {
+  color: #449D44;
+  }
+  .fa-times-circle-o {
+  color: #C9302C;
+  }
 }
 
 em {
   text-align: left;
 }
 
+// COURTS - INDEX PAGE
 #courtsMainJumbo {
   background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/shot.jpg") no-repeat;
   @include bg-cover;
   height: 80vh;
   margin-bottom: 0;
+}
+
+#courtsContentJumbo {
+  margin-top:0;
+  margin-bottom:0;
 }
 
 #courtsMainContainer {
@@ -118,33 +157,32 @@ em {
   >p {
     padding-top: 3em;
   }
-  // .courtButton {
-  //   // background-color: darken($default-color, 40%);
-  //   // border: none;
-  //   &:hover {
-  //     // background-color: darken($default-color, 60%);     
-  //   }    
-  // }
 }
 
-.container {
-  text-align: center;
+.thumbnail {
+  width: 100%;
+  >img {
+    height: 200px;
+  }
 }
 
-.no-center {
-  text-align: left;
+@media (min-width: 500px) {
+    .thumbnail {
+        width: 90%;
+    }
 }
 
-.thumbnail>img {
-  height: 200px;
+@media (min-width: 768px) {
+    .thumbnail {
+        width: 100%;
+    }
+    #showImg {
+      padding: 0 15px;
+      margin-bottom: 0;
+    }
 }
 
-#courtsContentJumbo {
-  margin-top:0;
-  margin-bottom:0;
-}
-
-/* Grow */
+// GROW ANIMATION FOR COURTS - INDEX/SHOW PAGE
 .hvr-grow {
   display: inline-block;
   vertical-align: middle;
@@ -161,34 +199,7 @@ em {
   }
 }
 
-// #flash-messages {
-//   position: absolute;
-//   width: 100%;
-//   top: 70px;
-// }
-
-#flash-messages {
-  background: #EEE;
-  position: static;
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.alert{
-  margin-bottom: 0;
-  margin-top: 20px;
-}
-.modal-content {
-  text-align: center;
-}
-
-#emptyDiv {
-  height: 22px;
-}
-
-
-
+// COURTS - SHOW PAGE
 .caption {
   p {
     font-size: 100%;
@@ -197,7 +208,6 @@ em {
     font-size: 21px;
   }
 }
-
 
 .well {
   padding-bottom: 2em;
@@ -219,29 +229,18 @@ em {
 #showImg {
   padding: 0;
   margin-bottom: 15px;
-  // float: left;
 }
 
-.thumbnail {
-  width: 100%;
+#map {
+  height: 100%;
 }
 
-@media (min-width: 500px) {
-    .thumbnail {
-        width: 90%;
-    }
+#mapDiv {
+  padding: 0;
 }
 
-@media (min-width: 768px) {
-    .thumbnail {
-        width: 100%;
-    }
-    #showImg {
-      padding: 0 15px;
-      margin-bottom: 0;
-    }
-}
 
+// COURTS - SHOW PAGE - ADD COMMENT FIELD
 .addComment {
   background: #fff;
   border: 2px solid #5BC0DE;
@@ -257,11 +256,6 @@ em {
       opacity: .5;
     }
   }
-  // box-shadow: 5px 5px 40px rgba(49, 176, 213, 0.6); 
-
-  // &:focus {
-  //   box-shadow: inset 10px 10px 10px rgba(0,0,0,.075), 10px 10px 80px rgba(102, 175, 233, 0.6); 
-  // }
   #textAreaComment-error{
     color: #C9302C;
     font-size: 0.9em;
@@ -272,8 +266,6 @@ em {
     padding-bottom: 0;
     width: 100%;
     border: none;
-  } &:focus {
-    // outline: 0;
   }
   .form-control:focus {
     @include box-shdw;                                                                                        
@@ -287,80 +279,12 @@ em {
   .btn-wide {
     border-radius: 0;
     border: none;
-    // margin-bottom: 0.5em;
-    // // transition: 5s easy-in-out;
     &:hover {
       border: none;
     }
   }
-  .new_comment {
-    // box-shadow: inset 0 10px 10px rgba(100,100,0,0.075);
-  }
   .form-group{
     margin-bottom: 0;
-    // box-shadow: inset 0 10px 10px rgba(0,0,0,0.075);
   }
 }
 
-.emailReq {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 0.85em;
-}
-
-
-// #dim {
-//     position:absolute;
-//     top:0;
-//     left:0;
-//     width:100%;
-//     height:100%;
-
-//     background: url('semitransparent1x1.png');
-//     background: rgba(0, 0, 0, 0.8);
-
-//     z-index:100;
-// }
-
-// #addCommentButton {
-//   transition: width 2s easy-in-out;
-//   -webkit-transition: width 2s easy-in-out;
-// }
-
-// #addCommentButton:hover {
-//   width: 200%;
-//   // transform: scale(4,2);
-// }
-
-textarea {
-  resize: none;
-}
-
-h3 {
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-#map {
-  height: 100%;
-}
-
-#mapDiv {
-  padding: 0;
-}
-
-
-.clear {
-  clear: both;
-}
-
-.btn-wide {
-  width: 100%;
-}
-
-// #court_location {
-//   position: absolute;
-//   top: 0px;
-//   left: 0px;
-//   width: 99%;
-// }

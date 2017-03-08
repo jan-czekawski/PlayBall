@@ -112,15 +112,15 @@ $('#court_picture').on('change', function(){
 });
 
 // SET HEIGHT OF THE ADD COMMENT DIV
-var higCom;
+var higCom = 0;
 
 
 // SET LOCATION OF THE 'X' CLOSING BUTTON FOR ADD COMMENT DIV
 function chngClsBtnPos(){
 
   // IF ADD COMMENT DIV IS NOT ON THE PAGE/HIDDEN
-  if (!($('.addComment'))) {
-    return false
+  if (!($('.addComment').height())) {
+    return;
   };
 
   // CHECK THE HEIGHT OF THE ADD COMMENT DIV ONLY ONCE
@@ -349,13 +349,12 @@ $(document).ready(function(){
   changeHeight();
   validateForms();
   // SET INITIAL HEIGHT OF THE ADD COMMENT AFTER PAGE LOADS
-  higCom = 0;
+  // higCom = 0;
 
 
 })
 
 $(window).resize(function(){
   changeHeight();
-  //CHANGE CLOSE BUTTON POSITION WHEN WINDOW IS RESIZED
   chngClsBtnPos()
 })
