@@ -1,11 +1,12 @@
 .jumbotron.showJumbo
   .container
-    %h1.showHead Login
+    %h1.showHead Log in
     .row.no-center
       .col-md-6.col-md-offset-3
         =form_for(:session, :url => login_path, :html => { :id => "loginPageForm"}) do |f|
           .form-group
             = f.label :email
+            %em="(will not be published)"
             .val-col#loginEmail= f.email_field :email, class: "form-control", autofocus: true, required: true
           .form-group
             = f.label :password

@@ -9,6 +9,7 @@
               %li= message
       .form-group
         = f.label :email, class: "control-label"
+        %em="(will not be published)"
         .val-col= f.email_field :email, class: "form-control", autofocus: "true"
       .form-group
         = f.label :username, "Name", class: "control-label"

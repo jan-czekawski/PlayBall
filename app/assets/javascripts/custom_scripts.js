@@ -277,7 +277,17 @@ function validateForms(){
       });
     } else if (this.id == 'commentForm') {
       $(this).validate({
-        
+        messages: {
+          'comment[content]': "Comment can't be empty."
+        },
+        errorElement: "em",
+        errorPlacement: function(error,element){
+          // error.addClass("help-block");
+          error.insertAfter((element).parent());
+        },
+        success: false,
+        highlight: false,
+        unhighlight: false
       })
     } else {
       $(this).validate();

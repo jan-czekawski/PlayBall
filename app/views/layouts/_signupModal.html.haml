@@ -8,7 +8,7 @@
       .modal-body 
         =form_for(:user, :html => { :role => "form", :id => "signupModalForm", :class => "form-horizontal" }, :url => signup_path) do |f|
           .form-group
-            .control-label.col-xs-3= f.label :email
+            .control-label.col-xs-3.required= f.label :email, "Email <sup>(*)</sup>".html_safe
             #signupEmail.col-xs-7.val-col= f.email_field :email, class: "form-control", autofocus: true, required: true
           .form-group
             .control-label.col-xs-3= f.label :username, "Name"
@@ -23,3 +23,5 @@
             .col-xs-7.col-xs-offset-3= f.submit "Sign up", class: "btn btn-success btn-wide"
           You already have an account?
           %a#closeSignupModal Log in
+          %br
+          %em.emailReq (*) It will not be published
