@@ -1,11 +1,6 @@
 .jumbotron.showJumbo
   .container
     %h1.showHead= @user.username
-    //- if logged_in? && (current_user == @user || current_user.admin?)
-    - if logged_in? && current_user.admin?
-      / %strong Email address:
-      / %p= @user.email
-      / = link_to "Edit", edit_user_path(@user), class: "btn btn-warning"
     - if !@courts.blank?
       %h2= "Courts added by " + @user.username + ":"
       %br

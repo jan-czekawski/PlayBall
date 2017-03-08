@@ -18,7 +18,7 @@
         = f.hidden_field :longitude, :value => 20
         = f.label "location", class: "control-label"
         .val-col
-          %input.form-control{:name => "court[location]", :id => "court_location", :type => "text", :placeholder => " ", :onkeypress => "return ignoreEnterKey(event)"}
+          %input.form-control{:name => "court[location]", :id => "court_location", :type => "text", :placeholder => " "}
       .form-group
         = f.label :picture, class: "control-label"
         .val-col= f.file_field :picture, accept: "image/jpeg, image/jpg, image/gif, image/png", class: "form-control"

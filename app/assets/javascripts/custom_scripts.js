@@ -72,24 +72,26 @@ function displayAutoComplete(){
   google.maps.event.addDomListener(window, 'pageshow', geolocate);
 }
 
-// IGNORE PRESSED 'ENTER' DURING AUTOCOMPLETION
-function ignoreEnterKey(e) {
-    if (e.keyCode == 13 || e.which == 13) {
-        var tb = document.getElementById("court_location");
-        return false;
+// IGNORE 'ENTER' KEY TWICE ON AUTOCOMPLETE (.one() still submits form)
+$('#court_location').on('keypress', function(e){
+  var eventsLeft = 1;
+  if (e.keyCode == 13 || e.which == 13){
+    e.preventDefault();
+    if(!(--eventsLeft)){
+      $('#court_location').off();
     }
-}
+  }
+})
+
 
 // RUN MAP AUTOCOMPLETE FUNCTION ON THE ADD/EDIT COURT PAGE
 if ($.contains(document, $('#court_location')[0])){
   displayAutoComplete();
 }
 
-
 // FLEX TEXTAREA
 $(function() {
     $("textarea").flexible();
-    // $(".addComment.well").flexible();
 });
 
 
@@ -113,7 +115,6 @@ $('#court_picture').on('change', function(){
 
 // SET HEIGHT OF THE ADD COMMENT DIV
 var higCom = 0;
-
 
 // SET LOCATION OF THE 'X' CLOSING BUTTON FOR ADD COMMENT DIV
 function chngClsBtnPos(){
@@ -142,8 +143,6 @@ function chngClsBtnPos(){
   });
 }
 
-
-
 // SHOW ADD COMMENT DIV
 $("#addCommentButton").on('click', function(event){
   
@@ -165,8 +164,9 @@ $("#addCommentButton").on('click', function(event){
       }
     })
   },1)
-
 })
+
+$("#textAreaComment").on('')
 
 // CLOSE ADD COMMENT DIV
 $(".close").on('click', function(){
@@ -295,10 +295,8 @@ function validateForms(){
         messages: {
           'comment[content]': "Comment can't be empty."
         },
-        errorElement: "em",
         errorPlacement: function(error,element){
           var parent = element.parents('.row')
-          // error.addClass("help-block");
           error.insertAfter(element)
         },
         success: false,
@@ -311,7 +309,6 @@ function validateForms(){
   })
 }
 
-
 // CHANGE LANDING PAGE STYLING
 if ($.contains(document, $('#landingJumbotron')[0])) {
   $('#mainNav').hide();
@@ -323,35 +320,20 @@ $("#closeLoginModal").click(function(e){
     $("#loginModal").modal('hide');
     setTimeout(function(){
         $("#signupModal").modal("show");
-    },400)
+    },500)
 });
 
 $("#closeSignupModal").click(function(e){
     $("#signupModal").modal('hide');
     setTimeout(function(){
         $("#loginModal").modal("show");
-    },400)
+    },500)
 });
-
-$('.modal').on('shown.bs.modal', function(){
-  $('body').css('padding-right', "0px")  
-  $('body').removeClass("modal-open")
-})
-
-$('.modal').on('hidden.bs.modal', function(){
-  $('body').css('padding-right', "0px")
-  $('body').removeClass("modal-open")
-})
-
 
 $(document).ready(function(){
   $( "#courtsMainJumbo" ).prev().css(styles);
   changeHeight();
   validateForms();
-  // SET INITIAL HEIGHT OF THE ADD COMMENT AFTER PAGE LOADS
-  // higCom = 0;
-
-
 })
 
 $(window).resize(function(){
