@@ -112,10 +112,13 @@ $('#court_picture').on('change', function(){
 });
 
 // SET HEIGHT OF THE ADD COMMENT DIV
-var higCom = 0;
+var higCom;
+
 
 // SET LOCATION OF THE 'X' CLOSING BUTTON FOR ADD COMMENT DIV
 function chngClsBtnPos(){
+
+  // IF ADD COMMENT DIV IS NOT ON THE PAGE/HIDDEN
   if (!($('.addComment'))) {
     return false
   };
@@ -125,10 +128,13 @@ function chngClsBtnPos(){
     higCom = $('.addComment').height();
   }
 
+  // CHECK THE TOP POSITION OF THE DIV AND ADJUST IT, IF DIFFERENT
   var topPos = $('.addComment').position().top;
+  if (topPos != 159){
+    topPos += (159 - topPos); 
+  }
   var leftPos = $('.addComment').position().left;
   var widCom = $('.addComment').width();
-
 
   $('.closeComment').css({
     top: topPos - higCom/0.410,
@@ -342,9 +348,14 @@ $(document).ready(function(){
   $( "#courtsMainJumbo" ).prev().css(styles);
   changeHeight();
   validateForms();
+  // SET INITIAL HEIGHT OF THE ADD COMMENT AFTER PAGE LOADS
+  higCom = 0;
+
+
 })
 
 $(window).resize(function(){
   changeHeight();
+  //CHANGE CLOSE BUTTON POSITION WHEN WINDOW IS RESIZED
   chngClsBtnPos()
 })
