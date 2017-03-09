@@ -297,11 +297,13 @@ em {
   border: 2px solid #f0ad4e;
   border-radius: 4px;
   margin-bottom: 20px;
+  margin-top: 20px;
   .btn-wide{
     border: none;
     background-color: #f0ad4e
   }
   .closeEdtComment {
+    display: none;
     opacity: .5;
   }
   &:hover {

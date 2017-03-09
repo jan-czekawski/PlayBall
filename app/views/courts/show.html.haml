@@ -24,7 +24,7 @@
         %br
         - if logged_in?
           .row
-            .addComment.well.animated.fadeInLeft.col-md-6.col-md-offset-3.col-xs-8.col-xs-offset-2
+            .addComment.well.animate.fadeInLef.col-md-6.col-md-offset-3.col-xs-8.col-xs-offset-2
               %a.close.closeComment &times;
               =form_for @comment, :html => {:id => "commentForm"} do |f|
                 = f.hidden_field_tag "court_id", @court.id

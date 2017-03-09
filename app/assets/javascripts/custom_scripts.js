@@ -131,9 +131,11 @@ function chngClsBtnPos(){
 
   // CHECK THE TOP POSITION OF THE DIV AND ADJUST IT, IF DIFFERENT
   var topPos = $('.addComment').position().top;
+  console.log(topPos)
   if (topPos != 159){
     topPos += (159 - topPos); 
   }
+  console.log(topPos)
   var leftPos = $('.addComment').position().left;
   var widCom = $('.addComment').width();
 
@@ -141,6 +143,43 @@ function chngClsBtnPos(){
     top: topPos - higCom/0.410,
     left: leftPos + widCom/0.998
   });
+  console.log($('.closeComment').css('top'));
+  // console.log($('.closeComment').position())
+}
+
+// SET HEIGHT OF THE ADD COMMENT DIV
+var higEdCom = 0;
+
+// SET LOCATION OF THE 'X' CLOSING BUTTON FOR ADD COMMENT DIV
+function chngEdClsBtnPos(){
+
+  // IF ADD COMMENT DIV IS NOT ON THE PAGE/HIDDEN
+  if (!($('.edtComment').height())) {
+    return;
+  };
+
+  // CHECK THE HEIGHT OF THE ADD COMMENT DIV ONLY ONCE
+  if (!higEdCom){
+    higEdCom = $('.edtComment').height();
+  }
+
+  // CHECK THE TOP POSITION OF THE DIV AND ADJUST IT, IF DIFFERENT
+  var topPos = $('.edtComment').position().top;
+  if (topPos != 159){
+    topPos += (159 - topPos); 
+  }
+  console.log(topPos)
+  var leftPos = $('.edtComment').position().left;
+  if (leftPos != 0){
+    leftPos = 0
+  }
+  var widCom = $('.edtComment').width();
+  $('.closeEdtComment').css({
+    top: topPos - higEdCom/0.410,
+    left: leftPos + widCom/0.998
+  });
+  console.log($('.closeEdtComment').css('top'));
+  // console.log($('.closeEdtComment').position())
 }
 
 // SHOW ADD COMMENT DIV
@@ -148,58 +187,80 @@ $("#addCommentButton").on('click', function(event){
   
   event.preventDefault();
 
-  $('.addComment').show({
-    done: setTimeout(function(){
-      chngClsBtnPos()
-      $('.closeComment').show()
-    },1200)
-  })
+  // $('.addComment').show({
+  //   done: setTimeout(function(){
+  //     chngClsBtnPos()
+  //     $('.closeComment').show()
+  //   },1200)
+  // })
 
-  $('#addCommentButton').addClass('fadeOutLeft')
-  setTimeout(function(){
-    $('#addCommentButton').hide({
-      done: function(){
-        $(this).removeClass('fadeOutLeft');
-        $(this).addClass('fadeInLeft');
-      }
-    })
-  },1)
+  $('.addComment').show();
+  chngClsBtnPos();
+  $('.closeComment').show();
+  $('#addCommentButton').hide()
+  $('.edtComment').hide();
+  $('.well').show() 
+
+  // $('#addCommentButton').addClass('fadeOutLeft')
+  // setTimeout(function(){
+  //   $('#addCommentButton').hide({
+  //     done: function(){
+  //       $(this).removeClass('fadeOutLeft');
+  //       $(this).addClass('fadeInLeft');
+  //     }
+  //   })
+  // },1)
 })
 
-$("#textAreaComment").on('')
 
 // CLOSE ADD COMMENT DIV
 $(".closeComment").on('click', function(){
-  $('#addCommentButton').show({
-    done: function(){
-      setTimeout(function(){
-        $('#addCommentButton').removeClass('fadeInLeft')
-      },750)
-    }
-  })
+  // $('#addCommentButton').show({
+  //   done: function(){
+  //     setTimeout(function(){
+  //       $('#addCommentButton').removeClass('fadeInLeft')
+  //     },750)
+  //   }
+  // })
 
+  $('#addCommentButton').show()
+  
+  $('.addComment').hide()
   $('.closeComment').hide()
-  $('.addComment').addClass('fadeOutLeft');
+  // $('.addComment').addClass('fadeOutLeft');
 
-  setTimeout(function(){
-    $('.addComment').hide({
-      done: function(){
-        $(this).removeClass('fadeOutLeft')
-        $(this).addClass('fadeInLeft')
-      }
-    });
-  },1)
+  // setTimeout(function(){
+  //   $('.addComment').hide({
+  //     done: function(){
+  //       $(this).removeClass('fadeOutLeft')
+  //       $(this).addClass('fadeInLeft')
+  //     }
+  //   });
+  // },1)
 })
 
 $('.editComBtn').on('click', function(event){
   event.preventDefault();
+  $('.well').not($('.addComment')).show()
   $(this).parent().hide();
-  $('.edtComment').show();
+  // $(this).parent().next().show()
+  $('.edtComment').hide();
+  $('.addComment').hide()
+  $('#addCommentButton').show()
+  var theComment = $(this).parent().next().children()
+  theComment.show()
+  // chngEdClsBtnPos(theComment.children('.closeEdtComment'));
+  chngEdClsBtnPos($('.closeEdtComment'));
+  theComment.children('.closeEdtComment').show()
+  // $(this).next($('.edtComment')).show();
 })
 
 $('.closeEdtComment').on('click', function(){
-  $('.edtComment').hide();
-  $('.editComBtn').parent().show();
+  $(this).parent().hide();
+  // console.log($(this).parent())
+  $('.well').not($('.addComment')).show()
+  // $(this).parent().parent().prev().show()
+  // $(this).parent().prev().children().show()
 })
 
 // HANDLE COURTS LOCATION SUBMITION
@@ -346,5 +407,6 @@ $(document).ready(function(){
 
 $(window).resize(function(){
   changeHeight();
-  chngClsBtnPos()
+  chngClsBtnPos();
+  chngEdClsBtnPos();
 })
