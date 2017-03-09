@@ -113,9 +113,6 @@ $('#court_picture').on('change', function(){
   }
 });
 
-// SET HEIGHT OF THE ADD COMMENT DIV
-var higCom = 0;
-
 // SET LOCATION OF THE 'X' CLOSING BUTTON FOR ADD COMMENT DIV
 function chngClsBtnPos(){
 
@@ -124,62 +121,13 @@ function chngClsBtnPos(){
     return;
   };
 
-  // CHECK THE HEIGHT OF THE ADD COMMENT DIV ONLY ONCE
-  if (!higCom){
-    higCom = $('.addComment').height();
-  }
-
-  // CHECK THE TOP POSITION OF THE DIV AND ADJUST IT, IF DIFFERENT
-  var topPos = $('.addComment').position().top;
-  console.log(topPos)
-  if (topPos != 159){
-    topPos += (159 - topPos); 
-  }
-  console.log(topPos)
   var leftPos = $('.addComment').position().left;
   var widCom = $('.addComment').width();
 
   $('.closeComment').css({
-    top: topPos - higCom/0.410,
+    top: -32,
     left: leftPos + widCom/0.998
   });
-  console.log($('.closeComment').css('top'));
-  // console.log($('.closeComment').position())
-}
-
-// SET HEIGHT OF THE ADD COMMENT DIV
-var higEdCom = 0;
-
-// SET LOCATION OF THE 'X' CLOSING BUTTON FOR ADD COMMENT DIV
-function chngEdClsBtnPos(){
-
-  // IF ADD COMMENT DIV IS NOT ON THE PAGE/HIDDEN
-  if (!($('.edtComment').height())) {
-    return;
-  };
-
-  // CHECK THE HEIGHT OF THE ADD COMMENT DIV ONLY ONCE
-  if (!higEdCom){
-    higEdCom = $('.edtComment').height();
-  }
-
-  // CHECK THE TOP POSITION OF THE DIV AND ADJUST IT, IF DIFFERENT
-  var topPos = $('.edtComment').position().top;
-  if (topPos != 159){
-    topPos += (159 - topPos); 
-  }
-  console.log(topPos)
-  var leftPos = $('.edtComment').position().left;
-  if (leftPos != 0){
-    leftPos = 0
-  }
-  var widCom = $('.edtComment').width();
-  $('.closeEdtComment').css({
-    top: topPos - higEdCom/0.410,
-    left: leftPos + widCom/0.998
-  });
-  console.log($('.closeEdtComment').css('top'));
-  // console.log($('.closeEdtComment').position())
 }
 
 // SHOW ADD COMMENT DIV
@@ -239,28 +187,39 @@ $(".closeComment").on('click', function(){
   // },1)
 })
 
+// SET LOCATION OF THE 'X' CLOSING BUTTON FOR EDIT COMMENT DIV
+function chngEdClsBtnPos(){
+
+  // IF EDIT COMMENT DIV IS NOT ON THE PAGE/HIDDEN
+  if (!($('.edtComment').height())) {
+    return;
+  };
+
+  var widCom = $('.edtComment').width();
+  $('.closeEdtComment').css({
+    top: -32,
+    left: widCom/0.998
+  });
+}
+
+// SHOW EDIT COMMENT FIELD, HIDE CLICKED COMMENT AND CLOSE (IF OPEN) OTHER EDIT COMMENT FIELD OR ADD COMMENT FIELD
 $('.editComBtn').on('click', function(event){
   event.preventDefault();
   $('.well').not($('.addComment')).show()
   $(this).parent().hide();
-  // $(this).parent().next().show()
   $('.edtComment').hide();
   $('.addComment').hide()
   $('#addCommentButton').show()
   var theComment = $(this).parent().next().children()
   theComment.show()
-  // chngEdClsBtnPos(theComment.children('.closeEdtComment'));
-  chngEdClsBtnPos($('.closeEdtComment'));
+  chngEdClsBtnPos();
   theComment.children('.closeEdtComment').show()
-  // $(this).next($('.edtComment')).show();
 })
 
+// CLOSE EDIT COMMENT FIELD AND SHOW ALL COMMENTS
 $('.closeEdtComment').on('click', function(){
   $(this).parent().hide();
-  // console.log($(this).parent())
   $('.well').not($('.addComment')).show()
-  // $(this).parent().parent().prev().show()
-  // $(this).parent().prev().children().show()
 })
 
 // HANDLE COURTS LOCATION SUBMITION
@@ -321,9 +280,6 @@ function validateForms(){
         'court[location]': "required",
         'court[picture]': "required"
       },
-      messages: {
-        'user[password_confirmation]': "Please enter the same password as above"
-      },
       errorElement: "em",
       errorPlacement: function (error, element) {
         error.addClass("help-block");
@@ -352,10 +308,13 @@ function validateForms(){
     if (this.id == 'userForm'){
       $(this).validate({
         rules: {
+          'user[password]': {
+            required: false
+          },
           'user[password_confirmation]': {
+            required: false,
             equalTo: "#userForm #user_password",
-            minlength: 6,
-            required: true
+            minlength: 6
           }
         }        
       });

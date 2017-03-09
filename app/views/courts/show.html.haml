@@ -13,7 +13,10 @@
         .caption
           %br       
           %p.courtParagraph= @court.description
-          %small= "Created by: " + User.find(@court.user_id).username + ", " + time_ago_in_words(@court.created_at) + " ago "
+          - if @court.created_at == @court.updated_at
+            %small= "Created by: " + User.find(@court.user_id).username + ", " + time_ago_in_words(@court.created_at) + " ago "
+          - else  
+            %small= "Updated by: " + User.find(@court.user_id).username + ", " + time_ago_in_words(@court.updated_at) + " ago "
         %br
         - if logged_in? && (current_user.id == @court.user_id || current_user.admin?)
           =link_to "Edit", edit_court_path(@court), class: "btn btn-warning"
@@ -35,7 +38,10 @@
           -if !comment.user_id.blank?
             .well
               %p.comment= comment.content
-              %small.commentDate= "Added by: " + User.find(comment.user_id).username + ", " + time_ago_in_words(comment.created_at) + " ago "
+              - if comment.created_at == comment.updated_at
+                %small.commentDate= "Added by: " + User.find(comment.user_id).username + ", " + time_ago_in_words(comment.created_at) + " ago "
+              - else  
+                %small.commentDate= "Updated by: " + User.find(comment.user_id).username + ", " + time_ago_in_words(comment.updated_at) + " ago "
               - if logged_in? && (current_user.id == comment.user_id || current_user.admin?)
                 %br
                 = link_to "Delete", comment_path(comment), class: "commentActions btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure?" }
@@ -50,5 +56,5 @@
                     = f.text_area :content, class: "form-control", required: "true", autofocus: "true", id: "textAreaComment"
                     = f.submit "Edit Comment", class: "btn btn-info btn-wide"
 
-/ %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyCHvA_HeK-Kj5bULpf9VkGl5SFGgyp3Fu8&libraries=places"}
-/   :cdata
+%script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyCHvA_HeK-Kj5bULpf9VkGl5SFGgyp3Fu8&libraries=places"}
+  :cdata
