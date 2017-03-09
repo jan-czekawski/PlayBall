@@ -21,10 +21,7 @@ function displayMap(){
       map: map,
       title: 'Hello World!'
     });
-
-
   }
-
 
   window.onload = function(){
     var long = parseFloat($("#inputLongitude").val());
@@ -344,7 +341,7 @@ function validateForms(){
 // CHANGE LANDING PAGE STYLING
 if ($.contains(document, $('#landingJumbotron')[0])) {
   $('#mainNav').hide();
-  $('body').css("padding-top", 0);
+  $('body').css({"padding-top": 0, "overflow": "hidden"});
 }
 
 // HANDLE SWITCHING BETWEEN LOGIN/SIGNUP MODALS
@@ -361,6 +358,14 @@ $("#closeSignupModal").click(function(e){
         $("#loginModal").modal("show");
     },500)
 });
+
+// SUBMIT NEW COMMENT AFTER PRESSING 'ENTER'
+$('.addComment textarea, .edtComment textarea').on('keypress', function(e){
+  if (e.keyCode == 13 || e.which == 13){
+    e.preventDefault()
+    $(this).parent().parent().submit()
+  }
+})
 
 $(document).ready(function(){
   $( "#courtsMainJumbo" ).prev().css(styles);
