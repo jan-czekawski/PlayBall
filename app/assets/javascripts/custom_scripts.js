@@ -21,7 +21,13 @@ function displayMap(){
       map: map,
       title: 'Hello World!'
     });
+
+    $('#mapDiv').on('shown', function () { 
+      google.maps.event.trigger(map, 'resize');  
+    }); 
+
   }
+
 
   window.onload = function(){
     var long = parseFloat($("#inputLongitude").val());
