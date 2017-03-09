@@ -241,7 +241,7 @@ em {
 
 
 // COURTS - SHOW PAGE - ADD COMMENT FIELD
-.addComment {
+.addComment, .edtComment {
   background: #fff;
   border: 2px solid #5BC0DE;
   display: none;
@@ -252,7 +252,7 @@ em {
       border: none;
       background-color: #31B0D5;
     }
-    .closeComment{
+    .closeComment {
       opacity: .5;
     }
   }
@@ -270,11 +270,16 @@ em {
   .form-control:focus {
     @include box-shdw;                                                                                        
   }
-  .closeComment {
+  .closeComment, {
     display: none;
     position: absolute;
     font-size: 3em;
     color: rgb(49, 176, 213);
+  }
+  .closeEdtComment {
+    position: absolute;
+    font-size: 3em;
+    color: #eea236;
   }
   .btn-wide {
     border-radius: 0;
@@ -288,3 +293,24 @@ em {
   }
 }
 
+.edtComment {
+  border: 2px solid #f0ad4e;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  .btn-wide{
+    border: none;
+    background-color: #f0ad4e
+  }
+  .closeEdtComment {
+    opacity: .5;
+  }
+  &:hover {
+    border: 2px solid #eea236;
+    .btn-wide {
+      background-color: #eea236;
+    }
+    .closeEdtComment{
+      opacity: .8;
+    }
+  }
+}

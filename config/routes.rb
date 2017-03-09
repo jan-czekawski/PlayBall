@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users
 	root "pages#index"
   resources :courts
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy, :update]
 
   post "signup", to: "users#create"
   get "signup", to: "users#new"

@@ -169,7 +169,7 @@ $("#addCommentButton").on('click', function(event){
 $("#textAreaComment").on('')
 
 // CLOSE ADD COMMENT DIV
-$(".close").on('click', function(){
+$(".closeComment").on('click', function(){
   $('#addCommentButton').show({
     done: function(){
       setTimeout(function(){
@@ -189,10 +189,18 @@ $(".close").on('click', function(){
       }
     });
   },1)
-
 })
 
+$('.editComBtn').on('click', function(event){
+  event.preventDefault();
+  $(this).parent().hide();
+  $('.edtComment').show();
+})
 
+$('.closeEdtComment').on('click', function(){
+  $('.edtComment').hide();
+  $('.editComBtn').parent().show();
+})
 
 // HANDLE COURTS LOCATION SUBMITION
 $("#submitFormButton").on('click', function(event){

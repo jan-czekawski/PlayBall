@@ -39,6 +39,16 @@
               - if logged_in? && (current_user.id == comment.user_id || current_user.admin?)
                 %br
                 = link_to "Delete", comment_path(comment), class: "commentActions btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure?" }
+                = link_to "Edit", comment_path(comment), class: "editComBtn commentActions btn btn-warning btn-xs"
+          - if logged_in? && (current_user.id == comment.user_id || current_user.admin?)      
+            .row
+              .edtComment.animate.fadeInLef.col-md-6.col-md-offset-3.col-xs-8.col-xs-offset-2
+                %a.close.closeEdtComment &times;
+                =form_for comment, :html => {:id => "commentForm"} do |f|
+                  = f.hidden_field_tag "court_id", @court.id
+                  .form-group.val-col
+                    = f.text_area :content, class: "form-control", required: "true", autofocus: "true", id: "textAreaComment"
+                    = f.submit "Edit Comment", class: "btn btn-info btn-wide"
 
 / %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyCHvA_HeK-Kj5bULpf9VkGl5SFGgyp3Fu8&libraries=places"}
 /   :cdata
