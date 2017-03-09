@@ -177,6 +177,11 @@ em {
   }
 }
 
+#showImg {
+  padding: 0;
+  margin-bottom: 15px;
+}
+
 @media (min-width: 500px) {
     .thumbnail {
         width: 90%;
@@ -237,10 +242,7 @@ em {
   float: right;
 }
 
-#showImg {
-  padding: 0;
-  margin-bottom: 15px;
-}
+
 
 #map {
   height: 100%;
