@@ -22,9 +22,6 @@ function displayMap(){
       title: 'Hello World!'
     });
 
-    $('#mapDiv').on('shown', function () { 
-      google.maps.event.trigger(map, 'resize');  
-    }); 
 
   }
 
@@ -32,9 +29,10 @@ function displayMap(){
   window.onload = function(){
     var long = parseFloat($("#inputLongitude").val());
     var lat = parseFloat($("#inputLatitude").val());
+    changeHeight();
     setTimeout(function(){
       initMapOn(lat, long);
-    }, 50)
+    }, 300)
   }
 }
 
