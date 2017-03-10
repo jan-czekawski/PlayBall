@@ -6,12 +6,13 @@ class CourtsController < ApplicationController
 
   #GET /courts
   def index
-    @courts = Court.all
+    @courts = Court.paginate(:page => params[:page])
   end
 
   #GET /courts/1
   def show
     @comment = @court.comments.build if logged_in?
+    @comments = Comment.joins(:court).where('comments.court_id = ?', params[:id]).paginate(:page => params[:page], :per_page => 5) if logged_in?
   end
 
   #GET /courts/new
@@ -72,5 +73,6 @@ class CourtsController < ApplicationController
     def created_by
       @created = User.find(@court.user_id)
     end
+
 
 end

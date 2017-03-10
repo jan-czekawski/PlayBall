@@ -4,12 +4,13 @@
     - if !@courts.blank?
       %h2= "Courts added by " + @user.username + ":"
       %br
+      = will_paginate @courts
       .row
         - @courts.each do |court|
           .col-md-4.col-sm-6
             %a{:href => "/courts/#{court.id}"}
               .thumbnail.hvr-grow
-                %img{:src => "#{court.picture.url}", :onerror =>"this.src='/assets/ball.jpg'", :height => "100px"}
+                %img{:src => "#{court.picture.url}", :onerror =>"this.src=errorPage", :height => "100px"}
                 .caption
                   %h3= court.name
                   %p= truncate(court.description, length: 60)
@@ -17,5 +18,6 @@
                   %small= court.created_at
                   %small= "Created by:"
                   %small= court.user_id
+      = will_paginate @courts
     - else
       %h2= @user.username + " hasn't added any courts yet"

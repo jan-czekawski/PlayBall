@@ -21,6 +21,8 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'fog'
 gem 'faker', '~> 1.7', '>= 1.7.3'
+gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap-will_paginate'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

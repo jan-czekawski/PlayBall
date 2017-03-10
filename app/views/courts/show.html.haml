@@ -5,7 +5,7 @@
     %input#inputLatitude{:type => "hidden", :value => @court.latitude}
     .row
       .col-sm-12
-        %img#showImg.col-sm-8.col-xs-12{:src => "#{@court.picture.url}", :onerror =>"this.src='/assets/ball.jpg'"}
+        %img#showImg.col-sm-8.col-xs-12{:src => "#{@court.picture.url}", :onerror =>"this.src=errorPage"}
         #mapDiv.col-sm-4.col-xs-12
           #map
         .clear
@@ -34,7 +34,8 @@
                 .form-group.val-col
                   = f.text_area :content, class: "form-control", required: "true", autofocus: "true", id: "textAreaComment"
                   = f.submit "Add Comment", class: "btn btn-info btn-wide"
-        - @court.comments.each do |comment|
+        = will_paginate @comments
+        - @comments.each do |comment|
           -if !comment.user_id.blank?
             .well
               %p.comment= comment.content
@@ -55,6 +56,8 @@
                   .form-group.val-col
                     = f.text_area :content, class: "form-control", required: "true", autofocus: "true", id: "textAreaComment"
                     = f.submit "Edit Comment", class: "btn btn-info btn-wide"
+        = will_paginate @comments
 
-%script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyCHvA_HeK-Kj5bULpf9VkGl5SFGgyp3Fu8&libraries=places"}
-  :cdata
+
+/ %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyCHvA_HeK-Kj5bULpf9VkGl5SFGgyp3Fu8&libraries=places"}
+/   :cdata

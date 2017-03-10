@@ -8,15 +8,17 @@
       %a#signupButton.btn-success.btn.btn-lg{:data => {:toggle => "modal", :which => "signup", :target=> "#signupModal"}} Sign up to add your courts!        
 .jumbotron#courtsContentJumbo
   .container#courtsContentContainer
+    = will_paginate @courts
     .row#courtsRow
       - @courts.each do |court|
         .col-md-4.col-sm-6
           %a{:href => "/courts/#{court.id}"}
             .thumbnail.hvr-grow
-              %img{:src => "#{court.picture.url}", :onerror =>"this.src='/assets/ball.jpg'", :height => "100px"}
+              %img{:src => "#{court.picture.url}", :onerror =>"this.src=errorPage", :height => "100px"}
               .caption    
                 %h3= court.name
                 %p= truncate(court.description, length: 60)
                 %small= "Created by: " + User.find(court.user_id).username + ", " + time_ago_in_words(court.created_at) + " ago "
+    = will_paginate @courts
     
 

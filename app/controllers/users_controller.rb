@@ -7,13 +7,13 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.paginate(:page => params[:page])
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @courts = Court.all.where(:user_id => "#{@user.id}")
+    @courts = Court.paginate(:page => params[:page]).where(:user_id => "#{@user.id}")
   end
 
   # GET /users/new
@@ -82,9 +82,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :email, :password, :admin, :password_confirmation)
     end
-
-
-
 
 
 end

@@ -1,4 +1,6 @@
-// FLASH MESSAGE STYLES FOR PAGES OTHER THAN INDEX COURT
+var errorPage = "https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/ball.jpg"
+
+// FLASH MESSAGE STYLES FOR INDEX COURT PAGE
 var styles = {
   position: "absolute",
   width: "100%",
@@ -8,6 +10,7 @@ var styles = {
 
 // SHOW MAP ON COURT SHOW PAGE
 function displayMap(){
+
   function initMapOn(latSelected, lngSelected) {
     var myLatLng = {lat: latSelected, lng: lngSelected};
 
