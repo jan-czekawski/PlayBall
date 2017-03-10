@@ -20,5 +20,9 @@
       .form-group
         = f.label :password_confirmation, "Password Confirmation", class: "control-label"
         .val-col= f.password_field :password_confirmation, class: "form-control", autocomplete: "false"
+      / .form-group
+      /   =f.label :remember, class: "checkbox inline rememberLabel regForm" do
+      /     =f.check_box :remember
+      /     %span Remember me on this computer 
       = f.submit "Submit", class: "btn btn-success btn-wide"
 

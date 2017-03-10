@@ -119,6 +119,34 @@ hr {
   text-align: center;
 }
 
+// .control-label.rememberLabel {
+//   text-align: left;
+//   padding: 0; 
+// }
+
+// .rememberBox {
+//   padding: 0 0 0 5px;
+//   margin-left: 5px;
+// }
+
+.checkbox.inline {
+  margin-top: -10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+.checkbox.inline.regForm {
+    margin-top: 0px;
+}
+
+#session_remember, #user_remember {
+  width: auto;
+  margin-left: 0;
+}
+
+
 .emailReq {
   display: inline-block;
   margin-top: 10px;

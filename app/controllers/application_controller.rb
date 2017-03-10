@@ -1,20 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :logged_in?
+  include SessionsHelper
+  # helper_method :current_user, :logged_in?
 
   WillPaginate.per_page = 15
 
-  def set_variable
-    @key = ENV['GMAPS_KEY']
-  end
-
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
-
-  def logged_in?
-    !!current_user
-  end
 
   def require_user
     if !logged_in?

@@ -19,6 +19,12 @@
           .form-group
             .control-label.col-xs-3= f.label :password_confirmation, "Confirmation"
             .col-xs-7.val-col= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
+          / .form-group
+          /   .col-xs-3
+          /   .col-xs-7
+          /     =f.label :remember, class: "checkbox inline rememberLabel no-center" do
+          /       =f.check_box :remember
+          /       %span Remember me on this computer 
           .form-group
             .col-xs-7.col-xs-offset-3= f.submit "Sign up", class: "btn btn-success btn-wide"
           You already have an account?

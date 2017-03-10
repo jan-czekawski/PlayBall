@@ -12,6 +12,10 @@
             = f.label :password
             .val-col= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
           .form-group
+            =f.label :remember, class: "checkbox inline rememberLabel regForm" do
+              =f.check_box :remember
+              %span Remember me on this computer 
+          .form-group
             = f.submit "Log in", class: "btn btn-success btn-wide"
     First time on the page?
     = link_to "Sign up", signup_path

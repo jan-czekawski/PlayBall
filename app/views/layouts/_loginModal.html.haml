@@ -14,6 +14,12 @@
             .control-label.col-xs-3= f.label :password
             .col-xs-7.val-col= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
           .form-group
+            .col-xs-3
+            .col-xs-7
+              =f.label :remember, class: "checkbox inline rememberLabel no-center" do
+                =f.check_box :remember
+                %span Remember me on this computer 
+          .form-group
             .col-xs-7.col-xs-offset-3= f.submit "Log in", class: "btn btn-success btn-wide"
           First time on the page?
           %a#closeLoginModal Sign up
