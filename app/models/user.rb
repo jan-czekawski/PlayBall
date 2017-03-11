@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
-  before_save { self.email = email.downcase }
+  before_save :email_downcase
   has_many :courts, dependent: :destroy
   has_many :comments, dependent: :destroy
   validates :username, presence: true,
@@ -40,5 +40,10 @@ class User < ApplicationRecord
   # FORGET THE DIGEST
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  # BEFORE SAVING CHANGE ALL CHARACTERS TO LOWERCASE
+  def email_downcase
+    self.email = email.downcase 
   end
 end
