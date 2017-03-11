@@ -1,0 +1,10 @@
+Hi <%= @user.username %>
+
+You've created account in PlayBall!
+In order to activate your account, please click following link:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+(If it's not working, please copy it and paste it in the browser directly.)
+If you haven't tried to create account on our website, please ignore this message.
+

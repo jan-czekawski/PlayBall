@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
+  before_create :create_activation_digest
   before_save :email_downcase
   has_many :courts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -25,16 +26,17 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
-  # SAVE THAT TOKEN AS A VIRTUAL ATTRIBUTE, ENCRYPT ITS COPY AND SAVE IT IN DIGEST
+  # SAVE THAT TOKEN AS A REMEMBER TOKEN, ENCRYPT ITS COPY AND SAVE IT IN DIGEST
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
-  # CHECK IF REMEMBER DIGEST AND TOKEN ARE THE SAME
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  # CHECK IF DIGEST AND TOKEN ARE THE SAME
+  def authenticated?(type, token)
+    digest = self.send("#{type}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   # FORGET THE DIGEST
@@ -46,4 +48,11 @@ class User < ApplicationRecord
   def email_downcase
     self.email = email.downcase 
   end
+
+  private
+
+    def create_activation_digest
+      self.activation_token = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 end
