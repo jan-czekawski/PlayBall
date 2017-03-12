@@ -1,35 +1,4 @@
 class PasswordResetsController < ApplicationController
-
-
-
-  def new
-  end
-
-  def create
-    @user = User.find_by(:email => params[:password_reset][:email].downcase)
-    if @user
-      @user.create_reset_digest
-      UserMailer.password_reset(@user).deliver_now
-      flash[:info] = "Message was sent to your email address. It contains instructions, please follow them to reset your password."
-      redirect_to courts_path
-    else
-      flash.now[:danger] = "That email address does not exist in our database."
-      render 'new'
-    end
-  end
-
-  def edit
-  @user = User.find_by(:email => params[:email])
-    unless @user && @user.authenticated?("reset", params[:id]) && @user.not_expired?
-      flash[:danger] = "Invalid password reset link"
-      redirect_to courts_path
-    end
-  end
-
-end
-
-
-class PasswordResetsController < ApplicationController
   before_action :set_user, only: [:edit, :update]
   before_action :correct_user?, only: [:edit, :update]
   before_action :not_expired?, only: [:edit, :update]
@@ -46,8 +15,8 @@ class PasswordResetsController < ApplicationController
       flash[:info] = "Message with reset password link was sent to your email address."
       redirect_to courts_path
     else
-      flash[:danger] = "That email address does not exist in our database."
-      redirect_to courts_path
+      flash.now[:danger] = "That email address does not exist in our database."
+      render 'new'
     end
   end
 
@@ -55,10 +24,13 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    @user.update_attribute(:password_digest, User.digest(params[:password]))
-    if @user.update
+    if @user.update_attributes(user_params)
       flash[:success] = "Your password was changed."
+      @user.update_attribute(:reset_digest, nil)
       redirect_to login_path
+    elsif params[:user][:password].empty?
+      flash.now[:danger] = "Password cannot be empty."
+      render 'edit'
     else
       flash.now[:danger] = "There was an error. Please try again."
       render 'edit'
@@ -77,6 +49,10 @@ class PasswordResetsController < ApplicationController
         flash[:danger] = "Your password link has been expired."
         redirect_to new_password_reset_url
       end
+    end
+
+    def user_params
+      params.require(:user).permit(:password, :password_confirmation)
     end
 
     def correct_user?
