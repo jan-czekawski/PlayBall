@@ -3,6 +3,7 @@ $def-col: #fff;
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:700');
 
+
 @mixin bg-cover{
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -35,7 +36,6 @@ textarea {
 
 h3 {
   margin-top: 10px;
-  margin-bottom: 20px;
 }
 
 .clear {
@@ -262,6 +262,15 @@ em {
   p {
     font-size: 100%;
   }
+}
+
+.showUserPgn {
+  margin: 5px 0 10px 0;
+}
+
+#changeGravatar {
+  font-style: italic;
+  margin: 10px 0 0;
 }
 
 .commentActions {

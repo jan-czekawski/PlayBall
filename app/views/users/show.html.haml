@@ -1,10 +1,9 @@
 .jumbotron.showJumbo
   .container
-    %h1.showHead= @user.username
+    = gravatar(@user, size: 200)
     - if !@courts.blank?
       %h2= "Courts added by " + @user.username + ":"
-      %br
-      = will_paginate @courts
+      = will_paginate @courts, class: "showUserPgn pagination"
       .row
         - @courts.each do |court|
           .col-md-4.col-sm-6

@@ -335,6 +335,14 @@ function validateForms(){
         highlight: false,
         unhighlight: false
       })
+    } else if (this.id == 'passwordResetForm') {
+      $(this).validate({
+        rules: {
+          'user[password_confirmation]': {
+            equalTo: "#passwordResetForm #user_password"
+          }
+        }
+      })
     } else {
       $(this).validate();
     }

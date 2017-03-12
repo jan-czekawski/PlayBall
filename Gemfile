@@ -15,7 +15,7 @@ gem 'puma', '~> 3.0'
 gem 'haml'
 gem 'bootstrap-sass'
 gem 'twitter-bootstrap-rails'
-gem "font-awesome-rails"
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'

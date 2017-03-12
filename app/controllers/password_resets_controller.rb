@@ -8,12 +8,15 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(:email => params[:email])
+    @user = User.find_by(:email => params[:password_reset][:email].downcase)
     if @user
       @user.create_reset_digest
       UserMailer.password_reset(@user).deliver_now
       flash[:info] = "Message with reset password link was sent to your email address."
       redirect_to courts_path
+    elsif @user.nil?
+      flash.now[:danger] = "Email address cannot be empty."
+      render 'new'
     else
       flash.now[:danger] = "That email address does not exist in our database."
       render 'new'
@@ -45,11 +48,12 @@ class PasswordResetsController < ApplicationController
 
     def not_expired?
       # unless self.reset_at > 2.hours.ago return false
-      if self.reset_at < 2.hours.ago 
+      if @user.reset_at < 2.hours.ago 
         flash[:danger] = "Your password link has been expired."
         redirect_to new_password_reset_url
       end
     end
+
 
     def user_params
       params.require(:user).permit(:password, :password_confirmation)

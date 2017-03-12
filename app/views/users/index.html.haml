@@ -1,14 +1,14 @@
 .jumbotron.showJumbo
   .container
-    %h1.showHead All Users
+    %h1.showHead Users
     = will_paginate @users
     .row
       -@users.each do |user|
         .col-md-4.col-sm-6
           .thumbnail
             .caption
+              =gravatar(user)
               %h3= user.username
-              %br
               = link_to 'Show', user, :class => "btn btn-info btn-xs"
               - if logged_in? && (current_user == user || current_user.admin?)
                 = link_to 'Edit', edit_user_path(user), :class => "btn btn-warning btn-xs"

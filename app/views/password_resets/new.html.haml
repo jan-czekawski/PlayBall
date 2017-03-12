@@ -1,11 +1,12 @@
 .jumbotron.showJumbo
   .container
-    %h1.showHead Reset password
+    %h1.showHead Password reset
     .row.no-center
       .col-md-6.col-md-offset-3
         =form_for(:password_reset, :url => password_resets_path ) do |f|
           .form-group
             =f.label :email
-            =f.email_field :email, class: "form-control"
+            %em (It will not be published)
+            .val-col=f.email_field :email, class: "form-control", required: true
           .form-group
             =f.submit "Reset your password", class: "btn btn-success btn-wide"
