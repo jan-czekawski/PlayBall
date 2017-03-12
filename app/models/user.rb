@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
   before_save :email_downcase
   has_many :courts, dependent: :destroy
@@ -49,10 +49,20 @@ class User < ApplicationRecord
     self.email = email.downcase 
   end
 
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_columns(reset_digest: User.digest(reset_token), reset_at: Time.now)
+  end
+
+
+
+
   private
 
     def create_activation_digest
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
+
+
 end

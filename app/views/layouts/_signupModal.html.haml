@@ -4,7 +4,7 @@
       .modal-header
         %button.close{:type => "button", :data => {:dismiss => "modal"}}
           %span &times;
-        %h4.modal-title#myModalLabel Sign up
+        %h3.modal-title#myModalLabel Sign up
       .modal-body 
         =form_for(:user, :html => { :role => "form", :id => "signupModalForm", :class => "form-horizontal" }, :url => signup_path) do |f|
           .form-group
