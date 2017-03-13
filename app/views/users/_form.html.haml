@@ -7,6 +7,11 @@
           %ul
             - user.errors.full_messages.each do |message|
               %li= message
+      - if type == 'edit'
+        .form-group
+          = f.label :picture, "Upload your avatar", class: "control-label"
+          = link_to 'or change your gravatar', 'https://en.gravatar.com/connect/', target: '_blank'
+          .val-col= f.file_field :picture, class: "form-control"
       .form-group
         = f.label :email, class: "control-label"
         %em="(It will not be published)"

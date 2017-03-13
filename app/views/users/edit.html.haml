@@ -1,6 +1,8 @@
 .jumbotron.showJumbo
   .container
-    = gravatar(@user, size: 200)
-    #changeGravatar= link_to 'Change picture', 'https://en.gravatar.com/connect/', target: '_blank' 
+    - if @user.picture.blank?
+      = gravatar(@user, size: 200)
+    - else
+      =image_tag(@user.picture, :height => 200)
     %h1.showHead Edit your account
-    = render "form", :user => @user
+    = render "form", :user => @user, :type => 'edit'

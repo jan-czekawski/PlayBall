@@ -8,12 +8,14 @@
         %span.icon-bar
       %a.navbar-brand#logo{:href => "/courts"} PlayBall
     .collapse.navbar-collapse#bs-example-navbar-collapse-1
-      %ul.nav.navbar-nav.navbar-right 
-        %li
-          %a{:href => "/courts"} Home          
+      %ul.nav.navbar-nav.navbar-right          
         -if logged_in?
           %li
+            %a{:href => "/courts/new"} Add court
+          %li
             %a{:href => "/users"} Users
+          %li
+            %a{:href => "/courts"} Home 
           %li.dropdown
             %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}, 
                                :role => "button"}
@@ -35,6 +37,8 @@
                   %i.fa.fa-sign-out
                   Logout
         -else
+          %li
+            %a{:href => "/courts"} Home         
           %li
             %a#loginButton{:data => {:toggle => "modal", :which => "login", :target=> "#loginModal"}}
               %i.fa.fa-user

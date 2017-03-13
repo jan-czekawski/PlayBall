@@ -1,7 +1,7 @@
 .jumbotron.showJumbo
   .container
     %h1.showHead Sign up
-    = render "form", :user => @user
+    = render "form", :user => @user, :type => 'new'
     %br
     %span.no-center
       Already have an account?

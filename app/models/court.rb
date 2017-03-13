@@ -1,5 +1,6 @@
 class Court < ActiveRecord::Base
   belongs_to :user
+  include ApplicationHelper
   has_many :comments, dependent: :destroy
   validates :name, presence: true, 
                    length: { maximum: 255 }
@@ -11,11 +12,4 @@ class Court < ActiveRecord::Base
   validates :longitude, presence: true
   validates :latitude, presence: true
 
-  private
-
-  def picture_size
-    if picture.size > 5.megabytes
-      errors.add(:picture, "should be less than 5MB")
-    end
-  end
 end

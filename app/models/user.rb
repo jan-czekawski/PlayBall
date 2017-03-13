@@ -1,11 +1,14 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
+  include ApplicationHelper
   before_create :create_activation_digest
   before_save :email_downcase
   has_many :courts, dependent: :destroy
   has_many :comments, dependent: :destroy
   validates :username, presence: true,
                        length: { maximum: 50}
+  mount_uploader :picture, PictureUploader
+  validate :picture_size                  
   VALID_EMAIL_REGEX= /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, 
                     length: { maximum: 255 }, 

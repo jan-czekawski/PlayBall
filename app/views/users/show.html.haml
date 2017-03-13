@@ -1,6 +1,9 @@
 .jumbotron.showJumbo
   .container
-    = gravatar(@user, size: 200)
+    - if @user.picture.blank?
+      = gravatar(@user, size: 200)
+    - else
+      =image_tag(@user.picture, height: 200)
     - if !@courts.blank?
       %h2= "Courts added by " + @user.username + ":"
       = will_paginate @courts, class: "showUserPgn pagination"
