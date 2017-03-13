@@ -29,16 +29,14 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    respond_to do |format|
-      if @user.save
-        UserMailer.account_activation(@user).deliver_now
-        flash[:info] = "Activation link was sent to your email address"
-        # session[:user_id] = @user.id
-        # flash[:success] = 'User was successfully created.'
-        format.html { redirect_to courts_path }
-      else
-        format.html { render :new }
-      end
+    if @user.save
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Activation link was sent to your email address"
+      # session[:user_id] = @user.id
+      # flash[:success] = 'User was successfully created.'
+      redirect_to courts_path
+    else
+      render 'new'
     end
   end
 
