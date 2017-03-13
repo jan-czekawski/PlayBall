@@ -11,13 +11,13 @@ class CourtsController < ApplicationController
 
   #GET /courts/1
   def show
-    @comment = @court.comments.build if logged_in?
-    @comments = Comment.joins(:court).where('comments.court_id = ?', params[:id]).paginate(:page => params[:page], :per_page => 5) if logged_in?
+    @comment = @court.comments.build
+    @comments = @court.comments.paginate(:page => params[:page], :per_page => 5)
   end
 
   #GET /courts/new
   def new
-    @court = Court.new
+    @court = current_user.courts.build
   end
 
   #GET /courts/1/edit
@@ -26,9 +26,7 @@ class CourtsController < ApplicationController
 
   #POST /courts
   def create
-    @court = Court.new(court_params)
-    @court.user = current_user
-
+    @court = current_user.courts.build(court_params)
     respond_to do |format|
       if @court.save
         format.html { redirect_to courts_path }
@@ -67,7 +65,7 @@ class CourtsController < ApplicationController
     end
 
     def court_params
-      params.require(:court).permit(:name, :picture, :description, :user_id, :latitude, :longitude)
+      params.require(:court).permit(:name, :picture, :description, :latitude, :longitude)
     end
 
     def created_by

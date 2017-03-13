@@ -11,23 +11,23 @@
         .clear
       .col-sm-8.col-sm-offset-2
         .caption
-          %br       
+          / %br       
           %p.courtParagraph= @court.description
           - if @court.created_at == @court.updated_at
             %small= "Created by: " + User.find(@court.user_id).username + ", " + time_ago_in_words(@court.created_at) + " ago "
           - else  
             %small= "Updated by: " + User.find(@court.user_id).username + ", " + time_ago_in_words(@court.updated_at) + " ago "
-        %br
+        / %br
         - if logged_in? && (current_user.id == @court.user_id || current_user.admin?)
           =link_to "Edit", edit_court_path(@court), class: "btn btn-warning"
           =link_to "Delete", @court, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }
         - if logged_in?
-          =link_to "Add Comment", "", class: "btn btn-info animated", id: "addCommentButton"
-        %br
-        %br
+          =link_to "Add Comment", "", class: "btn btn-info", id: "addCommentButton"
+        / %br
+        / %br
         - if logged_in?
           .row
-            .addComment.well.animate.fadeInLef.col-md-6.col-md-offset-3.col-xs-8.col-xs-offset-2
+            .addComment.well.col-md-6.col-md-offset-3.col-xs-8.col-xs-offset-2
               %a.close.closeComment &times;
               =form_for @comment, :html => {:id => "commentForm"} do |f|
                 = f.hidden_field_tag "court_id", @court.id
@@ -36,17 +36,16 @@
                   = f.submit "Add Comment", class: "btn btn-info btn-wide"
         = will_paginate @comments
         - @comments.each do |comment|
-          -if !comment.user_id.blank?
-            .well
-              %p.comment= comment.content
-              - if comment.created_at == comment.updated_at
-                %small.commentDate= "Added by: " + User.find(comment.user_id).username + ", " + time_ago_in_words(comment.created_at) + " ago "
-              - else  
-                %small.commentDate= "Updated by: " + User.find(comment.user_id).username + ", " + time_ago_in_words(comment.updated_at) + " ago "
-              - if logged_in? && (current_user.id == comment.user_id || current_user.admin?)
-                %br
-                = link_to "Delete", comment_path(comment), class: "commentActions btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure?" }
-                = link_to "Edit", comment_path(comment), class: "editComBtn commentActions btn btn-warning btn-xs"
+          .well
+            %p.comment= comment.content
+            - if comment.created_at == comment.updated_at
+              %small.commentDate= "Added by: " + User.find(comment.user_id).username + ", " + time_ago_in_words(comment.created_at) + " ago "
+            - else  
+              %small.commentDate= "Updated by: " + User.find(comment.user_id).username + ", " + time_ago_in_words(comment.updated_at) + " ago "
+            - if logged_in? && (current_user.id == comment.user_id || current_user.admin?)
+              %br
+              = link_to "Delete", comment_path(comment), class: "commentActions btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure?" }
+              = link_to "Edit", comment_path(comment), class: "editComBtn commentActions btn btn-warning btn-xs"
           - if logged_in? && (current_user.id == comment.user_id || current_user.admin?)      
             .row
               .edtComment.animate.fadeInLef.col-md-6.col-md-offset-3.col-xs-8.col-xs-offset-2

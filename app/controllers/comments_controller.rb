@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :logged_in?, only: [:create, :update, :destroy]
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:update, :destroy]
 
   def create
     @comment = Court.find(params[:court_id]).comments.build(comment_params)
@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:content, :court_id, :user_id)
+      params.require(:comment).permit(:content)
     end
 
 
