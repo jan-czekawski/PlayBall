@@ -22,3 +22,7 @@
 
 /public/uploads
 
+# Ignore Spring files.
+/spring/*.pid
+
+Guardfile
