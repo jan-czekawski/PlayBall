@@ -54,7 +54,7 @@ class CourtsController < ApplicationController
     @court.destroy
     flash[:danger] = "Court was successfully deleted"
     respond_to do |format|
-      format.html { redirect_to courts_url }
+      format.html { redirect_to courts_path }
     end
   end
 

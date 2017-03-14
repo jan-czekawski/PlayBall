@@ -53,4 +53,20 @@ class NewSessionTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", users_path, count: 0
   end
 
+  test "login without remembering" do
+    cookies['remember_token'] = "random"
+    log_in_test(@user, remember: 0)
+    assert_empty cookies['remember_token']
+  end
+
+  test "login with remembering" do
+    log_in_test(@user, remember: 1)
+    assert_not_empty cookies['remember_token']
+  end
+
+  test "should not log out if user is not logged in" do
+    delete logout_path
+    assert_redirected_to courts_path
+  end
+
 end
