@@ -3,13 +3,23 @@
 one:
   username: 'Bob'
   email: 'bob@example.com'
-  password_digest: 'password'
+  password_digest: <%= User.digest('password') %>
   admin: false
+  activated: true
   id: 1
 
 two:
   username: 'John'
   email: 'john@example.com'
-  password_digest: 'password'
+  password_digest: <%= User.digest('password') %>
   admin: false
+  activated: true
   id: 2
+
+three:
+  username: 'Harry'
+  email: 'harry@hogwarts.com'
+  password_digest: <%= User.digest('password') %>
+  admin: true
+  activated: true
+  id: 3

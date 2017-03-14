@@ -382,6 +382,7 @@ $(document).ready(function(){
   $( "#courtsMainJumbo" ).prev().css(styles);
   changeHeight();
   validateForms();
+  $('.fa').css("display", "inline-block");
 })
 
 $(window).resize(function(){
