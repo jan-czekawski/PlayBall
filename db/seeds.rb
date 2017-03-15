@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-20.times do
-  user = Faker::Internet.user_name
-  email = Faker::Internet.free_email(user)
-  User.create!(:password => "password", :username => user, :email => email)
+40.times do
+  user = Faker::Name.unique.first_name
+  email = user + "@example.com"
+  User.create!(:password => "password", :username => user, :email => email, :activated => true, :activated_at => 2.hours.ago)
 end
 
 # User.all.each do |user|

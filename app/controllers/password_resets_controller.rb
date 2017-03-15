@@ -14,10 +14,10 @@ class PasswordResetsController < ApplicationController
       UserMailer.password_reset(@user).deliver_now
       flash[:info] = "Message with reset password link was sent to your email address."
       redirect_to courts_path
-    elsif @user.nil?
+    elsif params[:password_reset][:email].empty?
       flash.now[:danger] = "Email address cannot be empty."
       render 'new'
-    else
+    elsif @user.nil?
       flash.now[:danger] = "That email address does not exist in our database."
       render 'new'
     end
@@ -27,13 +27,13 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_params)
+    if params[:user][:password].empty?
+      flash.now[:danger] = "Password cannot be empty."
+      render 'edit'
+    elsif @user.update_attributes(user_params)
       flash[:success] = "Your password was changed."
       @user.update_attribute(:reset_digest, nil)
       redirect_to login_path
-    elsif params[:user][:password].empty?
-      flash.now[:danger] = "Password cannot be empty."
-      render 'edit'
     else
       flash.now[:danger] = "There was an error. Please try again."
       render 'edit'

@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-  setup do
+  
+  def setup
     @user = users(:one)
     @user2 = users(:two)
     @user3 = users(:three)
@@ -94,6 +95,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       delete user_path(@user)
     end
     assert_redirected_to users_path
+  end
+
+  test "should not be able to edit :admin attribute" do
+    log_in_test(@user)
+    assert_not @user.admin?
+    patch user_path(@user), params: { user: { admin: true } }
+    @user.reload
+    assert_not_equal @user.admin, true
   end
 
 end
