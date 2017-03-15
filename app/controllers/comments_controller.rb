@@ -1,12 +1,16 @@
 class CommentsController < ApplicationController
-  before_action :logged_in?, only: [:create, :update, :destroy]
   before_action :set_comment, only: [:update, :destroy]
+  before_action :require_user, only: [:create, :update, :destroy]
+  before_action :require_same_user_for_comments, only: [:update, :destroy]
 
   def create
     @comment = Court.find(params[:court_id]).comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
       flash[:success] = "Comment was successfully created!"
+      redirect_to court_path(params[:court_id])
+    elsif params[:content].nil?
+      flash[:danger] = "Comment can't be empty"
       redirect_to court_path(params[:court_id])
     else
       flash[:danger] = "Comment was not added. Please try again"
@@ -15,15 +19,16 @@ class CommentsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
       if @comment.update(comment_params)
         flash[:info] = "Comment was successfully updated"
-        format.html { redirect_to court_path(@comment.court_id) }
+        redirect_to court_path(params[:court_id])
+      elsif params[:content].nil?
+        flash[:danger] = "Comment can't be empty"
+        redirect_to court_path(params[:court_id])
       else
         flash[:danger] = "Comment was not updated. Please try again."
-        format.html { render :edit }
+        render "edit"
       end
-    end
   end
 
   def edit
@@ -33,7 +38,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     flash[:danger] = "Comment was successfully deleted"
     respond_to do |format|
-      format.html { redirect_to court_path(@comment.court_id) }
+      format.html { redirect_to court_path(params[:court_id]) }
     end
   end
 

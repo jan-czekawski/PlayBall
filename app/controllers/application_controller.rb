@@ -25,6 +25,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_same_user_for_comments
+    if current_user.id != @comment.user_id && !current_user.admin?
+      flash[:danger] = "You can only perform that action for your own comments"
+      redirect_to @court
+    end
+  end
+
   def require_admin
     if !current_user.admin?
       flash[:danger] = "Only Admins can perform that action"
