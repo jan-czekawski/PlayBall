@@ -98,6 +98,10 @@ $(function() {
     $("textarea").flexible();
 });
 
+// $(function () {
+//     $('textarea').flexText();
+// });
+
 
 // ADJUST HEIGHT OF DIVS IN COURT INDEX PAGE
 $(function() {
@@ -216,6 +220,9 @@ $('.editComBtn').on('click', function(event){
   $('#addCommentButton').show()
   var theComment = $(this).parent().parent().parent().parent().parent().parent().next().children()
   theComment.show()
+  // setTimeout(function(){
+  //   theComment.find("textarea").css("height", "46px")        
+  // }, 100)
   chngEdClsBtnPos();
   theComment.children('.closeEdtComment').show()
 })
