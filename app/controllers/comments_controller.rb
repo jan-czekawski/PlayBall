@@ -37,9 +37,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     flash[:danger] = "Comment was successfully deleted"
-    respond_to do |format|
-      format.html { redirect_to court_path(params[:court_id]) }
-    end
+    redirect_to court_path(@comment.court_id)
   end
 
   private

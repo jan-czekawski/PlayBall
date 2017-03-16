@@ -210,11 +210,11 @@ function chngEdClsBtnPos(){
 $('.editComBtn').on('click', function(event){
   event.preventDefault();
   $('.well').not($('.addComment')).show()
-  $(this).parent().hide();
+  $(this).parent().parent().parent().parent().hide();
   $('.edtComment').hide();
   $('.addComment').hide()
   $('#addCommentButton').show()
-  var theComment = $(this).parent().next().children()
+  var theComment = $(this).parent().parent().parent().parent().parent().parent().next().children()
   theComment.show()
   chngEdClsBtnPos();
   theComment.children('.closeEdtComment').show()

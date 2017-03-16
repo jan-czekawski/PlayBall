@@ -21,7 +21,7 @@
             .col-xs-7.val-col= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
           .form-group
             .col-xs-7.col-xs-offset-3= f.submit "Sign up", class: "btn btn-success btn-wide"
-          You already have an account?
-          %a#closeSignupModal Log in
-          %br
+          #div
+            You already have an account?
+            %a#closeSignupModal Log in
           %em.emailReq (*) It will not be published

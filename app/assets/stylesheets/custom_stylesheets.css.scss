@@ -172,6 +172,12 @@ hr {
   margin: 1em 0 0.3em;
 }
 
+// USER SIGNUP PAGE
+
+  #signupOption {
+    margin-top: 1em
+  }
+
 // FORM VALIDATION
 .fa {
   top: 3px;
@@ -260,20 +266,35 @@ em {
 
 // COURTS - SHOW PAGE
 .caption {
+  margin-bottom: 1em;
   p {
     font-size: 100%;
   }
   .courtParagraph {
     font-size: 21px;
+    margin-top: 1em;
   }
 }
 
+.courtButtons {
+  margin-bottom: 2em;
+}
+
 .well {
-  padding-bottom: 2em;
+  padding-bottom: 0.5em;
   overflow-wrap: break-word ;
   p {
-    font-size: 100%;
+    font-size: 150%;
   }
+  img {
+    margin-bottom: 1em;
+  }
+  .commentAvatar {
+    max-width: 70px;
+    max-height: 70px;
+  } 
+
+
 }
 
 .showUserPgn {
@@ -281,14 +302,18 @@ em {
 }
 
 
-
-.commentActions {
+.commentButtons {
   float: right;
-  margin: 0.1em;
+  .commentActions {
+    float: right;
+    margin: 0.1em;
+  }
 }
+
 
 .commentDate {
   float: right;
+  margin-bottom: 0.7em;
 }
 
 

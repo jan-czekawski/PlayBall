@@ -15,5 +15,4 @@
 //= require twitter/bootstrap
 //= require bootstrap
 //= require cable
-//= require users
 
