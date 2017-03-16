@@ -7,10 +7,7 @@
         .col-md-4.col-sm-6
           .thumbnail
             .caption
-              - if user.picture.blank?
-                = gravatar(user)
-              - else
-                =image_tag(user.picture, :height => 100)
+              = show_avatar(user, 100)
               %h3= user.username
               = link_to 'Show', user, :class => "btn btn-info btn-xs"
               -if current_user.admin?

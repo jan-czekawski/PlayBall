@@ -5,7 +5,7 @@ class PageControllerTest < ActionDispatch::IntegrationTest
   test "should get landing page" do
     get root_url
     assert_response :success
-    assert_select "button", "Begin!"
+    assert_select "a", "Begin!"
   end
 
   test "should get courts page" do

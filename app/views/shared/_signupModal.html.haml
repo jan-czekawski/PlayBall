@@ -6,7 +6,7 @@
           %span &times;
         %h3.modal-title#myModalLabel Sign up
       .modal-body 
-        =form_for(:user, :html => { :role => "form", :id => "signupModalForm", :class => "form-horizontal" }, :url => signup_path) do |f|
+        =form_for(:user, :html => {:id => "signupModalForm", :class => "form-horizontal" }, :url => signup_path) do |f|
           .form-group
             .control-label.col-xs-3.required= f.label :email, "Email <sup>(*)</sup>".html_safe
             #signupEmail.col-xs-7.val-col= f.email_field :email, class: "form-control", autofocus: true, required: true

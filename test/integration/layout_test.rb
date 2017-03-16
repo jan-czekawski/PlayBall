@@ -9,7 +9,7 @@ class LayoutTest < ActionDispatch::IntegrationTest
     assert_select 'h1', 'PlayBall'
     assert_select 'p', 'Find the closest, the best court to play b-ball!'
     assert_select 'hr'
-    assert_select 'button', 'Begin!'
+    assert_select 'a', 'Begin!'
   end
 
 

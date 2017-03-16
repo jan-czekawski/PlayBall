@@ -7,7 +7,7 @@
         %h3.modal-title#myModalLabel#loginTitle Log in 
         = link_to "(You don't remember your password?)", new_password_reset_path
       .modal-body 
-        =form_for(:session, :html => {:role => "form", :id => "loginModalForm", :class  => "form-horizontal"}, :url => login_path) do |f|
+        =form_for(:session, :html => {:id => "loginModalForm", :class  => "form-horizontal"}, :url => login_path) do |f|
           .form-group
             .control-label.col-xs-3= f.label :email, "Email <sup>(*)</sup>".html_safe
             .col-xs-7#loginEmail.val-col= f.email_field :email, class: "form-control", autofocus: true, required: true

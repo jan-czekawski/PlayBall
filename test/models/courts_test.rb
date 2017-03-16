@@ -7,9 +7,9 @@ class CourtsTest < ActiveSupport::TestCase
     @court = @user.courts.build(name: "Warta", description: "It's pretty togh court.", picture: 'blank.jpeg', longitude: 10, latitude: 20)
   end
 
-  # test "court should be valid" do
-  #   assert @court.valid?
-  # end
+  test "court should be valid" do
+    assert @court.valid?
+  end
 
   test "name is necessary" do
     @court.name = ""
