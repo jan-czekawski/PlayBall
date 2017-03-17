@@ -98,11 +98,6 @@ $(function() {
     $("textarea").flexible();
 });
 
-// $(function () {
-//     $('textarea').flexText();
-// });
-
-
 // ADJUST HEIGHT OF DIVS IN COURT INDEX PAGE
 $(function() {
     $('.thumbnail').matchHeight();
@@ -151,6 +146,7 @@ $("#addCommentButton").on('click', function(event){
   // })
 
   $('.addComment').show();
+  $('.addComment').find("textarea").focus();
   chngClsBtnPos();
   $('.closeComment').show();
   $('#addCommentButton').hide()
@@ -214,17 +210,15 @@ function chngEdClsBtnPos(){
 $('.editComBtn').on('click', function(event){
   event.preventDefault();
   $('.well').not($('.addComment')).show()
-  $(this).parent().parent().parent().parent().hide();
+  $(this).closest(".well").hide();
   $('.edtComment').hide();
   $('.addComment').hide()
   $('#addCommentButton').show()
-  var theComment = $(this).parent().parent().parent().parent().parent().parent().next().children()
+  var theComment = $(this).closest(".well").closest(".row").next().children()
   theComment.show()
-  // setTimeout(function(){
-  //   theComment.find("textarea").css("height", "46px")        
-  // }, 100)
+  theComment.find("textarea").focus().trigger("resize");
   chngEdClsBtnPos();
-  theComment.children('.closeEdtComment').show()
+  theComment.find('.closeEdtComment').show()
 })
 
 // CLOSE EDIT COMMENT FIELD AND SHOW ALL COMMENTS
@@ -381,7 +375,7 @@ $("#closeSignupModal").click(function(e){
 $('.addComment textarea, .edtComment textarea').on('keypress', function(e){
   if (e.keyCode == 13 || e.which == 13){
     e.preventDefault()
-    $(this).parent().parent().submit()
+    $(this).closest("#commentForm").submit()
   }
 })
 

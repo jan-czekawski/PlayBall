@@ -1,8 +1,5 @@
 .jumbotron.showJumbo
   .container
-    - if @user.picture.blank?
-      = gravatar(@user, size: 200)
-    - else
-      =image_tag(@user.picture, :height => 200)
+    = show_avatar(@user, 200)
     %h1.showHead Edit your account
     = render "form", :user => @user, :type => 'edit'

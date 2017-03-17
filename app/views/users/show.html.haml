@@ -13,10 +13,8 @@
                 .caption
                   %h3= court.name
                   %p= truncate(court.description, length: 60)
-                  %small Created at:
-                  %small= court.created_at
-                  %small= "Created by:"
-                  %small= court.user_id
+                  %small Created by:
+                  %small= court.user.username + ", " + time_ago_in_words(court.created_at) + " ago"
       = will_paginate @courts
     - else
       %h2= @user.username + " hasn't added any courts yet"
