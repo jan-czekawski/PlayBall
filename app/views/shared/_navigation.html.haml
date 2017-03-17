@@ -40,11 +40,11 @@
           %li
             %a{:href => "/courts"} Home         
           %li
-            %a#loginButton{:data => {:toggle => "modal", :which => "login", :target=> "#loginModal"}}
+            %a#loginButton{:data => {:toggle => "modal", :target=> "#loginModal"}}
               %i.fa.fa-user
               Log in
           %li
-            %a#signupButton{:data => {:toggle => "modal", :which => "signup", :target=> "#signupModal"}}
+            %a#signupButton{:data => {:toggle => "modal", :target=> "#signupModal"}}
               %i.fa.fa-user-plus 
               Sign up
 = render "shared/signupModal" 

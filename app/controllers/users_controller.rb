@@ -4,29 +4,21 @@ class UsersController < ApplicationController
   before_action :require_same_user, only: [:edit, :update]
   before_action :require_admin, only: [:destroy]
 
-  # GET /users
-  # GET /users.json
   def index
     @users = User.paginate(:page => params[:page])
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
-    @courts = Court.paginate(:page => params[:page]).where(:user_id => "#{@user.id}")
+    @courts = Court.paginate(:page => params[:page]).where(:user_id => @user.id)
   end
 
-  # GET /users/new
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
     if @user.save
@@ -40,33 +32,22 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        flash[:info] = 'User was successfully updated.'
-        format.html { redirect_to @user }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      flash[:info] = 'User was successfully updated.'
+      redirect_to @user
+    else
+      render "edit"
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     if current_user == @user
       session[:user_id] = nil
     end
     @user.destroy
     flash[:danger] = 'User was successfully destroyed.'
-    respond_to do |format|
-      format.html { redirect_to users_path }
-      format.json { head :no_content }
-    end
+    redirect_to users_path
   end
 
   private

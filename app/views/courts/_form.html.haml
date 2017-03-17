@@ -1,12 +1,7 @@
 =form_for court, :html => { :id => "submitForm" } do |f|
   .row.no-center
     .col-md-6.col-md-offset-3      
-      -if court.errors.any?
-        #error_explanation.alert.alert-danger
-          / %h3= "Your form has " + pluralize(user.errors.count, "error") + ":"
-          %ul
-            - court.errors.full_messages.each do |message|
-              %li= message
+      = render "shared/errors", :obj => court
       .form-group
         = f.label :name, class: "control-label"
         .val-col= f.text_field :name, class: "form-control", autofocus: "true"

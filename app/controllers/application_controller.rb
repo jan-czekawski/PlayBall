@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
+  
   protect_from_forgery with: :exception
   include SessionsHelper
   WillPaginate.per_page = 15
 
+  
 
   def require_user
     if !logged_in?

@@ -1,0 +1,23 @@
+=form_for(resource, :html => {:id => id, :class => "form-horizontal" }, :url => url) do |f|
+  .form-group
+    .control-label.col-xs-3.required= f.label :email, "Email <sup>(*)</sup>".html_safe
+    #signupEmail.col-xs-7.val-col= f.email_field :email, class: "form-control", autofocus: true, required: true
+  - if id == "signupModalForm"
+    .form-group
+      .control-label.col-xs-3= f.label :username, "Name"
+      .col-xs-7.val-col= f.text_field :username, class: "form-control", required: true
+  .form-group
+    .control-label.col-xs-3= f.label :password
+    .col-xs-7.val-col= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
+  - if id == "signupModalForm"
+    .form-group
+      .control-label.col-xs-3= f.label :password_confirmation, "Confirmation"
+      .col-xs-7.val-col= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
+  - if id == "loginModalForm"
+    .form-group
+      .col-xs-7.col-xs-offset-3
+        =f.label :remember, class: "checkbox inline rememberLabel no-center" do
+          =f.check_box :remember
+          %span Remember me on this computer 
+  .form-group
+    .col-xs-7.col-xs-offset-3= f.submit (id == "signupModalForm") ? "Sign up" : "Log in", class: "btn btn-success btn-wide"

@@ -5,23 +5,9 @@
         %button.close{:type => "button", :data => {:dismiss => "modal"}}
           %span &times;
         %h3.modal-title#myModalLabel Sign up
-      .modal-body 
-        =form_for(:user, :html => {:id => "signupModalForm", :class => "form-horizontal" }, :url => signup_path) do |f|
-          .form-group
-            .control-label.col-xs-3.required= f.label :email, "Email <sup>(*)</sup>".html_safe
-            #signupEmail.col-xs-7.val-col= f.email_field :email, class: "form-control", autofocus: true, required: true
-          .form-group
-            .control-label.col-xs-3= f.label :username, "Name"
-            .col-xs-7.val-col= f.text_field :username, class: "form-control", required: true
-          .form-group
-            .control-label.col-xs-3= f.label :password
-            .col-xs-7.val-col= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
-          .form-group
-            .control-label.col-xs-3= f.label :password_confirmation, "Confirmation"
-            .col-xs-7.val-col= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
-          .form-group
-            .col-xs-7.col-xs-offset-3= f.submit "Sign up", class: "btn btn-success btn-wide"
-          #div
-            You already have an account?
-            %a#closeSignupModal Log in
-          %em.emailReq (*) It will not be published
+      .modal-body
+        = render "shared/form", :resource => :user, :id => "signupModalForm", :url => signup_path 
+        #div
+          You already have an account?
+          %a#closeSignupModal Log in
+        %em.emailReq (*) It will not be published

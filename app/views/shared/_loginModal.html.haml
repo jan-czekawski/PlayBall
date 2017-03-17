@@ -7,24 +7,11 @@
         %h3.modal-title#myModalLabel#loginTitle Log in 
         = link_to "(You don't remember your password?)", new_password_reset_path
       .modal-body 
-        =form_for(:session, :html => {:id => "loginModalForm", :class  => "form-horizontal"}, :url => login_path) do |f|
-          .form-group
-            .control-label.col-xs-3= f.label :email, "Email <sup>(*)</sup>".html_safe
-            .col-xs-7#loginEmail.val-col= f.email_field :email, class: "form-control", autofocus: true, required: true
-          .form-group
-            .control-label.col-xs-3= f.label :password
-            .col-xs-7.val-col= f.password_field :password, class: "form-control", autocomplete: "off", required: true, pattern: ".{6,}", title: "Minimum six characters"
-          .form-group
-            .col-xs-7.col-xs-offset-3
-              =f.label :remember, class: "checkbox inline rememberLabel no-center" do
-                =f.check_box :remember
-                %span Remember me on this computer 
-          .form-group
-            .col-xs-7.col-xs-offset-3= f.submit "Log in", class: "btn btn-success btn-wide"
-          %div
-            First time on the page?
-            %a#closeLoginModal Sign up
-          %em.emailReq (*) It will not be published
+        = render "shared/form", :resource => :session, :id => "loginModalForm", :url => login_path 
+        %div
+          First time on the page?
+          %a#closeLoginModal Sign up
+        %em.emailReq (*) It will not be published
 
 
 

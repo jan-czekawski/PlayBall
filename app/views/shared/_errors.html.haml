@@ -1,5 +1,5 @@
--if user.errors.any?
+-if obj.errors.any?
   #error_explanation.alert.alert-danger
     %ul
-      - user.errors.full_messages.each do |message|
+      - obj.errors.full_messages.each do |message|
         %li= message
