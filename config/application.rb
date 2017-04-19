@@ -12,5 +12,11 @@ module PlayBall
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    # Match .scss, .sass or .less comments. Example // TODO make some notes
+    config.annotations.register_extensions("scss", "sass", "less", "haml") do |annotation|
+      /\/\/\s*(#{annotation}):?\s*(.*)$/
+    end
+
   end
 end

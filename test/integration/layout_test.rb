@@ -12,9 +12,6 @@ class LayoutTest < ActionDispatch::IntegrationTest
     assert_select 'a', 'Begin!'
   end
 
-
-
-
   test 'main layout' do
     get courts_path
     assert_template 'courts/index'

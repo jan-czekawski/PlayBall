@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-
-  <title>PlayBall</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= favicon_link_tag 'favicon.ico' %>
-  <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <title>PlayBall</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
-
-  <body>
-
+  <% body_classes ||= @body_classes %>
+  <body class='<%= body_classes %>'>
   <%# flash on courts page, fa icons trigger, require same for ..., jumbotron landing page and courts page, carrier wave testing %>
 
+  <!-- TODO js and css files based on controllers -->
 
-    <%= render "shared/navigation" %>
-    <%= render "shared/messages" %>
+    <div class="main__navigation">
+      <%= render 'shared/navigation' %>
+    </div>
+    <div class="main__flash-messages">
+      <%= render 'shared/messages' %>
+    </div>
     
     <%= yield %>
 

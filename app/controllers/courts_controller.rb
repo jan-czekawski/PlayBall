@@ -1,63 +1,66 @@
 class CourtsController < ApplicationController
+  before_action :set_body_classes
   before_action :set_court, only: [:show, :edit, :update, :destroy]
   before_action :created_by, only: [:show]
   before_action :require_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :require_same_user_for_courts, only: [:edit, :update, :destroy]
 
   def index
-    @courts = Court.paginate(:page => params[:page])
+    @courts = Court.paginate(page: params[:page])
   end
 
   def show
     @comment = @court.comments.build
-    @comments = @court.comments.paginate(:page => params[:page], :per_page => 5)
+    @comments = @court.comments.paginate(page: params[:page], per_page: 5)
   end
 
   def new
     @court = current_user.courts.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @court = current_user.courts.build(court_params)
     if @court.save
       redirect_to courts_path
-      flash[:success] = "Court was successfully added"
+      flash[:success] = 'Court was successfully added'
     else
-      render "new"
+      render 'new'
     end
   end
 
   def update
     if @court.update(court_params)
-      flash[:info] = "Court was successfully updated"
+      flash[:info] = 'Court was successfully updated'
       redirect_to @court
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
     @court.destroy
-    flash[:danger] = "Court was successfully deleted"
+    flash[:danger] = 'Court was successfully deleted'
     redirect_to courts_path
   end
 
   private
 
-    def set_court
-      @court = Court.find(params[:id])
-    end
+  def set_court
+    @court = Court.find(params[:id])
+  end
 
-    def court_params
-      params.require(:court).permit(:name, :picture, :description, :latitude, :longitude)
-    end
+  def court_params
+    params.require(:court).permit(:name, :picture, :description,
+                                  :latitude, :longitude)
+  end
 
-    def created_by
-      @created = User.find(@court.user_id)
-    end
+  def created_by
+    @created = User.find(@court.user_id)
+  end
 
-
+  def set_body_classes
+    @body_classes = 'body-courts'
+  end
 end
