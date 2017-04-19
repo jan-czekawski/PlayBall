@@ -1,11 +1,6 @@
 $black-shadow: 1px 2px 3px black;
 $def-col: #fff;
 
-$pale-gold: #C0B283;
-$silk: #DCD0C0;
-$paper: #F4F4F4;
-$charcoal: #373737;
-
 @import url('https://fonts.googleapis.com/css?family=Raleway:700');
 @import "font-awesome";
 
@@ -53,18 +48,18 @@ h3 {
 }
 
 #landingContainer {
-  color: $pale-gold;
+  color: $def-col;
   text-align: center;
   margin-top: 20vh;
   text-shadow: $black-shadow;
-  // a {
-  //   text-shadow: none;
-  //   background-color: $pale-gold;
-  //   border: none;
-  //   &:hover {
-  //     background-color: darken($pale-gold, 20%); 
-  //   }
-  // }
+  a {
+    text-shadow: none;
+    background-color: darken($def-col, 10%);
+    border: none;
+    &:hover {
+      background-color: darken($def-col, 20%); 
+    }
+  }
   h1 {
     font-size: 10em;
   }
@@ -74,12 +69,12 @@ hr {
   border: 0; 
   height: 1px;
   width: 45%;
-  background-color: $pale-gold;
+  background: darken($def-col, 40%);
 }
 
 // FLASH MESSAGES AND ERRORS
 #flash-messages {
-  background: $silk;
+  background: #EEE;
   position: static;
   width: 100%;
   margin-left: 0;
@@ -97,8 +92,6 @@ hr {
 
 .showJumbo {
   padding-top: 10px;
-  background-color: $silk;
-  margin-bottom: 0;
 }
 
 .showHead {
@@ -107,36 +100,11 @@ hr {
 
 // NAV-BAR
 
-.navbar, .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus, .dropdown-menu>li>a, ul.dropdown-menu {
-  background-color: $charcoal;
-  color: $pale-gold;
-  border: none;
-  &:hover, &:focus {
-    background-color: $charcoal;
-    color: darken($pale-gold, 20%);
-  }
-}
-
-.dropdown-menu .divider {
-  background-color: $pale-gold;
-}
-
-.navbar-default .navbar-nav>li>a {
-    color: $pale-gold;
-    &:hover, &:focus {
-      color: darken($pale-gold, 20%);
-    }
-  }
-
 #logo {
   font-size: 2.1em;
   letter-spacing: -1px;
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
-  color: $pale-gold;
-  &:hover {
-    color: darken($pale-gold, 20%);
-  }
 }
 
 #loginButton, #signupButton, #closeSignupModal, #closeLoginModal {
@@ -189,28 +157,6 @@ hr {
   width: 100%;
 }
 
-// .btn-info {
-//   background-color: $charcoal;
-//   border: none;
-//   color: $pale-gold;
-//   &:hover {
-//     color: $pale-gold;
-//     background-color: darken($charcoal, 10%);
-//   }
-// }
-
-// .btn-danger {
-//   border: none;
-// }
-
-// .btn-warning {
-//   background-color: darken($silk, 30%);
-//   border: none;
-//   &:hover {
-//     background-color: darken($silk, 40%);
-//   }
-// }
-
 // USER EDIT PAGE
 
 #uplPic {
@@ -253,30 +199,13 @@ em {
 }
 
 #courtsContentJumbo {
-  background-color: $silk;
   margin-top:0;
   margin-bottom:0;
-  #courtsContentContainer {
-    .thumbnail {
-      color: $charcoal;
-      background-color: darken($silk, 10%);
-      border: none;
-      box-shadow: 1px 1px 4px 1px $charcoal;
-    }
-
-  }
-}
-
-.thumbnail, .well.commentWell, .thumbnail.hvr-grow {
-  color: $charcoal;
-  background-color: darken($silk, 10%);
-  border: none;
-  box-shadow: 1px 1px 4px 1px $charcoal; 
 }
 
 #courtsMainContainer {
   >h1, >p {
-    color: $paper;
+    color: white;
     text-shadow: $black-shadow;
   }
   >h1 {
@@ -284,16 +213,6 @@ em {
   }
   >p {
     padding-top: 3em;
-  }
-}
-
-.btn-success {
-  background-color: $charcoal;
-  border: none;
-  color: $pale-gold;
-  &:hover {
-    background-color: darken($charcoal, 10%);
-    color: $pale-gold;
   }
 }
 
