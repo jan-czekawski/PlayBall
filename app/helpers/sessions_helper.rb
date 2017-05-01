@@ -1,6 +1,6 @@
 module SessionsHelper
-
   def logged_in?
+    # TODO: switch double negation
     !!current_user
   end
 
@@ -33,8 +33,7 @@ module SessionsHelper
   end
 
   def friendly_redirect_or(default)
-    redirect_to (session[:forward_url] || default)
+    redirect_to(session[:forward_url] || default)
     session.delete(:forward_url)
   end
-
 end
