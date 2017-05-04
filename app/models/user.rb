@@ -29,7 +29,7 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
-  # SAVE THAT TOKEN AS A REMEMBER TOKEN, ENCRYPT ITS COPY AND SAVE IT IN DIGEST
+  # SAVE THAT TOKEN AS A REMEMBER TOKEN, ENCRYPT IT COPY AND SAVE IT IN DIGEST
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
