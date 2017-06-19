@@ -1,0 +1,11 @@
+@mixin bg-cover{
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@mixin box-shdw{
+  box-shadow: unset;
+  -webkit-box-shadow: unset;
+}
