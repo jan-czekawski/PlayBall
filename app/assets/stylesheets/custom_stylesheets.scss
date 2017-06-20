@@ -53,64 +53,7 @@
   margin-bottom: 20px;
 }
 
-// NAV-BAR
 
-#logo {
-  font-size: 2.1em;
-  letter-spacing: -1px;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700;
-}
-
-#loginButton, #signupButton, #closeSignupModal, #closeLoginModal {
-  cursor: pointer;
-}
-
-#loginTitle {
-  margin-bottom: 5px;
-}
-
-.modal-content {
-  text-align: center;
-}
-
-// .control-label.rememberLabel {
-//   text-align: left;
-//   padding: 0; 
-// }
-
-// .rememberBox {
-//   padding: 0 0 0 5px;
-//   margin-left: 5px;
-// }
-
-.checkbox.inline {
-  margin-top: -10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
-}
-
-.checkbox.inline.regForm {
-    margin-top: 0px;
-}
-
-#session_remember, #user_remember {
-  width: auto;
-  margin-left: 0;
-}
-
-
-.emailReq {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 0.85em;
-}
-
-.btn-wide {
-  width: 100%;
-}
 
 // USER EDIT PAGE
 
