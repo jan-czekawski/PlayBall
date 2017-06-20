@@ -1,0 +1,16 @@
+.checkbox.inline {
+  margin-top: -10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+.checkbox.inline.regForm {
+    margin-top: 0px;
+}
+
+#session_remember, #user_remember {
+  width: auto;
+  margin-left: 0;
+}
