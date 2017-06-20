@@ -1,13 +1,3 @@
-
-
-
-// DEFAULT STYLING
-
-
-.clear {
-  clear: both;
-}
-
 // LANDING PAGE
 #landingJumbotron {
   background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/ball.jpg") fixed no-repeat;
@@ -35,12 +25,7 @@
   }
 }
 
-hr {
-  border: 0; 
-  height: 1px;
-  width: 45%;
-  background: darken($def-col, 40%);
-}
+
 
 // FLASH MESSAGES AND ERRORS
 #flash-messages {
