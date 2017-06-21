@@ -5,3 +5,11 @@
 .btn-wide {
   width: 100%;
 }
+
+.commentButtons {
+  float: right;
+  .commentActions {
+    float: right;
+    margin: 0.1em;
+  }
+}
