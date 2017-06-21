@@ -74,19 +74,7 @@
   }
 
 // FORM VALIDATION
-.fa {
-  top: 3px;
-  .fa-check-circle-o {
-  color: #449D44;
-  }
-  .fa-times-circle-o {
-  color: #C9302C;
-  }
-}
 
-em {
-  text-align: left;
-}
 
 // COURTS - INDEX PAGE
 #courtsMainJumbo {
@@ -191,117 +179,5 @@ em {
 }
 
 
-.commentButtons {
-  float: right;
-  .commentActions {
-    float: right;
-    margin: 0.1em;
-  }
-}
-
-.commentAvatar {
-  img {
-    max-height: 70px;
-    max-width: 70px;
-    width: auto;
-    height: auto;
-  }
-}
 
 
-.commentDate {
-  float: right;
-  margin-bottom: 0.7em;
-}
-
-
-
-#map {
-  height: 100%;
-}
-
-#mapDiv {
-  padding: 0;
-}
-
-
-// COURTS - SHOW PAGE - ADD COMMENT FIELD
-.addComment, .edtComment {
-  background: #fff;
-  border: 2px solid #5BC0DE;
-  display: none;
-  padding:0;
-  &:hover {
-    border: 2px solid #31B0D5;
-    .btn-wide {
-      border: none;
-      background-color: #31B0D5;
-    }
-    .closeComment {
-      opacity: .5;
-    }
-  }
-  #textAreaComment-error{
-    color: #C9302C;
-    font-size: 0.9em;
-    float: left;
-    margin: 0 0 3px 3px;
-  }
-  textarea{
-    padding-bottom: 0;
-    width: 100%;
-    border: none;
-    resize: none;
-  }
-  .form-control:focus {
-    @include box-shdw;                                                                                        
-  }
-  .closeComment, {
-    display: none;
-    position: absolute;
-    font-size: 3em;
-    color: rgb(49, 176, 213);
-  }
-  .closeEdtComment {
-    position: absolute;
-    font-size: 3em;
-    color: #eea236;
-  }
-  .btn-wide {
-    border-radius: 0;
-    border: none;
-    &:hover {
-      border: none;
-    }
-  }
-  .form-group{
-    margin-bottom: 0;
-  }
-}
-
-.edtComment {
-  border: 2px solid #f0ad4e;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  // .edtHeight {
-  //   height: 46px !important;
-  // }
-  .btn-wide{
-    border: none;
-    background-color: #f0ad4e
-  }
-  .closeEdtComment {
-    display: none;
-    opacity: .5;
-  }
-  &:hover {
-    border: 2px solid #eea236;
-    .btn-wide {
-      background-color: #eea236;
-    }
-    .closeEdtComment{
-      opacity: .8;
-    }
-  }
-}
