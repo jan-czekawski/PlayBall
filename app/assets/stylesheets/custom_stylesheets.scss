@@ -55,17 +55,7 @@
 
 
 
-// USER EDIT PAGE
 
-#uplPic {
-  margin: 0.5em auto;
-  padding: 0 0 0 6em;
-}
-
-#changeGravatar {
-  font-style: italic;
-  margin: 1em 0 0.3em;
-}
 
 // USER SIGNUP PAGE
 
@@ -76,18 +66,9 @@
 // FORM VALIDATION
 
 
-// COURTS - INDEX PAGE
-#courtsMainJumbo {
-  background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/shot.jpg") no-repeat;
-  @include bg-cover;
-  height: 80vh;
-  margin-bottom: 0;
-}
 
-#courtsContentJumbo {
-  margin-top:0;
-  margin-bottom:0;
-}
+
+
 
 #courtsMainContainer {
   >h1, >p {
@@ -130,22 +111,7 @@
     }
 }
 
-// GROW ANIMATION FOR COURTS - INDEX/SHOW PAGE
-.hvr-grow {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px transparent;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-  &:hover, &:focus, &:active {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-}
+
 
 // COURTS - SHOW PAGE
 .caption {
@@ -159,9 +125,7 @@
   }
 }
 
-.courtButtons {
-  margin-bottom: 2em;
-}
+
 
 .well {
   padding-bottom: 0.5em;

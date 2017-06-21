@@ -1,0 +1,13 @@
+// COURTS - INDEX PAGE
+#courtsMainJumbo {
+  background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/shot.jpg") no-repeat;
+  @include bg-cover;
+  height: 80vh;
+  margin-bottom: 0;
+}
+
+#courtsContentJumbo {
+  margin-top:0;
+  margin-bottom:0;
+}
+
