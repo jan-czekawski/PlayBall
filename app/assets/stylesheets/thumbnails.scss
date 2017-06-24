@@ -1,0 +1,19 @@
+.thumbnail {
+  width: 100%;
+  >img {
+    height: 200px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+    .thumbnail {
+        width: 90%;
+    }
+}
+
+@media (min-width: 768px) {
+    #showImg {
+      padding: 0 15px;
+      margin-bottom: 0;
+    }
+}
