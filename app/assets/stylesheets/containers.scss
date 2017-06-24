@@ -1,0 +1,30 @@
+#landingContainer {
+  color: $def-col;
+  text-align: center;
+  margin-top: 20vh;
+  text-shadow: $black-shadow;
+  a {
+    text-shadow: none;
+    background-color: darken($def-col, 10%);
+    border: none;
+    &:hover {
+      background-color: darken($def-col, 20%); 
+    }
+  }
+  h1 {
+    font-size: 10em;
+  }
+}
+
+#courtsMainContainer {
+  >h1, >p {
+    color: white;
+    text-shadow: $black-shadow;
+  }
+  >h1 {
+    padding-top: 2em;
+  }
+  >p {
+    padding-top: 3em;
+  }
+}
