@@ -1,0 +1,11 @@
+#showImg {
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+    #showImg {
+      padding: 0 15px;
+      margin-bottom: 0;
+    }
+}

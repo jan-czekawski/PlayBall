@@ -3,7 +3,7 @@
     = show_avatar(@user, 200)
     - if !@courts.blank?
       %h2= "Courts added by " + @user.username + ":"
-      = will_paginate @courts, class: "showUserPgn pagination"
+      = will_paginate @courts, class: "pagination"
       .row
         - @courts.each do |court|
           .col-md-4.col-sm-6
