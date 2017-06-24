@@ -1,3 +1,13 @@
+// LANDING PAGE
+#landingJumbotron {
+  background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/ball.jpg") fixed no-repeat;
+  background-position-y: 30%;
+  @include bg-cover;
+  height: 100vh;
+  margin-bottom: 0;
+}
+
+
 // COURTS - INDEX PAGE
 #courtsMainJumbo {
   background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/shot.jpg") no-repeat;
@@ -11,3 +21,6 @@
   margin-bottom:0;
 }
 
+.showJumbo {
+  padding-top: 10px;
+}
