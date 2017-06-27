@@ -6,10 +6,10 @@
 @import "font-awesome";
 
 // BASE
-@import "variables";
-@import "mixins";
-@import "layout";
-@import "typography";
+@import "base/variables";
+@import "base/mixins";
+@import "base/layout";
+@import "base/typography";
 
 // COMPONENTS
 @import "clearfix";
