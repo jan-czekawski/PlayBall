@@ -8,16 +8,16 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
-  <% body_classes ||= @body_classes %>
-  <body class='<%= body_classes %>'>
+
+  <body>
   <%# flash on courts page, fa icons trigger, require same for ..., jumbotron landing page and courts page, carrier wave testing %>
 
   <!-- TODO js and css files based on controllers -->
 
-    <div class="main__navigation">
+    <div>
       <%= render 'shared/navigation' %>
     </div>
-    <div class="main__flash-messages">
+    <div>
       <%= render 'shared/messages' %>
     </div>
     

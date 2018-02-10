@@ -1,4 +1,4 @@
-.row#flash-messages
+.row#flash_messages{:class => "#{@flash_id}"}
   .col-xs-10.col-xs-offset-1
     - flash.each do |name, msg|
       .alert{:class => "alert-#{name}"}

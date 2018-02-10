@@ -6,6 +6,7 @@ class CourtsController < ApplicationController
   before_action :require_same_user_for_courts, only: %i[edit update destroy]
 
   def index
+    @flash_id = "home_page_flash"
     @courts = Court.paginate(page: params[:page])
   end
 

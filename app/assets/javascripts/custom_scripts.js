@@ -380,7 +380,7 @@ $('.addComment textarea, .edtComment textarea').on('keypress', function(e){
 })
 
 $(document).ready(function(){
-  $( "#courtsMainJumbo" ).prev().css(styles);
+  // $( "#courtsMainJumbo" ).prev().css(styles);
   changeHeight();
   validateForms();
   $('.fa').trigger("resize");
