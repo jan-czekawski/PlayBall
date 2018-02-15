@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   before_action :require_same_user_for_comments, only: %i[update destroy]
 
   def create
+    p "params=#{params[:court_id]}"
     @comment = Court.find(params[:court_id]).comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save

@@ -58,7 +58,7 @@
                 %a.close.closeEdtComment &times;
                 =form_for comment, :html => {:id => "commentForm"} do |f|
                   //# TODO check hidden field
-                  =# f.hidden_field_tag "court_id", @court.id
+                  = f.hidden_field "court_id", @court.id
                   .form-group.val-col
                     = f.text_area :content, class: "form-control", required: true, id: "textAreaComment"
                     = f.submit "Edit Comment", class: "btn btn-info btn-wide"
