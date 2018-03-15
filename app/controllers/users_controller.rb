@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # TODO: use scope instead of "where"
     @courts = Court.paginate(page: params[:page]).where(user_id: @user.id)
   end
 

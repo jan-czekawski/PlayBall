@@ -1,6 +1,6 @@
 .jumbotron.showJumbo
   .container
     %h1.showHead Sign up
-    = render "form", :user => @user, :type => 'new'
+    = render "form", user: @user, type: 'new'
     %footer.signupOption Already have an account?
     = link_to "Log in", login_path

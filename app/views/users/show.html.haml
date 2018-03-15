@@ -1,7 +1,7 @@
 .jumbotron.showJumbo
   .container
     = show_avatar(@user, 200)
-    - if !@courts.blank?
+    - unless @courts.nil?
       %h2= "Courts added by " + @user.username + ":"
       = will_paginate @courts, class: "pagination"
       .row

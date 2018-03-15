@@ -9,8 +9,8 @@
             .caption
               = show_avatar(user, 100)
               %h3= user.username
-              = link_to 'Show', user, :class => "btn btn-info btn-xs"
+              = link_to 'Show', user, class: "btn btn-info btn-xs"
               -if current_user.admin?
-                = link_to 'Edit', edit_user_path(user), :class => "btn btn-warning btn-xs"
-                = link_to "Delete", user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs"
+                = link_to 'Edit', edit_user_path(user), class: "btn btn-warning btn-xs"
+                = link_to "Delete", user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
     = will_paginate @users
