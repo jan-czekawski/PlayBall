@@ -18,4 +18,8 @@ module ApplicationHelper
     # TODO: check how to cut the line
     errors.add(:picture, "should be less than 5MB") if picture.size > 5.megabytes
   end
+  
+  def was_not_changed(obj)
+    obj.created_at == obj.updated_at
+  end
 end

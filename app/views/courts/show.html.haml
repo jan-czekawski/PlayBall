@@ -1,18 +1,18 @@
 .jumbotron.showJumbo
   .container
     %h1.showHead= @court.name
-    %input#inputLongitude{:type => "hidden", :value => @court.longitude}
-    %input#inputLatitude{:type => "hidden", :value => @court.latitude}
+    %input#inputLongitude{type: "hidden", value: @court.longitude}
+    %input#inputLatitude{type: "hidden", value: @court.latitude}
     .row
       .col-sm-12
-        %img#showImg.col-sm-8.col-xs-12{:src => "#{@court.picture.url}", :onerror =>"this.src=errorPage"}
+        %img#showImg.col-sm-8.col-xs-12{ src: "#{@court.picture.url}", onerror: "this.src=errorPage" }
         #mapDiv.col-sm-4.col-xs-12
           #map
         .clear
       .col-sm-8.col-sm-offset-2
         .caption    
           %p.courtParagraph= @court.description
-          - if @court.created_at == @court.updated_at
+          - if was_not_changed(@court)
             %small= "Created by: " + @court.user.username + ", " + time_ago_in_words(@court.created_at) + " ago "
           - else  
             %small= "Updated by: " + @court.user.username + ", " + time_ago_in_words(@court.updated_at) + " ago "
@@ -26,7 +26,7 @@
           .row
             .addComment.well.col-md-6.col-md-offset-3.col-xs-8.col-xs-offset-2
               %a.close.closeComment &times;
-              =form_for @comment, :html => {:id => "commentForm"} do |f|
+              =form_for @comment, html: {id: "commentForm"} do |f|
                 = hidden_field_tag "court_id", @court.id
                 .form-group.val-col
                   = f.text_area :content, class: "form-control", required: true, id: "textAreaComment"
@@ -41,7 +41,7 @@
                     .commentAvatar= show_avatar(comment.user, 70, 70)
                   .col-md-10
                     %p.comment= comment.content
-                    - if comment.created_at == comment.updated_at
+                    - if was_not_changed(comment)
                       %small.commentDate= "Added by: " + comment.user.username + ", " + time_ago_in_words(comment.created_at) + " ago "
                     - else  
                       %small.commentDate= "Updated by: " + comment.user.username + ", " + time_ago_in_words(comment.updated_at) + " ago "

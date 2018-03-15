@@ -1,7 +1,7 @@
-=form_for court, :html => { :id => "submitForm" } do |f|
+=form_for court, html: { id: "submitForm" } do |f|
   .row.no-center
     .col-md-6.col-md-offset-3      
-      = render "shared/errors", :obj => court
+      = render "shared/errors", obj: court
       .form-group
         = f.label :name, class: "control-label"
         .val-col= f.text_field :name, class: "form-control", autofocus: "true"
@@ -9,11 +9,11 @@
         = f.label :description, class: "control-label"
         .val-col= f.text_area :description, class: "form-control"
       .form-group
-        = f.hidden_field :latitude, :value => 10
-        = f.hidden_field :longitude, :value => 20
+        = f.hidden_field :latitude, value: 10
+        = f.hidden_field :longitude, value: 20
         = f.label "location", class: "control-label"
         .val-col
-          %input.form-control{:name => "court[location]", :id => "court_location", :type => "text", :placeholder => " "}
+          %input.form-control{:name => "court[location]", :id => "court_location", type: "text", placeholder: " "}
       .form-group
         = f.label :picture, class: "control-label"
         .val-col= f.file_field :picture, accept: "image/jpeg, image/jpg, image/gif, image/png", class: "form-control"
