@@ -1,12 +1,12 @@
 require 'test_helper'
 
-class CommentsTest < ActionDispatch::IntegrationTest
+class CommentsIntegrationTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:one)
-    @user2 = users(:two)
+    @bob = users(:one)
+    @john = users(:two)
     @admin = users(:three)
-    @court = @user.courts.create(name: "Warta", description: "Random description", picture: "", latitude: 10, longitude: 20)
+    @court = @bob.courts.create(name: "Warta", description: "Random description", picture: "", latitude: 10, longitude: 20)
     @comment = @court.comments.build(content: "New comment")
   end
 
@@ -17,7 +17,7 @@ class CommentsTest < ActionDispatch::IntegrationTest
     assert_select "a.btn-xs", text: "Edit", count: 0
     assert_select "a.btn-xs", text: "Delete", count: 0
     
-    log_in_test(@user)
+    log_in_test(@bob)
     assert logged_in_test?
     get court_path(@court)
     assert_select "a.btn-info", text: "Add Comment"
@@ -36,7 +36,7 @@ class CommentsTest < ActionDispatch::IntegrationTest
     assert_select "a.btn-xs", text: "Edit", count: 0
     assert_select "a.btn-xs", text: "Delete", count: 0
 
-    log_in_test(@user2)
+    log_in_test(@john)
     get court_path(@court)
     assert_select "a.btn-info", text: "Add Comment"
     assert_select "a.btn-xs", text: "Edit", count: 0
