@@ -18,12 +18,11 @@ class CommentsController < ApplicationController
   def update
     if @comment.update(comment_params)
       flash[:info] = "Comment was successfully updated"
-      redirect_to court_path(params[:court_id])
     else
       flash[:danger] = ""
       @comment.errors.full_messages.each { |msg| flash[:danger] += msg }
-      redirect_to court_path(params[:court_id])
     end
+    redirect_to court_path(params[:court_id])
   end
 
   def edit; end
