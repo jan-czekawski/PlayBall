@@ -4,15 +4,13 @@ class CommentsController < ApplicationController
   before_action :require_same_user_for_comments, only: %i[update destroy]
 
   def create
-    p "params=#{params[:court_id]}"
     @comment = Court.find(params[:court_id]).comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
       flash[:success] = "Comment was successfully created!"
-    elsif params[:content].nil?
-      flash[:danger] = "Comment can't be empty"
     else
-      flash[:danger] = "Comment was not added. Please try again"
+      flash[:danger] = ""
+      @comment.errors.full_messages.each { |msg| flash[:danger] += msg }      
     end
     redirect_to court_path(params[:court_id])
   end
@@ -21,12 +19,10 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       flash[:info] = "Comment was successfully updated"
       redirect_to court_path(params[:court_id])
-    elsif params[:content].nil?
-      flash[:danger] = "Comment can't be empty"
-      redirect_to court_path(params[:court_id])
     else
-      flash[:danger] = "Comment was not updated. Please try again."
-      render "edit"
+      flash[:danger] = ""
+      @comment.errors.full_messages.each { |msg| flash[:danger] += msg }
+      redirect_to court_path(params[:court_id])
     end
   end
 
