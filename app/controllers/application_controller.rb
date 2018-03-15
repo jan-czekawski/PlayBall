@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
   end
 
+  # TODO: refactor require methods
   def require_same_user
     return if current_user == @user || current_user.admin?
     flash[:danger] = "You can only perform that action for your own account"
@@ -29,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     return if current_user.admin?
-    flash[:danger] = "Only Admins can perform that action"
+    flash[:danger] = "Only admins can perform that action"
     redirect_to users_path
   end
 end

@@ -9,8 +9,7 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:success] = "Comment was successfully created!"
     else
-      flash[:danger] = ""
-      @comment.errors.full_messages.each { |msg| flash[:danger] += msg }      
+      flash[:danger] = @comment.display_errors
     end
     redirect_to court_path(params[:court_id])
   end
@@ -19,8 +18,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       flash[:info] = "Comment was successfully updated"
     else
-      flash[:danger] = ""
-      @comment.errors.full_messages.each { |msg| flash[:danger] += msg }
+      flash[:danger] = @comment.display_errors
     end
     redirect_to court_path(params[:court_id])
   end

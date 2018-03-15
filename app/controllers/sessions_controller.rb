@@ -30,6 +30,8 @@ class SessionsController < ApplicationController
       session.delete(:user_id)
       @current_user = nil
       flash[:info] = "You have successfully logged out"
+    else
+      flash[:danger] = "You weren't logged in"
     end
     redirect_to courts_path
   end

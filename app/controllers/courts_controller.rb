@@ -1,7 +1,6 @@
 class CourtsController < ApplicationController
   before_action :set_body_classes
   before_action :set_court, only: %i[show edit update destroy]
-  before_action :created_by, only: %i[show]
   before_action :require_user, only: %i[new create edit update destroy]
   before_action :require_same_user_for_courts, only: %i[edit update destroy]
 
@@ -55,10 +54,6 @@ class CourtsController < ApplicationController
   def court_params
     params.require(:court).permit(:name, :picture, :description,
                                   :latitude, :longitude)
-  end
-
-  def created_by
-    @created = User.find(@court.user_id)
   end
 
   def set_body_classes
