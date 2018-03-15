@@ -3,7 +3,7 @@
     %h1 Discover the best basketball courts near you
     %p.lead Share them with your friends and with your enemies
     - if logged_in? 
-      %a.btn-success.btn.btn-lg{:href => "/courts/new"} Add new court!
+      = link_to "Add new court!", new_court_path, class: "btn btn-success btn-lg"
     - else
       %a#signupButton.btn-success.btn.btn-lg{:data => {:toggle => "modal", :which => "signup", :target=> "#signupModal"}} Sign up to add new courts!        
 .jumbotron#courtsContentJumbo
@@ -18,7 +18,7 @@
               .caption    
                 %h3= court.name
                 %p= truncate(court.description, length: 60)
-                %small= "Created by: " + User.find(court.user_id).username + ", " + time_ago_in_words(court.created_at) + " ago "
+                %small= "Created by: " + court.user.username + ", " + time_ago_in_words(court.created_at) + " ago "
     = will_paginate @courts
     
 

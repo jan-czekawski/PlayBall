@@ -24,8 +24,8 @@ class CourtsController < ApplicationController
   def create
     @court = current_user.courts.build(court_params)
     if @court.save
-      redirect_to courts_path
       flash[:success] = "Court was successfully added"
+      redirect_to courts_path
     else
       render "new"
     end

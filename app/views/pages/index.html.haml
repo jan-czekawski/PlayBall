@@ -3,4 +3,5 @@
     %h1 PlayBall
     %p.lead Find the closest, the best court to play b-ball!
     %hr
-    %a#landingButton.btn.btn-lg.btn-default{:href => "/courts"} Begin!
+    = link_to "Begin!", courts_path, id: "landingButton", class: "btn btn-lg btn-default"
+    // %a#landingButton.btn.btn-lg.btn-default{:href => "/courts"} Begin!
