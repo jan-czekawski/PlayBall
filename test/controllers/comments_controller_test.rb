@@ -36,7 +36,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to court_path(@court)
     follow_redirect!
-    assert_select "div#flash_danger", "Comment can't be empty"
+    assert_select "div#flash_danger", "Content can't be blank"
   end
 
   test "should edit and destroy comment if logged in and creator of the comment" do
@@ -51,7 +51,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     patch comment_path(comment), params: { comment: { content: "" }, court_id: @court.id }
     assert_redirected_to court_path(@court)
     follow_redirect!
-    assert_select "div#flash_danger", "Comment can't be empty"
+    assert_select "div#flash_danger", "Content can't be blank"
     assert_equal comment.reload.content, comment.content
 
     patch comment_path(comment), params: { comment: { content: "My edited content" }, court_id: @court.id }
