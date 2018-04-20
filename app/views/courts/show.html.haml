@@ -3,7 +3,7 @@
     %h1.showHead= @court.name
     %input#inputLongitude{type: "hidden", value: @court.longitude}
     %input#inputLatitude{type: "hidden", value: @court.latitude}
-    .row
+    .row 
       .col-sm-12
         %img#showImg.col-sm-8.col-xs-12{ src: "#{@court.picture.url}", onerror: "this.src=errorPage" }
         #mapDiv.col-sm-4.col-xs-12
