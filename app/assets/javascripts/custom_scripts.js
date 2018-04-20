@@ -1,4 +1,4 @@
-var errorPage = "https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/ball.jpg"
+var errorPage = url("ball.jpg");
 
 // FLASH MESSAGE STYLES FOR INDEX COURT PAGE
 var styles = {
