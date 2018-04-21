@@ -6,7 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-40.times do
+# 40.times do
+#   user = Faker::Name.unique.first_name
+#   email = user + "@example.com"
+#   User.create!(:password => "password", :username => user, :email => email, :activated => true, :activated_at => 2.hours.ago)
+# end
+
+20.times do
+  name = Faker
   user = Faker::Name.unique.first_name
   email = user + "@example.com"
   User.create!(:password => "password", :username => user, :email => email, :activated => true, :activated_at => 2.hours.ago)
@@ -20,8 +27,7 @@ end
 # Court.all.each do |court|
 #   10.times do
 #     courtID = court.id
-#     arr = (1..48).to_a
-#     userID = arr.sample
+#     userID = User.all.sample.id
 #     content = Faker::Hipster.paragraph
 #     Comment.create!(:user_id => userID, :court_id => courtID, :content => content)
 #   end
