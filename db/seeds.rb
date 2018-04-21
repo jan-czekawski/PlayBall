@@ -13,10 +13,16 @@
 # end
 
 20.times do
-  name = Faker
-  user = Faker::Name.unique.first_name
-  email = user + "@example.com"
-  User.create!(:password => "password", :username => user, :email => email, :activated => true, :activated_at => 2.hours.ago)
+  name = Faker::Ancient.hero
+  description = Faker::Hipster.sentences(3).join(" ")
+  longitude = Faker::Address.longitude
+  latitude = Faker::Address.latitude
+  user = User.all.sample
+  Court.create(name: name,
+               description: description,
+               longitude: longitude,
+               latitude: latitude,
+               user: user)
 end
 
 # User.all.each do |user|
