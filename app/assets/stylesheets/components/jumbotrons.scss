@@ -1,6 +1,6 @@
 // LANDING PAGE
 #landingJumbotron {
-  background: url("ball.jpg") fixed no-repeat;
+  background: url("images/ball.jpg") fixed no-repeat;
   // background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/ball.jpg") fixed no-repeat;
   background-position-y: 30%;
   @include bg-cover;
