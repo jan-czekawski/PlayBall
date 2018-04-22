@@ -31,36 +31,27 @@ COURTS =
 
 COURTS.each do |name, attrs|
   Court.create(name: name,
-               user: attrs[0],
-               longitude: attrs[1],
-               latitude: attrs[2],
-               description: attrs[3],
-               created_at: rand(1.year.ago..2.days.ago))
+              user: attrs[0],
+              longitude: attrs[1],
+              latitude: attrs[2],
+              description: attrs[3],
+              created_at: rand(1.year.ago..2.days.ago))
 end
 
-# 20.times do
-#   name = Faker::Ancient.hero
-#   description = Faker::Hipster.sentences(3).join(" ")
-#   longitude = Faker::Address.longitude
-#   latitude = Faker::Address.latitude
-#   user = User.all.sample
-#   Court.create(name: name,
-#               description: description,
-#               longitude: longitude,
-#               latitude: latitude,
-#               user: user)
-# end
-
-# User.all.each do |user|
-#   user.username = user.username.capitalize
-#   user.save
-# end
-
-# Court.all.each do |court|
-#   10.times do
-#     courtID = court.id
-#     userID = User.all.sample.id
-#     content = Faker::Hipster.paragraph
-#     Comment.create!(:user_id => userID, :court_id => courtID, :content => content)
-#   end
-# end
+COMMENTS = 
+  [
+    "Basketball courts close at around 11:15pm", "Check it out on a weekend, (the path there will be packed) lots of basketball courts and the free aerobics classes are good to watch for a laugh.", "A child friendly park with playground and basketball court, blocks away from the skyscrapers. A peaceful green spot, with scyscrapers looming in the background",
+    "Watch out for presents on the basketball court, in the morning it's an illegal dog run.", "Halfcourt basketball court is fun!", "Commonly known as “The Cage,” this basketball court hosts some of the most competitive amateur tournaments in the city.", "AM Boot Camp on the basketball courts", "Where you could find the whole neighborhood hanging out.", "Great energy level! So many options and great facilities.",
+    "Safe, family-friendly playground, kept busy by nearby grade and middle schools.", "This court has seen more All Stars (playground legends & professionals) than any arena in the country. Arrive early or you'll regret it!", "A wide variety of NBA, college & streetball players have added to the historic legacy of the park.", "Streetball has its roots there and elements of this style are part of Carmelo Anthony’s arsenal.",
+    "amazing space. great basketball, spectacular events. A+", "Great event space, huge white walled bball court. Went for a nba live 16 preview party. Its a court for prof players and some kids league stuff. Not open to public", "It's really nice! The basketball court is big. And the view from here is impeccable. Highly recommend", "Great facility kept in excellent shape. Staff is accommodating and professional.", "Lots of basketball courts. I practice there with my team often and we really enjoy it.",
+    "What a spot. On a warm evening the breeze coming off the river is perfect as you gaze at the cacophony of lights on the other side.", "Clean, safe, lots of kids, lots of dogs, lots of food/desert vendors. Great place to spend the day.", "Absolutely breath-taking view, trendy, family-oriented!  Love the place", "The playground is clean and beautiful with a great view of the city.",
+    "The best playground in town. Many good players and a basket at a high level", "It's got your standard basketball hoops, plus a decent selection of outdoor workout equipment where young guys like to impress their ladies (and check out each other's pecs).", "What to write, great basketball court...", "Free pitch. The artificial surface.", "I grew up in the neighborhood where this wonderful park is located.  This park sure brings back the happier memories in my childhood.",
+    "I love the fact that it's mostly shaded, making it an ideal gateway in summertime for the little ones.", "It is always buzzing with kids from the nearby school", "I had NO IDEA this place existed. It's funny the things you discover when you decide against renting a car for a trip", "This is a cool basketball court to come and ball up at.  Its hidden and kept up by the city so I appreciate it.  Definitely lots of parking, would love to find some other people that would want to set up games here.",
+    "I absolutely love this park it's a huge gem next to the grove with three playground areas basketball court picnic tables and enough space for the whole family to ride bikes", "There are outdoor basketball courts as well and I usually see people practicing their Tai Chi outside which is great to see."
+  ]
+  
+COMMENTS.each do |comment|
+  court_id = Court.all.sample.id
+  user_id = User.all.sample.id
+  Comment.create(user_id: user_id, court_id: court_id, content: comment)
+end
