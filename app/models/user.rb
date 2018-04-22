@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  # TODO: index users template doesn't show the whole card -> it will after refresh, check js and css
   attr_accessor :remember_token, :activation_token, :reset_token
   include ApplicationHelper
   before_create :create_activation_digest
