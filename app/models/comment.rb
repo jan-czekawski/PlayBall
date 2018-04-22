@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  # TODO: make comments dependant on courts and users
+  # TODO: on show courts template show only created at date of courts
   belongs_to :court, foreign_key: :court_id
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
