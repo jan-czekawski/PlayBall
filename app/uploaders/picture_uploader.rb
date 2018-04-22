@@ -20,6 +20,7 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
+  # TODO: googla api key is loaded more than once => change document-ready to turbolinks in google api js file
   #   # For Rails 3.1+ asset pipeline compatibility:
     ActionController::Base.helpers.asset_path("fallback/main/" + ["default.jpg"].compact.join('_'))
   #
