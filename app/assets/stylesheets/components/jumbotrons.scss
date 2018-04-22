@@ -1,6 +1,9 @@
 // LANDING PAGE
 #landingJumbotron {
-  background: url("images/ball.jpg") fixed no-repeat;
+  background: image-url("ball.jpg") fixed no-repeat;
+  // background: url(<%= asset_data_uri 'ball.jpg' %>)
+  // background: url(<%= asset_data_uri "ball.jpg" %>) fixed no-repeat;
+  // background: url("ball.jpg") fixed no-repeat;
   // background: url("https://michal88-bucket.s3-eu-west-1.amazonaws.com/uploads/ball.jpg") fixed no-repeat;
   background-position-y: 30%;
   @include bg-cover;
@@ -11,7 +14,8 @@
 
 // COURTS - INDEX PAGE
 #courtsMainJumbo {
-  background: url("shot.jpg") no-repeat;
+  background: image-url("shot.jpg") no-repeat;
+  // background: url("shot.jpg") no-repeat;
   @include bg-cover;
   height: 80vh;
   margin-bottom: 0;
