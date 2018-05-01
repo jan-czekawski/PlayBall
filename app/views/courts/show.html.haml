@@ -5,7 +5,8 @@
     %input#inputLatitude{type: "hidden", value: @court.latitude}
     .row 
       .col-sm-12
-        %img#showImg.col-sm-8.col-xs-12{ src: "#{@court.picture.url}", onerror: "this.src=errorPage" }
+        %img#showImg.col-sm-8.col-xs-12{ src: "#{@court.picture.url}"}
+        // , onerror: "this.src=errorPage" }
         #mapDiv.col-sm-4.col-xs-12
           #map
         .clear

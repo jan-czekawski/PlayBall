@@ -14,7 +14,8 @@
         .col-md-4.col-sm-6
           %a{:href => "/courts/#{court.id}"}
             .thumbnail.hvr-grow
-              %img{:src => "#{court.picture.url}", :onerror =>"this.src=errorPage", :height => "100px"}
+              %img{:src => "#{court.picture.url}", :height => "100px"}
+              // , :onerror =>"this.src=errorPage"}
               .caption    
                 %h3= court.name
                 %p= truncate(court.description, length: 60)
