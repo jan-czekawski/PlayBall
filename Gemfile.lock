@@ -65,12 +65,13 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    crass (1.0.4)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     excon (0.55.0)
     execjs (2.7.0)
-    faker (1.7.3)
-      i18n (~> 0.5)
+    faker (1.8.7)
+      i18n (>= 0.7)
     ffi (1.9.18)
     ffi (1.9.18-x86-mingw32)
     fission (0.5.0)
@@ -234,7 +235,8 @@ GEM
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    loofah (2.0.3)
+    loofah (2.2.2)
+      crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.11)
     mail (2.6.4)
@@ -335,7 +337,6 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
-    sqlite3 (1.3.13-x86-mingw32)
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.6)
@@ -371,7 +372,7 @@ DEPENDENCIES
   byebug
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
-  faker (~> 1.7, >= 1.7.3)
+  faker (~> 1.8, >= 1.8.7)
   fog
   font-awesome-rails (~> 4.7, >= 4.7.0.1)
   guard
