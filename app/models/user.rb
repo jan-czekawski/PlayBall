@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # TODO: index users template doesn't show the whole card -> it will after refresh, check js and css
+  # TODO: skip user email activation => just add note that it's possible
+  # TODO: check assets precompile etc
   attr_accessor :remember_token, :activation_token, :reset_token
   include ApplicationHelper
   before_create :create_activation_digest

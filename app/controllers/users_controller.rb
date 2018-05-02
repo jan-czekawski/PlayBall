@@ -22,10 +22,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.account_activation(@user).deliver_now
-      flash[:info] = "Activation link was sent to your email address"
-      # session[:user_id] = @user.id
-      # flash[:success] = 'User was successfully created.'
+      # UserMailer.account_activation(@user).deliver_now
+      # flash[:info] = "Activation link was sent to your email address"
+      @user.update_columns(activated: true, activated_at: Time.now)
+      session[:user_id] = @user.id
+      flash[:success] = 'For the purpose of demonstration, account activation was disabled. User was successfully created.'
       redirect_to courts_path
     else
       render "new"

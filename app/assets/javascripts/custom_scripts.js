@@ -1,4 +1,4 @@
-var errorPage = url("ball.jpg");
+// var errorPage = url("ball.jpg");
 
 // FLASH MESSAGE STYLES FOR INDEX COURT PAGE
 var styles = {
