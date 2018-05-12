@@ -17,13 +17,13 @@ GEM
       rack (~> 2.0)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (1.0.4)
+      rails-html-sanitizer (= 1.0.4)
     actionview (5.2.0)
       activesupport (= 5.2.0)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (1.0.4)
+      rails-html-sanitizer (= 1.0.4)
     activejob (5.2.0)
       activesupport (= 5.2.0)
       globalid (>= 0.3.6)
@@ -247,7 +247,7 @@ DEPENDENCIES
   bootstrap-will_paginate
   byebug
   carrierwave (~> 1.2, >= 1.2.2)
-  coffee-rails (~> 4.2, >= 4.2.2)
+  coffee-rails (>= 4.2.2)
   faker (~> 1.8, >= 1.8.7)
   font-awesome-rails (~> 4.7, >= 4.7.0.4)
   guard
